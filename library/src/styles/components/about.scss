@@ -47,3 +47,95 @@ $color-brown: #BB945F;
 $color-white: #FFFFFF;
 $color-grey: #8E8E8E;
 
+.about {
+  margin-bottom: 60px;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: auto;
+  text-align: center;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+.about__title {
+  position: relative;
+
+  margin: 0 0 41px;
+  padding-bottom: 20px;
+
+  @include forum (40px, 400, 40px);
+  letter-spacing: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+
+    width: 50px;
+    height: 1px;
+
+    background-color: $color-dark-blue;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%)
+  }
+}
+
+.about__subtitle {
+  @include inter (20px, 400, 40px);
+
+  margin: 0 0 20px;
+}
+
+.slick-track {
+  display: flex;
+  gap: 25px;
+}
+
+.slick-list {
+  overflow: hidden;
+}
+
+.slider__pic {
+  padding-bottom: 40px;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-dots li {
+  list-style: none;
+
+  width: 26px;
+  height: 26px;
+
+  cursor: pointer;
+}
+
+.slick-dots button {
+  font-size: 0;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+  border: none;
+
+  background-color: $color-dark-blue;
+
+  cursor: pointer;
+}
+
+.slick-dots li.slick-active button {
+  background-color: $color-brown;
+}
