@@ -1,0 +1,35 @@
+.wrapper {
+  max-width: 1440px;
+  margin: auto;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+.title {
+  position: relative;
+
+  margin: 0 0 41px;
+  padding-bottom: 20px;
+
+  text-align: center;
+
+  @include forum (40px, 400, 40px);
+  letter-spacing: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+
+    width: 50px;
+    height: 1px;
+
+    background-color: $color-dark-blue;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%)
+  }
+}

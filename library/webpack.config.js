@@ -1,10 +1,18 @@
 const path = require('path')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const COMMON_SASS_PATH = path.resolve(__dirname, './src/common/sass')
+
+const mode = process.env.NODE_ENV || 'development'
+const devMode = mode === 'development'
+const devtool = devMode ? 'source-map' : undefined
 
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/js/index.js',
+    index: './src/index.js',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -12,7 +20,7 @@ module.exports = {
     assetModuleFilename: '[name][ext]',
     clean: true
   },
-  devtool: 'inline-source-map',
+  devtool,
   devServer: {
     port: 3000,
     compress: true,
@@ -23,6 +31,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
   ],
   module: {
     rules: [
@@ -32,7 +43,19 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', "sass-loader"],
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 
+          'css-loader', 
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                sourceMap: true,
+                includePaths: [COMMON_SASS_PATH]
+              }
+            }
+          }
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

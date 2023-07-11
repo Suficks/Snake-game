@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="./common/sass/style.scss"> -->
   <link rel="icon" href="./common/img/png/favicon-32x32.png">
   <title>Library</title>
 </head>
@@ -40,9 +39,9 @@
     </div>
   </section>
 
-  <section class="about">
+  <section class="about" id="about">
     <div class="wrapper">
-      <h2 class="about__title">About</h2>
+      <h2 class="title">About</h2>
       <p class="about__subtitle">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside </p>
       <div class="slider">
         <img src="./common/img/jpg/slider_pic_1.jpg" alt="slider" class="slider__pic">
@@ -54,7 +53,32 @@
     </div>
   </section>
   
+
+  <section class="favorites" id="favorites">
+    <div class="wrapper">
+      <h2 class="title">Favorites</h2>
+      <div class="filter">
+        <p class="favorites__subtitle">Pick favorites of season</p>
+        <label class="label">
+          <span class="custom__radio"></span>
+          <input checked class="real__radio" type="radio" name="season"> Winter
+        </label>
+        <label class="label">
+          <span class="custom__radio"></span>
+          <input class="real__radio" type="radio" name="season"> Spring
+        </label>
+        <label class="label">
+          <span class="custom__radio"></span>
+          <input class="real__radio" type="radio" name="season"> Summer
+        </label>
+        <label class="label">
+          <span class="custom__radio"></span>
+          <input class="real__radio" type="radio" name="season"> Autumn
+        </label>
+      </div>
+    </div>
+  </section>
+
+
 </body>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="./js/slick.min.js"></script>
 </html>
