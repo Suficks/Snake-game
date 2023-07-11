@@ -1,0 +1,49 @@
+@import '../../common/sass/normalize.scss';
+// @import '../../common/sass/fonts.scss';
+// @import '../../common/sass/colors.scss';
+/* forum-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Forum';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../common/fonts/forum-v16-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../common/fonts/inter-v12-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../common/fonts/inter-v12-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@mixin forum ($fs, $fw, $lh) {
+  font-family: 'Forum', sans-serif;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+@mixin inter ($fs, $fw, $lh) {
+  font-family: 'Inter', sans-serif;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+$color-dark-blue: #0C0C0E;
+$color-black: #000000;
+$color-brown: #BB945F;
+$color-white: #FFFFFF;
+$color-grey: #8E8E8E;
+
