@@ -1,2 +1,2 @@
 import '../index.html'
-import '../sass/style.scss'
+import '../styles/components/header.scss'
