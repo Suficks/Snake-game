@@ -39,7 +39,7 @@
   height: 17px;
 
   background-color: $color-white;
-  border: 2px solid $color-black;
+  border: 3px solid $color-black;
 
   border-radius: 50%;
 
@@ -64,6 +64,10 @@
 
 .real__radio:checked+.custom__radio::before {
   opacity: 1;
+}
+
+.real__radio:checked~.name {
+  font-weight: 700;
 }
 
 .winter {
@@ -140,10 +144,11 @@
 .book__pic {
   position: absolute;
   bottom: -1px;
-  left: 430px;
+  right: -40px;
 }
 
 .buy__button {
+  align-self: flex-start;
   padding: 9px 27px;
 
   background-color: $color-white;
