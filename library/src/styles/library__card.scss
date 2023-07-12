@@ -1,0 +1,126 @@
+.libraryCard {
+  margin-bottom: 41px;
+}
+
+.card__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.find__sibtitle {
+  margin: 0 0 30px;
+
+  text-align: center;
+
+  @include inter (30px, 400, 36px);
+  letter-spacing: 0.6px;
+}
+
+.card__form {
+  width: 600px;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  border: 3px solid $color-brown;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  @include forum (30px, 400, 50px);
+  letter-spacing: 0.6px;
+}
+
+.card__info {
+  padding: 20px;
+  margin-bottom: 20px;
+
+  background-color: $color-brown;
+}
+
+.info__library {
+  margin: 0 0 20px;
+}
+
+.input__form {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 8px 20px;
+  margin-bottom: 25px;
+
+  border-radius: 10px;
+  border: none;
+
+  outline: none;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__button {
+  text-align: center;
+}
+
+.check__button {
+  padding: 10px 40px;
+
+  background-color: $color-white;
+  border: 1px solid $color-dark-blue;
+  border-radius: 2px;
+
+  @include inter (20px, 700, 24px);
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.5s ease;
+
+  &:hover {
+    border: 1px solid $color-brown;
+    background-color: $color-brown;
+  }
+}
+
+.get__card {
+  text-align: right;
+}
+
+.get__sibtitle {
+  margin: 0 0 35px;
+
+  @include forum (30px, 400, 36px);
+  letter-spacing: 0.6px;
+}
+
+.get__info {
+  margin: 0 0 35px;
+
+  width: 456px;
+  @include inter (20px, 400, 40px);
+  letter-spacing: 0.4px;
+}
+
+.entry {
+  padding: 10px 14px;
+
+  background-color: $color-white;
+  border: 1px solid $color-dark-blue;
+  border-radius: 2px;
+
+  @include inter (10px, 700, 12px);
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.5s ease;
+
+  &:hover {
+    border: 1px solid $color-brown;
+    background-color: $color-brown;
+  }
+}
+
+.second__button {
+  padding: 10px 18.5px;
+
+  margin-left: 20px;
+}
