@@ -1,3 +1,7 @@
+.favorites {
+  margin-bottom: 60px;
+}
+
 .filter {
   margin-bottom: 40px;
 }
@@ -9,6 +13,9 @@
 }
 
 .label {
+  display: inline-flex;
+  align-items: center;
+
   margin-right: 90px;
   padding: 5px;
 
@@ -19,16 +26,17 @@
   cursor: pointer;
 }
 
+.real__radio {
+  display: none;
+}
+
 .custom__radio {
   position: relative;
-  display: inline-block;
 
   margin-right: 20px;
 
   width: 17px;
   height: 17px;
-
-  vertical-align: text-top;
 
   background-color: $color-white;
   border: 2px solid $color-black;
@@ -38,14 +46,13 @@
   &::before {
     content: "";
     position: absolute;
-    display: inline-block;
     
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     
-    width: 10px;
-    height: 10px;
+    width: 8.5px;
+    height: 8.5px;
 
     background-color: $color-black;
     
@@ -55,10 +62,116 @@
   }
 }
 
-.real__radio {
-  display: none;
+.real__radio:checked+.custom__radio::before {
+  opacity: 1;
 }
 
-.real__radio:checked + .custom__radio::before {
-  opacity: 1;
+.winter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  width: 550px;
+  height: 555px;
+
+  padding: 15px 20px;
+  margin-right: 40px;
+
+  border: 1px solid $color-black;
+}
+
+.card__first {
+  margin-bottom: 40px;
+}
+
+.card__title {
+  position: relative;
+
+  margin: 0 0 20px;
+
+  @include forum (20px, 400, 40px);
+  letter-spacing: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+
+    width: 60px;
+    height: 1px;
+
+    background-color: $color-brown;
+    
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.book__title {
+  margin: 0;
+
+  @include inter (15px, 700, 40px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.author {
+  margin: 0 0 20px;
+
+  @include inter (15px, 700, 40px);
+  letter-spacing: 2px;
+}
+
+.book__description {
+  flex: 1 1 auto;
+
+  margin: 0 0 15px;
+
+  max-width: 355px;
+
+  @include inter (15px, 400, 40px);
+  letter-spacing: 2px;
+}
+
+.book__pic {
+  position: absolute;
+  bottom: -1px;
+  left: 430px;
+}
+
+.buy__button {
+  padding: 9px 27px;
+
+  background-color: $color-white;
+  border: 1px solid $color-dark-blue;
+  border-radius: 2px;
+
+  @include inter (10px, 700, 12px);
+  letter-spacing: 1px;
+
+  transition: 0.5s ease;
+
+  cursor: pointer;
+
+  &:not([disabled]):hover {
+    border: 1px solid $color-brown;
+    background-color: $color-brown;
+  }
+}
+
+.own__button {
+  border: 1px solid $color-brown;
+  color: $color-brown;
+
+  cursor: auto;
+}
+
+.spring,
+.summer,
+.autumn {
+  display: none;
 }
