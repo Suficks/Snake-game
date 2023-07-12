@@ -1,0 +1,84 @@
+.CoffeShop {
+  margin-bottom: 40px;
+}
+
+.shop__subtitle {
+  margin: 0 0 40px;
+
+  text-align: center;
+
+  @include inter (20px, 400, 40px);
+  letter-spacing: 2px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left__column {
+  width: 100%;
+  width: 438px;
+}
+
+.right__column {
+  width: 100%;
+  width: 482px;
+
+  text-align: end;
+}
+
+.menu__subtitle {
+  margin: 0 0 40px;
+
+  @include forum (40px, 400, 40px);
+  letter-spacing: 2px;
+  color: $color-brown;
+}
+
+.menu__item {
+  position: relative;
+
+  display: flex;
+  jUstify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 40px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 81px;
+  
+    width: 100px;
+    height: 1px;
+  
+    background-color: $color-brown;
+  }
+}
+
+.desserts {  
+  &::after {
+    right: 91px;
+  }
+}
+
+.detail {
+  margin: 0;
+
+  @include inter (20px, 400, 40px);
+  letter-spacing: 2px;
+}
+
+.desserts__detail {
+  width: 212px;
+  text-align: end;
+}
+
+.detail__cost {
+  margin: 0;
+
+  @include forum (20px, 400, 40px);
+  letter-spacing: 2px;
+}
