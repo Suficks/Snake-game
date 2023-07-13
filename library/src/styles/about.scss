@@ -4,7 +4,7 @@
 
 .about__subtitle {
   margin: 0 0 20px;
-  
+
   text-align: center;
 
   @include inter (20px, 400, 40px);
@@ -27,6 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin: 0;
   padding: 0;
 }
@@ -36,6 +37,8 @@
 
   width: 26px;
   height: 26px;
+
+  text-align: center;
 
   cursor: pointer;
 }

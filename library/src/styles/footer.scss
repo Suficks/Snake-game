@@ -36,8 +36,14 @@
   color: $color-white;
 }
 
-.socials__item {
-  margin-right: 15px;
+.socials {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 0;
+  padding: 0;
 }
 
 .hours {
