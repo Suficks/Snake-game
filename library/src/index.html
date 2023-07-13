@@ -38,6 +38,16 @@
           </nav>
         </div>
         <button class="profile__logo"></button>
+        <div class="profile__modal">
+          <p class="modal__title">Profile</p>
+          <p class="modal__info">Log In</p>
+          <p class="modal__info">Register</p>
+        </div>
+        <div class="profile__modal">
+          <p class="modal__title">Profile</p>
+          <p class="modal__info">My profile</p>
+          <p class="modal__info">Log Out</p>
+        </div>
       </div>
     </div>
   </header>
@@ -49,6 +59,96 @@
       </div>
       <div class="welcome__content">
         <h3 class="welcome__title">Welcome<br> to the Brooklyn<br> Library</h3>
+      </div>
+      <div class="my__profile">
+        <div class="profile__photo">
+          <div class="initials">JD</div>
+          <p class="profile__name">John Doe</p>
+        </div>
+        <div class="profile__info">
+          <div class="profile__title">My profile</div>
+          <div class="close__cross">
+            <span class="close__line first__line"></span>
+            <span class="close__line second__line"></span>
+          </div>
+          <div class="info__items">
+            <div class="info__item">
+              <p class="name">Visits</p>
+              <img class="name__logo" src="./common/img/svg/visits-logo.svg" width="20" height="21" alt="logo">
+              <p class="count">23</p>
+            </div>
+            <div class="info__item">
+              <p class="name">Bonuses</p>
+              <img class="name__logo" src="./common/img/svg/bonuses-logo.svg" width="20" height="21" alt="logo">
+              <p class="count">1240</p>
+            </div>
+            <div class="info__item">
+              <p class="name">Books</p>
+              <img class="name__logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
+              <p class="count">2</p>
+            </div>
+          </div>
+          <p class="rented__books">Rented books</p>
+          <ul class="books__list">
+            <li class="books__item">The Last Queen, Clive Irving</li>
+            <li class="books__item">Dominicana, Angie Cruz</li>
+          </ul>
+          <div class="card__number">
+            <p class="number__title">Card number</p>
+            <p class="number">F00234030</p>
+            <img class="number__copy" src="./common/img/svg/icon-copy.svg" alt="copy">
+          </div>
+        </div>
+      </div>
+
+      <div class="login__modal">
+        <p class="login__title">Login</p>
+        <div class="close__cross">
+          <span class="close__line first__line"></span>
+          <span class="close__line second__line"></span>
+        </div>
+        <label class="login__label">
+          <span class="login__name">E-mail or readers card</span>
+          <input type="text" class="login__input">
+        </label>
+        <label class="login__label">
+          <span class="login__name">Password</span>
+          <input type="password" class="login__input password">
+        </label>
+        <button class="entry">Log in</button>
+        <div class="account">
+          <span class="have__account">Don’t have an account?</span>
+          <a href="" class="register__link">Register</a>
+        </div>
+      </div>
+
+      <div class="register__modal">
+        <p class="login__title">Register</p>
+        <div class="close__cross">
+          <span class="close__line first__line"></span>
+          <span class="close__line second__line"></span>
+        </div>
+        <label class="login__label">
+          <span class="login__name">First name</span>
+          <input type="text" class="login__input">
+        </label>
+        <label class="login__label">
+          <span class="login__name">Last name</span>
+          <input type="text" class="login__input">
+        </label>
+        <label class="login__label">
+          <span class="login__name">E-mail</span>
+          <input type="email" class="login__input">
+        </label>
+        <label class="login__label">
+          <span class="login__name">Password</span>
+          <input type="password" class="login__input password">
+        </label>
+        <button class="entry">Sign Up</button>
+        <div class="account">
+          <span class="have__account">Already have an account?</span>
+          <a href="" class="register__link">Login</a>
+        </div>
       </div>
     </section>
 
@@ -273,6 +373,48 @@
                 <button class="buy__button own__button" disabled>Own</button>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="buy__modal">
+          <div class="buy__title">Buy a library card</div>
+          <div class="close__cross">
+            <span class="close__line first__line"></span>
+            <span class="close__line second__line"></span>
+          </div>
+          <div class="modal__wrapper">
+            <div class="modal__inputs">
+              <label class="login__label">
+                <span class="login__name">Bank card number</span>
+                <input type="text" class="login__input">
+              </label>
+              <label class="login__label">
+                <span class="login__name">Expiration code</span>
+                <input type="text" class="login__input">
+              </label>
+              <label class="login__label">
+                <span class="login__name">CVC</span>
+                <input type="text" class="login__input">
+              </label>
+              <label class="login__label">
+                <span class="login__name">Cardholder name</span>
+                <input type="text" class="login__input">
+              </label>
+              <label class="login__label">
+                <span class="login__name">Postal code</span>
+                <input type="text" class="login__input">
+              </label>
+              <label class="login__label">
+                <span class="login__name">City / Town</span>
+                <input type="text" class="login__input password">
+              </label>
+              <div class="buy__cost">
+                <button class="entry">Buy</button>
+                <span class="cost">$ 25.00</span>
+              </div>
+            </div>
+            <div class="modal__text">If you are live, work, attend school, or pay property taxes in New York State, you
+              can get a $25 digital library card right now using this online form. Visitors to New York State can also
+              use this form to apply for a temporary card.</div>
           </div>
         </div>
       </div>

@@ -16,8 +16,10 @@
   display: inline-flex;
   align-items: center;
 
-  margin-right: 90px;
+  margin: 0 90px 0 -5px;
   padding: 5px;
+
+  box-sizing: border-box;
 
   @include inter (20px, 400, 24px);
 

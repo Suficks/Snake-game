@@ -18,16 +18,19 @@
   }
 }
 
-.number {
-  margin: 0 0 20px;
+.info {
+  .number {
+    margin: 0 0 20px;
 
-  @include inter (20px, 400, 40px);
-  letter-spacing: 2px;
+    @include inter (20px, 400, 40px);
+    letter-spacing: 2px;
 
-  &:nth-child(4) {
-    margin-bottom: 40px;
+    &:nth-child(4) {
+      margin-bottom: 40px;
+    }
   }
 }
+
 
 .email {
   font-weight: 700;
