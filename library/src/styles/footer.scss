@@ -1,73 +1,73 @@
 .footer {
   padding: 20px 0 44px;
   background-color: $color-dark-blue;
-}
 
-.footer__wrapper {
-  position: relative;
+  .footer__wrapper {
+    position: relative;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  padding-bottom: 30px;
+    padding-bottom: 30px;
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
 
-    width: 1400px;
-    height: 1px;
+      width: 1400px;
+      height: 1px;
 
-    background-color: $color-white;
+      background-color: $color-white;
+    }
   }
-}
 
-.adress {
-  margin: 0 0 18px;
-}
+  .adress {
+    margin: 0 0 18px;
+  }
 
-.adress__link {
+  .adress__link {
 
-  @include inter (15px, 400, 20px);
+    @include inter (15px, 400, 20px);
 
-  color: $color-white;
-}
+    color: $color-white;
+  }
 
-.socials {
-  display: flex;
-  align-items: center;
+  .socials {
+    display: flex;
+    align-items: center;
 
-  gap: 15px;
+    gap: 15px;
 
-  margin: 0;
-  padding: 0;
-}
+    margin: 0;
+    padding: 0;
+  }
 
-.hours {
-  margin: 0 0 10px;
+  .hours {
+    margin: 0 0 10px;
 
-  text-align: end;
+    text-align: end;
 
-  @include inter (15px, 400, 20px);
+    @include inter (15px, 400, 20px);
 
-  color: $color-white;
-}
+    color: $color-white;
+  }
 
-.footer__info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  padding-top: 44px;
-}
+    padding-top: 44px;
+  }
 
-.footer__item {
-  margin: 0;
-  @include inter (20px, 400, 20px);
-  letter-spacing: 2px;
+  .footer__item {
+    margin: 0;
+    @include inter (20px, 400, 20px);
+    letter-spacing: 2px;
 
-  color: $color-white;
+    color: $color-white;
+  }
 }

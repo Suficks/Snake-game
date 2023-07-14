@@ -37,3 +37,41 @@ html {
     transform: translateX(-50%)
   }
 }
+
+.button {
+  align-self: flex-start;
+  padding: 8px 26px;
+
+  background-color: $color-white;
+  border: 1px solid $color-dark-blue;
+  border-radius: 2px;
+
+  @include inter (10px, 700, 12px);
+  letter-spacing: 1px;
+
+  transition: 0.5s ease;
+
+  cursor: pointer;
+
+  &:not([disabled]):hover {
+    border: 1px solid $color-brown;
+    background-color: $color-brown;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  width: 15px;
+  height: 15px;
+
+  cursor: pointer;
+}
+
+.close__logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

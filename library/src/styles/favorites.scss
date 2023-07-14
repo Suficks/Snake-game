@@ -1,182 +1,161 @@
 .favorites {
   margin-bottom: 60px;
-}
 
-.filter {
-  margin-bottom: 40px;
-}
+  .filter {
+    margin-bottom: 40px;
+  }
 
-.favorites__subtitle {
-  margin: 0 0 40px;
+  .subtitle {
+    margin: 0 0 40px;
 
-  @include inter (20px, 700, 24px);
-}
+    @include inter (20px, 700, 24px);
+  }
 
-.label {
-  display: inline-flex;
-  align-items: center;
+  .label {
+    display: inline-flex;
+    align-items: center;
 
-  margin: 0 90px 0 -5px;
-  padding: 5px;
+    margin: 0 90px 0 -5px;
+    padding: 5px;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  @include inter (20px, 400, 24px);
+    @include inter (20px, 400, 24px);
 
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 
-.real__radio {
-  display: none;
-}
+  .radio {
+    display: none;
+  }
 
-.custom__radio {
-  position: relative;
+  .fake {
+    position: relative;
 
-  margin-right: 20px;
+    margin-right: 20px;
 
-  width: 17px;
-  height: 17px;
+    width: 17px;
+    height: 17px;
 
-  background-color: $color-white;
-  border: 3px solid $color-black;
-
-  border-radius: 50%;
-
-  &::before {
-    content: "";
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 8.5px;
-    height: 8.5px;
-
-    background-color: $color-black;
+    background-color: $color-white;
+    border: 3px solid $color-black;
 
     border-radius: 50%;
 
-    opacity: 0;
+    &::before {
+      content: "";
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 8.5px;
+      height: 8.5px;
+
+      background-color: $color-black;
+
+      border-radius: 50%;
+
+      opacity: 0;
+    }
   }
-}
 
-.real__radio:checked+.custom__radio::before {
-  opacity: 1;
-}
+  .radio:checked+.fake::before {
+    opacity: 1;
+  }
 
-.real__radio:checked~.name {
-  text-shadow: 0 0 .8px $color-black, 0 0 .8px $color-black;
-}
+  .radio:checked~.name {
+    text-shadow: 0 0 .8px $color-black, 0 0 .8px $color-black;
+  }
 
-.winter {
-  display: flex;
-  justify-content: space-between;
-}
+  .winter {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.card {
-  display: flex;
-  flex-direction: column;
+  .card {
+    display: flex;
+    flex-direction: column;
 
-  position: relative;
-  width: 550px;
-  height: 555px;
+    position: relative;
+    width: 550px;
+    height: 555px;
 
-  padding: 15px 20px;
-  margin-right: 40px;
+    padding: 15px 20px;
+    margin-right: 40px;
 
-  border: 1px solid $color-black;
-}
+    border: 1px solid $color-black;
 
-.card__first {
-  margin-bottom: 40px;
-}
+    &:nth-child(odd) {
+      margin-bottom: 40px;
+    }
+  }
 
-.card__title {
-  position: relative;
+  .card__title {
+    position: relative;
 
-  margin: 0 0 20px;
+    margin: 0 0 20px;
 
-  @include forum (20px, 400, 40px);
-  letter-spacing: 2px;
+    @include forum (20px, 400, 40px);
+    letter-spacing: 2px;
 
-  &::after {
-    content: "";
+    &::after {
+      content: "";
+      position: absolute;
+
+      width: 60px;
+      height: 1px;
+
+      background-color: $color-brown;
+
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .book__title {
+    margin: 0;
+
+    @include inter (15px, 700, 40px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .author {
+    margin: 0 0 20px;
+
+    @include inter (15px, 700, 40px);
+    letter-spacing: 2px;
+  }
+
+  .description {
+    flex: 1 1 auto;
+
+    margin: 0 0 15px;
+
+    max-width: 355px;
+
+    @include inter (15px, 400, 40px);
+    letter-spacing: 2px;
+  }
+
+  .pic {
     position: absolute;
-
-    width: 60px;
-    height: 1px;
-
-    background-color: $color-brown;
-
-    bottom: 0;
-    left: 0;
+    bottom: -1px;
+    right: -40px;
   }
-}
 
-.book__title {
-  margin: 0;
-
-  @include inter (15px, 700, 40px);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.author {
-  margin: 0 0 20px;
-
-  @include inter (15px, 700, 40px);
-  letter-spacing: 2px;
-}
-
-.book__description {
-  flex: 1 1 auto;
-
-  margin: 0 0 15px;
-
-  max-width: 355px;
-
-  @include inter (15px, 400, 40px);
-  letter-spacing: 2px;
-}
-
-.book__pic {
-  position: absolute;
-  bottom: -1px;
-  right: -40px;
-}
-
-.buy__button {
-  align-self: flex-start;
-  padding: 9px 27px;
-
-  background-color: $color-white;
-  border: 1px solid $color-dark-blue;
-  border-radius: 2px;
-
-  @include inter (10px, 700, 12px);
-  letter-spacing: 1px;
-
-  transition: 0.5s ease;
-
-  cursor: pointer;
-
-  &:not([disabled]):hover {
+  .own__button {
     border: 1px solid $color-brown;
-    background-color: $color-brown;
+    color: $color-brown;
+
+    cursor: auto;
   }
-}
 
-.own__button {
-  border: 1px solid $color-brown;
-  color: $color-brown;
-
-  cursor: auto;
-}
-
-.spring,
-.summer,
-.autumn {
-  display: none;
+  .spring,
+  .summer,
+  .autumn {
+    display: none;
+  }
 }

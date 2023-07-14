@@ -1,37 +1,37 @@
 .contacts {
   margin-bottom: 60px;
-}
 
-.contacts__wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
-.contacts__subtitle {
-  margin: 0 0 40px;
-
-  @include inter (20px, 700, 40px);
-  letter-spacing: 2px;
-
-  &:nth-child(5) {
-    margin-bottom: 20px;
+  .contacts__wrapper {
+    display: flex;
+    justify-content: space-between;
   }
-}
 
-.info {
-  .number {
-    margin: 0 0 20px;
+  .subtitle {
+    margin: 0 0 40px;
 
-    @include inter (20px, 400, 40px);
+    @include inter (20px, 700, 40px);
     letter-spacing: 2px;
 
-    &:nth-child(4) {
-      margin-bottom: 40px;
+    &:nth-child(5) {
+      margin-bottom: 20px;
     }
   }
-}
+
+  .info {
+    .number {
+      margin: 0 0 20px;
+
+      @include inter (20px, 400, 40px);
+      letter-spacing: 2px;
+
+      &:nth-child(4) {
+        margin-bottom: 40px;
+      }
+    }
+  }
 
 
-.email {
-  font-weight: 700;
+  .email {
+    font-weight: 700;
+  }
 }
