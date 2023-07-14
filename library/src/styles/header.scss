@@ -62,11 +62,14 @@ a {
 
   .logo {
     background-image: url("./common/img/svg/icon_profile.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
 
     width: 28px;
     height: 28px;
 
     background-color: transparent;
+
     border: none;
 
     cursor: pointer;

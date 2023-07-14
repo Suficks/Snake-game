@@ -7,29 +7,26 @@
   }
 
   .subtitle {
-    margin: 0 0 40px;
+    margin: 0 0 20px;
 
     @include inter (20px, 700, 40px);
     letter-spacing: 2px;
 
-    &:nth-child(5) {
-      margin-bottom: 20px;
+    &:first-child {
+      margin-bottom: 40px;
     }
   }
 
-  .info {
-    .number {
-      margin: 0 0 20px;
+  .number {
+    margin: 0 0 20px;
 
-      @include inter (20px, 400, 40px);
-      letter-spacing: 2px;
+    @include inter (20px, 400, 40px);
+    letter-spacing: 2px;
 
-      &:nth-child(4) {
-        margin-bottom: 40px;
-      }
+    &:nth-child(4) {
+      margin-bottom: 40px;
     }
   }
-
 
   .email {
     font-weight: 700;
