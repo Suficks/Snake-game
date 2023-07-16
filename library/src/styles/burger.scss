@@ -18,7 +18,7 @@
 }
 
 .burger__close {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
 
@@ -27,4 +27,9 @@
 
   cursor: pointer;
   display: none;
+  z-index: 3;
+}
+
+.burger__close.active {
+  display: block;
 }

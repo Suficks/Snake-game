@@ -2,7 +2,7 @@
   .burger {
     display: block;
 
-    z-index: 2;
+    z-index: 1;
   }
 
   .nav {
@@ -17,7 +17,9 @@
 
     background-color: $color-black;
 
-    // transform: translateX(100%);
+    transform: translateX(100%);
+
+    z-index: 2;
   }
 
   .nav__active {
@@ -25,7 +27,7 @@
   }
 
   .header {
-    .logo {
+    .profile__logo {
       margin-right: 85px;
     }
 
@@ -41,6 +43,10 @@
   }
 
   .favorites {
+    .left-container {
+      margin: auto;
+    }
+
     .winter {
       display: block;
     }
@@ -50,6 +56,7 @@
         margin-bottom: 40px;
       }
     }
+
   }
 
   .coffeShop {
