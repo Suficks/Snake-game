@@ -1,0 +1,1442 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/* forum-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Forum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/forum-v16-latin-regular..woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/inter-v12-latin-regular..woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/inter-v12-latin-700..woff2) format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  position: relative;
+  margin: 0 0 41px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.title::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 1px;
+  background-color: #0C0C0E;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button {
+  align-self: flex-start;
+  padding: 8px 26px;
+  background-color: #FFFFFF;
+  border: 1px solid #0C0C0E;
+  border-radius: 2px;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 1px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.button:not([disabled]):hover {
+  border: 1px solid #BB945F;
+  background-color: #BB945F;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.close__logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.overlay__active {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.header {
+  padding: 20px 0;
+  background-color: #0C0C0E;
+}
+.header .header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .name {
+  margin: 0;
+}
+.header .left {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header .link {
+  font-family: "Forum", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  color: #FFFFFF;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+}
+.header .list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 30px;
+}
+.header .item:last-child {
+  margin-right: 40px;
+}
+.header .item__link {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 50px;
+  color: #FFFFFF;
+  transition: 0.3s ease;
+}
+.header .item__link:hover {
+  color: #8E8E8E;
+}
+.header .profile__logo {
+  background-image: url(assets/icon_profile.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.welcome {
+  position: relative;
+  max-width: 1440px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.welcome .image {
+  position: relative;
+  line-height: 0;
+}
+.welcome .image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%);
+  width: 100%;
+  height: 600px;
+}
+.welcome .pic {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+}
+.welcome .content {
+  position: absolute;
+  left: 0;
+  top: 220px;
+  width: 600px;
+  background-color: #0C0C0E;
+}
+.welcome .welcome__title {
+  margin: 0;
+  padding: 35px 40px;
+  text-align: center;
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.about {
+  margin-bottom: 60px;
+}
+.about .subtitle {
+  margin: 0 0 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+}
+.about .slick-track {
+  display: flex;
+  gap: 25px;
+}
+.about .slick-list {
+  margin-bottom: 29px;
+  overflow: hidden;
+}
+.about .slick-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.about .slick-dots li {
+  list-style: none;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  cursor: pointer;
+}
+.about .slick-dots button {
+  font-size: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  background-color: #0C0C0E;
+  cursor: pointer;
+}
+.about .slick-dots li.slick-active button {
+  background-color: #BB945F;
+}
+
+.favorites {
+  margin-bottom: 60px;
+}
+.favorites .filter {
+  margin-bottom: 34px;
+}
+.favorites .subtitle {
+  margin: 0 0 36px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.favorites .label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 78px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+}
+.favorites .label:first-child {
+  margin-left: -5px;
+}
+.favorites .radio {
+  display: none;
+}
+.favorites .fake {
+  position: relative;
+  margin-right: 20px;
+  width: 11px;
+  height: 11px;
+  background-color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 50%;
+}
+.favorites .fake::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: #000000;
+  border-radius: 50%;
+  opacity: 0;
+}
+.favorites .radio:checked + .fake::before {
+  opacity: 1;
+}
+.favorites .radio:checked ~ .name {
+  text-shadow: 0 0 0.8px #000000, 0 0 0.8px #000000;
+}
+.favorites .winter {
+  display: flex;
+  justify-content: space-between;
+}
+.favorites .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 550px;
+  height: 555px;
+  padding: 15px 20px;
+  margin-right: 40px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+.favorites .card:nth-child(odd) {
+  margin-bottom: 40px;
+}
+.favorites .card__title {
+  position: relative;
+  margin: 0 0 20px;
+  font-family: "Forum", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.favorites .card__title::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  background-color: #BB945F;
+  bottom: 0;
+  left: 0;
+}
+.favorites .book__title {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.favorites .author {
+  margin: 0 0 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.favorites .description {
+  flex: 1 1 auto;
+  margin: 0 0 15px;
+  max-width: 357px;
+  text-transform: capitalize;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.favorites .pic {
+  position: absolute;
+  margin-right: 10px;
+  bottom: -1px;
+  right: -50px;
+}
+.favorites .own__button {
+  border: 1px solid #BB945F;
+  color: #BB945F;
+  padding: 8px 24px;
+  cursor: auto;
+}
+.favorites .spring,
+.favorites .summer,
+.favorites .autumn {
+  display: none;
+}
+
+.coffeShop {
+  margin-bottom: 60px;
+}
+.coffeShop .subtitle {
+  margin: 0 0 40px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.coffeShop .menu {
+  display: flex;
+  justify-content: space-between;
+}
+.coffeShop .left__container {
+  width: 100%;
+  width: 438px;
+}
+.coffeShop .right__container {
+  width: 100%;
+  width: 482px;
+  text-align: end;
+}
+.coffeShop .menu__subtitle {
+  margin: 0 0 40px;
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  color: #BB945F;
+}
+.coffeShop .item {
+  position: relative;
+  display: flex;
+  jUstify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.coffeShop .item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 81px;
+  width: 100px;
+  height: 1px;
+  background-color: #BB945F;
+}
+.coffeShop .item:last-child {
+  margin-bottom: 0;
+}
+.coffeShop .detail {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.coffeShop .desserts::after {
+  right: 91px;
+}
+.coffeShop .desserts__detail {
+  width: 232px;
+  text-align: end;
+}
+.coffeShop .cost {
+  margin: 0;
+  font-family: "Forum", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+
+.contacts {
+  margin-bottom: 56px;
+}
+.contacts .contacts__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.contacts .subtitle {
+  margin: 0 0 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.contacts .subtitle:first-child {
+  margin-bottom: 40px;
+}
+.contacts .number {
+  margin: 0 0 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+.contacts .number:nth-child(4) {
+  margin-bottom: 40px;
+}
+.contacts .email {
+  font-weight: 700;
+}
+
+.libraryCard {
+  margin-bottom: 41px;
+}
+.libraryCard .card__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.libraryCard .sibtitle {
+  margin: 0 0 30px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0.6px;
+}
+.libraryCard .form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  padding: 17px 17px 27px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border: 3px solid #BB945F;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: "Forum", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
+.libraryCard .form .button {
+  align-self: center;
+  padding: 9px 39px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+.libraryCard .info {
+  padding: 20px 20px 25px;
+  margin-bottom: 20px;
+  background-color: #BB945F;
+}
+.libraryCard .library {
+  margin: 0 0 20px;
+}
+.libraryCard .input {
+  width: 100%;
+  height: 66px;
+  box-sizing: border-box;
+  padding: 8px 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.libraryCard .input:last-child {
+  margin-bottom: 0;
+}
+.libraryCard .get {
+  text-align: right;
+}
+.libraryCard .get .button {
+  padding: 9px 0;
+  width: 75px;
+}
+.libraryCard .get .button:first-child {
+  margin-right: 14px;
+}
+.libraryCard .get__sibtitle {
+  margin: 0 0 35px;
+  font-family: "Forum", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0.6px;
+}
+.libraryCard .get__info {
+  margin: 0 0 32px;
+  width: 456px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.4px;
+}
+
+.after {
+  display: none;
+}
+.after .input::placeholder {
+  color: #BB945F;
+}
+.after .items {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+.after .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.after .name,
+.after .count {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+
+.footer {
+  padding: 20px 0 44px;
+  background-color: #0C0C0E;
+}
+.footer .footer__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.footer .footer__wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1400px;
+  height: 1px;
+  background-color: #FFFFFF;
+}
+.footer .adress {
+  margin: 0 0 18px;
+}
+.footer .adress__link {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+.footer .socials {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+.footer .hours {
+  margin: 0 0 10px;
+  text-align: end;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+.footer .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 29px;
+}
+.footer .school {
+  margin-left: 153px;
+}
+.footer .footer__item {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+}
+
+.buy__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  display: none;
+}
+.buy__modal .buy__title {
+  margin: 0 0 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #0C0C0E;
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.buy__modal .modal__wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 40px 40px;
+}
+.buy__modal .inputs {
+  margin-right: 40px;
+}
+.buy__modal .input {
+  margin-bottom: 10px;
+  height: 20px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #BB945F;
+  outline: none;
+}
+.buy__modal .name {
+  display: block;
+  margin: 0 0 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+}
+.buy__modal .code {
+  width: 45px;
+}
+.buy__modal .code:nth-child(2) {
+  margin-right: 10px;
+}
+.buy__modal .password {
+  margin-bottom: 20px;
+}
+.buy__modal .buy__cost {
+  display: flex;
+  align-items: flex-end;
+}
+.buy__modal .button {
+  margin-right: 25px;
+}
+.buy__modal .cost {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.buy__modal .text {
+  max-width: 330px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  color: #8E8E8E;
+}
+.buy__modal .buy__modal.active {
+  display: block;
+}
+
+.login__modal,
+.register__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 25px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+.login__modal .close,
+.register__modal .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.login__modal .login__title,
+.register__modal .login__title {
+  margin: 0 0 20px;
+  text-align: center;
+  font-family: "Forum", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.login__modal .input,
+.register__modal .input {
+  margin-bottom: 10px;
+  height: 20px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #BB945F;
+  outline: none;
+}
+.login__modal .name,
+.register__modal .name {
+  display: block;
+  margin: 0 0 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+}
+.login__modal .password,
+.register__modal .password {
+  margin-bottom: 20px;
+}
+.login__modal .button,
+.register__modal .button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px 20px;
+}
+.login__modal .account,
+.register__modal .account {
+  display: flex;
+}
+.login__modal .have__account,
+.register__modal .have__account {
+  margin-right: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+}
+.login__modal .link,
+.register__modal .link {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #0C0C0E;
+}
+
+.login__modal {
+  display: none;
+}
+
+.register__modal {
+  display: none;
+}
+
+.login__modal.active {
+  display: block;
+}
+
+.register__modal.active {
+  display: block;
+}
+
+.my__profile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  display: none;
+}
+.my__profile .id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  background-color: #0C0C0E;
+}
+.my__profile .initials {
+  margin: 0 0 15px;
+  padding: 30px 27px;
+  background-color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #BB945F;
+}
+.my__profile .name {
+  margin: 0;
+  padding: 5px 15px;
+  background-color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.my__profile .info {
+  position: relative;
+  width: 430px;
+  padding: 30px 20px 40px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+.my__profile .profile__title {
+  margin: 0 0 30px;
+  font-family: "Forum", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.my__profile .items {
+  display: flex;
+  gap: 20px;
+}
+.my__profile .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.my__profile .name {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+}
+.my__profile .count {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+.my__profile .rented {
+  margin: 0 0 30px;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.my__profile .list {
+  margin: 0 0 40px;
+}
+.my__profile .books__item {
+  margin: 0 0 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+}
+.my__profile .books__item:last-child {
+  margin: 0;
+}
+.my__profile .card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.my__profile .headline {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.my__profile .number {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #BB945F;
+  cursor: pointer;
+}
+.my__profile .copy {
+  cursor: pointer;
+}
+.my__profile .my__profile.active {
+  display: block;
+}
+
+.header__wrapper {
+  position: relative;
+}
+
+.profile__modal {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  padding: 5px 10px 20px;
+  text-align: center;
+  background-color: #FFFFFF;
+  z-index: 1;
+  display: none;
+}
+.profile__modal:last-child {
+  padding: 5px 4px 20px;
+}
+.profile__modal .title {
+  position: relative;
+  margin: 0 0 15px;
+  padding-bottom: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.profile__modal .title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: #BB945F;
+}
+.profile__modal .info {
+  margin: 0 0 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.profile__modal .info:last-child {
+  margin: 0;
+}
+.profile__modal .profile__modal.active {
+  display: block;
+}
+
+.burger {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  width: 45px;
+  height: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+.burger__logo,
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.burger__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+}
+
+.burger__close.active {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  .burger {
+    display: block;
+    z-index: 1;
+  }
+  .nav {
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    padding: 100px 107px;
+    text-align: center;
+    background-color: #000000;
+    transform: translateX(100%);
+    z-index: 2;
+  }
+  .nav__active {
+    transform: translateX(0);
+  }
+  .header .profile__logo {
+    margin-right: 85px;
+  }
+  .header .list {
+    flex-direction: column;
+  }
+  .header .item:last-child {
+    margin: 0;
+  }
+  .favorites .left-container {
+    margin: auto;
+  }
+  .favorites .winter {
+    display: block;
+  }
+  .favorites .card:nth-child(2) {
+    margin-bottom: 40px;
+  }
+  .coffeShop .menu {
+    display: block;
+  }
+  .coffeShop .right__container {
+    margin-left: auto;
+  }
+  .contacts .contacts__wrapper {
+    display: block;
+  }
+  .contacts .number:last-child {
+    margin-bottom: 100px;
+  }
+  .libraryCard .card__wrapper {
+    display: block;
+  }
+}
