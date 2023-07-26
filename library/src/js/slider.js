@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import 'slick-slider'
 
 $('.slider').slick({
   dots: true,
