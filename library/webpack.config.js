@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: '[name][ext]',
+    assetModuleFilename: 'assets/[name][ext]',
     clean: true
   },
   devtool,
@@ -44,8 +44,8 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 
-          'css-loader', 
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -64,6 +64,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[ext]'
+        }
       },
     ]
   }
