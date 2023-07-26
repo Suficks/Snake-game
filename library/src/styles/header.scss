@@ -28,6 +28,7 @@ a {
     @include forum (30px, 400, 50px);
 
     color: $color-white;
+    letter-spacing: 0.6px;
 
     cursor: pointer;
   }

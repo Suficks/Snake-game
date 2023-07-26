@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 
     &::after {
       content: "";
@@ -60,7 +60,11 @@
     justify-content: space-between;
     align-items: center;
 
-    padding-top: 44px;
+    padding-top: 29px;
+  }
+
+  .school {
+    margin-left: 153px;
   }
 
   .footer__item {

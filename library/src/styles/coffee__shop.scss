@@ -55,6 +55,10 @@
 
       background-color: $color-brown;
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .detail {
@@ -71,7 +75,7 @@
   }
 
   .desserts__detail {
-    width: 212px;
+    width: 232px;
     text-align: end;
   }
 
