@@ -1,0 +1,92 @@
+@media screen and (max-width: 1024px) {
+  .burger {
+    display: block;
+
+    z-index: 1;
+  }
+
+  .nav {
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+
+    padding: 100px 107px;
+
+    text-align: center;
+
+    background-color: $color-black;
+
+    transform: translateX(100%);
+
+    z-index: 2;
+  }
+
+  .nav__active {
+    transform: translateX(0);
+  }
+
+  .header {
+    .profile__logo {
+      margin-right: 85px;
+    }
+
+    .list {
+      flex-direction: column;
+    }
+
+    .item {
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .favorites {
+    .left-container {
+      margin: auto;
+    }
+
+    .winter {
+      display: block;
+    }
+
+    .card {
+      &:nth-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+
+  }
+
+  .coffeShop {
+    .menu {
+      display: block;
+    }
+
+    .right__container {
+      margin-left: auto;
+    }
+  }
+
+  .contacts {
+    .contacts__wrapper {
+      display: block;
+    }
+
+    .number {
+      &:last-child {
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  .libraryCard {
+    .card__wrapper {
+      display: block;
+    }
+
+  }
+
+
+}

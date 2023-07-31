@@ -1,0 +1,94 @@
+.buy__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: $color-white;
+
+  display: none;
+
+  .buy__title {
+    margin: 0 0 30px;
+    padding: 20px;
+
+    text-align: center;
+
+    background-color: $color-dark-blue;
+
+    @include forum (40px, 400, 20px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $color-white;
+  }
+
+  .modal__wrapper {
+    display: flex;
+    justify-content: flex-start;
+
+    padding: 0 40px 40px;
+  }
+
+  .inputs {
+    margin-right: 40px;
+  }
+
+  .input {
+    margin-bottom: 10px;
+    height: 20px;
+
+    box-sizing: border-box;
+
+    background-color: $color-white;
+    border: 1px solid $color-brown;
+
+    outline: none;
+  }
+
+  .name {
+    display: block;
+    margin: 0 0 10px;
+
+    @include inter (15px, 400, 20px);
+    letter-spacing: 0.3px;
+  }
+
+  .code {
+    width: 45px;
+
+    &:nth-child(2) {
+      margin-right: 10px;
+    }
+  }
+
+  .password {
+    margin-bottom: 20px;
+  }
+
+  .buy__cost {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .button {
+    margin-right: 25px;
+  }
+
+  .cost {
+    @include inter (20px, 700, 20px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .text {
+    max-width: 330px;
+
+    @include inter (15px, 400, 20px);
+    letter-spacing: 2px;
+    color: $color-grey;
+  }
+
+  .buy__modal.active {
+    display: block;
+  }
+}

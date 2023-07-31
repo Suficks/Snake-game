@@ -1,0 +1,13 @@
+@mixin forum ($fs, $fw, $lh) {
+  font-family: 'Forum', sans-serif;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+@mixin inter ($fs, $fw, $lh) {
+  font-family: 'Inter', sans-serif;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}

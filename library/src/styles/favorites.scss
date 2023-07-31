@@ -1,0 +1,170 @@
+.favorites {
+  margin-bottom: 60px;
+
+  .filter {
+    margin-bottom: 34px;
+  }
+
+  .subtitle {
+    margin: 0 0 36px;
+
+    @include inter (20px, 700, 24px);
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-right: 78px;
+    padding: 5px;
+
+    box-sizing: border-box;
+
+    @include inter (20px, 400, 24px);
+
+    cursor: pointer;
+
+    &:first-child {
+      margin-left: -5px;
+    }
+  }
+
+  .radio {
+    display: none;
+  }
+
+  .fake {
+    position: relative;
+
+    margin-right: 20px;
+
+    width: 11px;
+    height: 11px;
+
+    background-color: $color-white;
+    border: 2px solid $color-black;
+
+    border-radius: 50%;
+
+    &::before {
+      content: "";
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 6px;
+      height: 6px;
+
+      background-color: $color-black;
+
+      border-radius: 50%;
+
+      opacity: 0;
+    }
+  }
+
+  .radio:checked+.fake::before {
+    opacity: 1;
+  }
+
+  .radio:checked~.name {
+    text-shadow: 0 0 .8px $color-black, 0 0 .8px $color-black;
+  }
+
+  .winter {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    width: 550px;
+    height: 555px;
+
+    padding: 15px 20px;
+    margin-right: 40px;
+
+    border: 1px solid $color-black;
+    box-sizing: border-box;
+
+    &:nth-child(odd) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .card__title {
+    position: relative;
+
+    margin: 0 0 20px;
+
+    @include forum (20px, 400, 40px);
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      width: 60px;
+      height: 1px;
+
+      background-color: $color-brown;
+
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .book__title {
+    margin: 0;
+
+    @include inter (15px, 700, 40px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .author {
+    margin: 0 0 20px;
+
+    @include inter (15px, 700, 40px);
+    letter-spacing: 2px;
+  }
+
+  .description {
+    flex: 1 1 auto;
+
+    margin: 0 0 15px;
+
+    max-width: 357px;
+
+    text-transform: capitalize;
+
+    @include inter (15px, 400, 40px);
+    letter-spacing: 2px;
+  }
+
+  .pic {
+    position: absolute;
+    margin-right: 10px;
+    bottom: -1px;
+    right: -50px;
+  }
+
+  .own__button {
+    border: 1px solid $color-brown;
+    color: $color-brown;
+
+    padding: 8px 24px;
+    cursor: auto;
+  }
+
+  .spring,
+  .summer,
+  .autumn {
+    display: none;
+  }
+}

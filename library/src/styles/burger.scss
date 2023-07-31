@@ -1,0 +1,35 @@
+.burger {
+  position: absolute;
+  top: 12px;
+  right: 0;
+
+  width: 45px;
+  height: 22px;
+
+  cursor: pointer;
+  display: none;
+}
+
+.burger__logo,
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.burger__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+}
+
+.burger__close.active {
+  display: block;
+}

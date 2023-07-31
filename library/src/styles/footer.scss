@@ -1,0 +1,77 @@
+.footer {
+  padding: 20px 0 44px;
+  background-color: $color-dark-blue;
+
+  .footer__wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 1400px;
+      height: 1px;
+
+      background-color: $color-white;
+    }
+  }
+
+  .adress {
+    margin: 0 0 18px;
+  }
+
+  .adress__link {
+
+    @include inter (15px, 400, 20px);
+
+    color: $color-white;
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .hours {
+    margin: 0 0 10px;
+
+    text-align: end;
+
+    @include inter (15px, 400, 20px);
+
+    color: $color-white;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 29px;
+  }
+
+  .school {
+    margin-left: 153px;
+  }
+
+  .footer__item {
+    margin: 0;
+    @include inter (20px, 400, 20px);
+    letter-spacing: 2px;
+
+    color: $color-white;
+  }
+}
