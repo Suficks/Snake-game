@@ -7,7 +7,6 @@ $('.slider').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   arrows: false,
-  varibleWidth: true,
   responsive: [
     {
       breakpoint: 1024,
@@ -16,11 +15,13 @@ $('.slider').slick({
       }
     },
     {
-      breakpoint: 768,
+      breakpoint: 769,
       settings: {
         slidesToShow: 1,
+        arrows: true,
+        prevArrow: $('.prev'),
+        nextArrow: $('.next'),
       }
-
     }
   ]
 });
