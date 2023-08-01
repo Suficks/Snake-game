@@ -79,7 +79,7 @@
       width: 75px;
 
       &:first-child {
-       margin-right: 14px;
+        margin-right: 14px;
       }
     }
   }
@@ -95,7 +95,7 @@
   .get__info {
     margin: 0 0 32px;
 
-    width: 456px;
+    max-width: 456px;
     @include inter (20px, 400, 40px);
     letter-spacing: 0.4px;
   }

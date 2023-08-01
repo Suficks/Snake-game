@@ -1,3 +1,19 @@
+@media screen and (max-width: 1230px) {
+  .favorites {
+    .winter {
+      display: block;
+    }
+
+    .card {
+      margin: auto;
+
+      &:nth-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .burger {
     display: block;
@@ -42,23 +58,6 @@
     }
   }
 
-  .favorites {
-    .left-container {
-      margin: auto;
-    }
-
-    .winter {
-      display: block;
-    }
-
-    .card {
-      &:nth-child(2) {
-        margin-bottom: 40px;
-      }
-    }
-
-  }
-
   .coffeShop {
     .menu {
       display: block;
@@ -79,6 +78,10 @@
         margin-bottom: 100px;
       }
     }
+
+    .map {
+      text-align: center;
+    }
   }
 
   .libraryCard {
@@ -86,7 +89,35 @@
       display: block;
     }
 
+    .find {
+      margin-bottom: 21px;
+    }
+
+    .form {
+      margin: auto;
+    }
+
+    .get {
+      text-align: center;
+    }
+
+    .get__sibtitle {
+      margin-bottom: 40px;
+    }
+
+    .get__info {
+      width: 600px;
+
+      margin: auto;
+      margin-bottom: 40px;
+    }
   }
 
-
+  .footer {
+    .school {
+      margin-left: 0;
+    }
+  }
 }
+
+@media screen and (max-width: 768px) {}
