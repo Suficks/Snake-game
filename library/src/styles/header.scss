@@ -74,5 +74,14 @@ a {
     border: none;
 
     cursor: pointer;
+
+    z-index: 2;
+  }
+
+  .profile__logo__burger {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    margin-right: 92px;
   }
 }
