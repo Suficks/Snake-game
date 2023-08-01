@@ -59,6 +59,10 @@
   }
 
   .coffeShop {
+    .left__container {
+      margin-bottom: 40px;
+    }
+
     .menu {
       display: block;
     }
@@ -81,6 +85,11 @@
 
     .map {
       text-align: center;
+    }
+
+    .map iframe {
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 
@@ -118,6 +127,51 @@
       margin-left: 0;
     }
   }
+
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 769px) {
+  .about {
+    .slider {
+      text-align: center;
+    }
+
+    .slick-track {
+      gap: 0;
+    }
+
+    .pic {
+      margin: auto;
+      max-width: 450px !important;
+    }
+
+    .prev,
+    .next {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .favorites {
+    .label {
+      margin-right: 40px;
+    }
+  }
+
+  .footer {
+    .footer__item {
+      font-size: 18px;
+    }
+  }
+
+  .about {
+    .prev {
+      left: 40px;
+    }
+
+    .next {
+      right: 45px;
+    }
+  }
+}
