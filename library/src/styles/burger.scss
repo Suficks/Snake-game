@@ -25,11 +25,14 @@
   width: 32px;
   height: 32px;
 
+  transform: translateX(300%);
+  transition: 0.3s ease;
+
   cursor: pointer;
-  display: none;
+
   z-index: 3;
 }
 
-.burger__close__active {
-  display: block;
+.burger__close_active {
+  transform: translateX(0);
 }

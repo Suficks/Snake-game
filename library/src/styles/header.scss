@@ -74,14 +74,22 @@ a {
     border: none;
 
     cursor: pointer;
-
-    z-index: 2;
   }
 
-  .profile__logo__burger {
+  .logo__burger {
     position: fixed;
     top: 20px;
     right: 0;
+
     margin-right: 92px;
+
+    transform: translateX(500%);
+    transition: 0.3s ease;
+  }
+
+  .logo__burger_active {
+    transform: translateX(0);
+
+    z-index: 2;
   }
 }

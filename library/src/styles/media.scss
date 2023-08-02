@@ -34,6 +34,7 @@
     background-color: $color-black;
 
     transform: translateX(100%);
+    transition: 0.3s ease;
 
     z-index: 2;
   }
