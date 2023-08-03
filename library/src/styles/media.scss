@@ -5,7 +5,7 @@
     }
 
     .card {
-      margin: 0 67px;
+      margin: auto;
 
       &:nth-child(2) {
         margin-bottom: 40px;
@@ -158,6 +158,12 @@
     .prev,
     .next {
       display: block;
+    }
+  }
+
+  .favorites {
+    .card {
+      margin-left: 67px;
     }
   }
 }

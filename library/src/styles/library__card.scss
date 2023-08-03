@@ -69,6 +69,11 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    &::placeholder {
+      @include forum (30px, 400, 50px);
+      letter-spacing: 0.6px;
+    }
   }
 
   .get {
