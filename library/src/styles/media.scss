@@ -1,12 +1,11 @@
 @media screen and (max-width: 1230px) {
   .favorites {
     .winter {
-      display: block;
+      flex-direction: column;
+      align-items: center;
     }
 
     .card {
-      margin: auto;
-
       &:nth-child(2) {
         margin-bottom: 40px;
       }
@@ -46,10 +45,6 @@
   .header {
     .profile__logo {
       margin-right: 85px;
-    }
-
-    .logo__burger {
-      margin-right: 94px;
     }
 
     .list {
@@ -162,12 +157,6 @@
     .prev,
     .next {
       display: block;
-    }
-  }
-
-  .favorites {
-    .card {
-      margin-left: 67px;
     }
   }
 }

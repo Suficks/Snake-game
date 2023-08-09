@@ -63,10 +63,10 @@ a {
 
   .profile__logo {
     background-image: url("./common/img/svg/icon_profile.svg");
-    background-size: contain;
+    background-size: 28px 28px;
     background-repeat: no-repeat;
 
-    width: 28px;
+    width: 31px;
     height: 28px;
 
     background-color: transparent;
@@ -74,22 +74,7 @@ a {
     border: none;
 
     cursor: pointer;
-  }
 
-  .logo__burger {
-    position: fixed;
-    top: 20px;
-    right: 0;
-
-    // margin-right: 94px;
-
-    transform: translateX(500%);
-    transition: 0.3s ease;
-  }
-
-  .logo__burger_active {
-    transform: translateX(0);
-
-    z-index: 2;
+    z-index: 5;
   }
 }
