@@ -1,4 +1,5 @@
 .about {
+  position: relative;
   margin-bottom: 60px;
 
   .subtitle {
@@ -15,7 +16,7 @@
   }
 
   .slick-list {
-    margin-bottom: 29px;
+    margin-bottom: 33px;
     overflow: hidden;
   }
 
@@ -55,5 +56,39 @@
 
   .slick-dots li.slick-active button {
     background-color: $color-brown;
+  }
+
+  .prev {
+    display: none;
+
+    position: absolute;
+    top: 61%;
+    left: 77px;
+
+    width: 25px;
+    height: 25px;
+
+    background-image: url(./common/img/svg/Arrow.svg);
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+  }
+
+  .next {
+    display: none;
+
+    position: absolute;
+    top: 61%;
+    right: 77px;
+
+    width: 25px;
+    height: 25px;
+
+    background-image: url(./common/img/svg/Arrow.svg);
+    background-repeat: no-repeat;
+
+    transform: rotate(180deg);
+
+    cursor: pointer;
   }
 }

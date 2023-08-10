@@ -1,3 +1,18 @@
+@media screen and (max-width: 1230px) {
+  .favorites {
+    .winter {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      &:nth-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .burger {
     display: block;
@@ -18,6 +33,7 @@
     background-color: $color-black;
 
     transform: translateX(100%);
+    transition: 0.3s ease;
 
     z-index: 2;
   }
@@ -42,24 +58,17 @@
     }
   }
 
-  .favorites {
-    .left-container {
-      margin: auto;
+  .about {
+    .slick-list {
+      margin-bottom: 12px;
     }
-
-    .winter {
-      display: block;
-    }
-
-    .card {
-      &:nth-child(2) {
-        margin-bottom: 40px;
-      }
-    }
-
   }
 
   .coffeShop {
+    .left__container {
+      margin-bottom: 40px;
+    }
+
     .menu {
       display: block;
     }
@@ -79,6 +88,15 @@
         margin-bottom: 100px;
       }
     }
+
+    .map {
+      text-align: center;
+    }
+
+    .map iframe {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
 
   .libraryCard {
@@ -86,7 +104,83 @@
       display: block;
     }
 
+    .find {
+      margin-bottom: 21px;
+    }
+
+    .form {
+      margin: auto;
+    }
+
+    .get {
+      text-align: center;
+    }
+
+    .get__sibtitle {
+      margin-bottom: 40px;
+    }
+
+    .get__info {
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 35px;
+    }
   }
 
+  .footer {
+    .footer__wrapper {
+      padding-bottom: 30px;
+    }
 
+    .school {
+      margin: 0 55px 0 0;
+    }
+  }
+
+}
+
+@media screen and (max-width: 769px) {
+  .about {
+    .slider {
+      text-align: center;
+    }
+
+    .slick-track {
+      gap: 0;
+    }
+
+    .pic {
+      margin: auto;
+      max-width: 450px !important;
+    }
+
+    .prev,
+    .next {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .favorites {
+    .label {
+      margin-right: 40px;
+    }
+  }
+
+  .footer {
+    .footer__item {
+      font-size: 18px;
+    }
+  }
+
+  .about {
+    .prev {
+      left: 40px;
+    }
+
+    .next {
+      right: 45px;
+    }
+  }
 }

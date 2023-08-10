@@ -1,5 +1,5 @@
 .libraryCard {
-  margin-bottom: 41px;
+  margin-bottom: 39px;
 
   .card__wrapper {
     display: flex;
@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
 
-    width: 600px;
+    max-width: 600px;
 
     padding: 17px 17px 27px;
     margin-right: 10px;
@@ -69,6 +69,11 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    &::placeholder {
+      @include forum (30px, 400, 50px);
+      letter-spacing: 0.6px;
+    }
   }
 
   .get {
@@ -79,11 +84,10 @@
       width: 75px;
 
       &:first-child {
-       margin-right: 14px;
+        margin-right: 14px;
       }
     }
   }
-
 
   .get__sibtitle {
     margin: 0 0 35px;
@@ -95,7 +99,7 @@
   .get__info {
     margin: 0 0 32px;
 
-    width: 456px;
+    max-width: 456px;
     @include inter (20px, 400, 40px);
     letter-spacing: 0.4px;
   }
