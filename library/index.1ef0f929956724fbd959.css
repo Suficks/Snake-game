@@ -402,7 +402,6 @@ html {
 }
 
 .overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -411,11 +410,14 @@ html {
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
 }
 
 .overlay__active {
-  display: block;
+  opacity: 0.5;
+  visibility: visible;
 }
 
 a {
@@ -472,13 +474,14 @@ a {
 }
 .header .profile__logo {
   background-image: url(assets/icon_profile.svg);
-  background-size: contain;
+  background-size: 28px 28px;
   background-repeat: no-repeat;
-  width: 28px;
+  width: 31px;
   height: 28px;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 5;
 }
 
 .welcome {
@@ -526,6 +529,7 @@ a {
 }
 
 .about {
+  position: relative;
   margin-bottom: 60px;
 }
 .about .subtitle {
@@ -541,7 +545,7 @@ a {
   gap: 25px;
 }
 .about .slick-list {
-  margin-bottom: 29px;
+  margin-bottom: 33px;
   overflow: hidden;
 }
 .about .slick-dots {
@@ -570,6 +574,29 @@ a {
 .about .slick-dots li.slick-active button {
   background-color: #BB945F;
 }
+.about .prev {
+  display: none;
+  position: absolute;
+  top: 61%;
+  left: 77px;
+  width: 25px;
+  height: 25px;
+  background-image: url(assets/Arrow.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.about .next {
+  display: none;
+  position: absolute;
+  top: 61%;
+  right: 77px;
+  width: 25px;
+  height: 25px;
+  background-image: url(assets/Arrow.svg);
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
 
 .favorites {
   margin-bottom: 60px;
@@ -578,7 +605,7 @@ a {
   margin-bottom: 34px;
 }
 .favorites .subtitle {
-  margin: 0 0 36px;
+  margin: 0 0 34px;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -587,7 +614,7 @@ a {
 .favorites .label {
   display: inline-flex;
   align-items: center;
-  margin-right: 78px;
+  margin-right: 80px;
   padding: 5px;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
@@ -598,6 +625,9 @@ a {
 }
 .favorites .label:first-child {
   margin-left: -5px;
+}
+.favorites .label:last-child {
+  margin-right: 0;
 }
 .favorites .radio {
   display: none;
@@ -632,6 +662,7 @@ a {
 .favorites .winter {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .favorites .card {
   display: flex;
@@ -721,7 +752,7 @@ a {
   font-size: 20px;
   font-weight: 400;
   line-height: 40px;
-  letter-spacing: 2px;
+  letter-spacing: 1.9px;
 }
 .coffeShop .menu {
   display: flex;
@@ -822,7 +853,7 @@ a {
 }
 
 .libraryCard {
-  margin-bottom: 41px;
+  margin-bottom: 39px;
 }
 .libraryCard .card__wrapper {
   display: flex;
@@ -840,7 +871,7 @@ a {
 .libraryCard .form {
   display: flex;
   flex-direction: column;
-  width: 600px;
+  max-width: 600px;
   padding: 17px 17px 27px;
   margin-right: 10px;
   box-sizing: border-box;
@@ -882,6 +913,13 @@ a {
 .libraryCard .input:last-child {
   margin-bottom: 0;
 }
+.libraryCard .input::placeholder {
+  font-family: "Forum", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
 .libraryCard .get {
   text-align: right;
 }
@@ -902,7 +940,7 @@ a {
 }
 .libraryCard .get__info {
   margin: 0 0 32px;
-  width: 456px;
+  max-width: 456px;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -945,14 +983,14 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 31px;
 }
 .footer .footer__wrapper::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 1400px;
+  width: 100%;
   height: 1px;
   background-color: #FFFFFF;
 }
@@ -982,14 +1020,14 @@ a {
   line-height: 20px;
   color: #FFFFFF;
 }
+.footer .hours:last-child {
+  margin-bottom: 0;
+}
 .footer .info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 29px;
-}
-.footer .school {
-  margin-left: 153px;
 }
 .footer .footer__item {
   margin: 0;
@@ -1356,17 +1394,16 @@ a {
 }
 
 .burger {
+  display: none;
   position: absolute;
   top: 12px;
   right: 0;
   width: 45px;
   height: 22px;
   cursor: pointer;
-  display: none;
 }
 
-.burger__logo,
-.cross {
+.burger__logo {
   position: absolute;
   top: 0;
   right: 0;
@@ -1374,19 +1411,29 @@ a {
 
 .burger__close {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 23px;
   width: 32px;
   height: 32px;
+  transform: translateX(300%);
+  transition: 0.3s ease;
   cursor: pointer;
-  display: none;
   z-index: 3;
 }
 
-.burger__close.active {
-  display: block;
+.burger__close_active {
+  transform: translateX(0);
 }
 
+@media screen and (max-width: 1230px) {
+  .favorites .winter {
+    flex-direction: column;
+    align-items: center;
+  }
+  .favorites .card:nth-child(2) {
+    margin-bottom: 40px;
+  }
+}
 @media screen and (max-width: 1024px) {
   .burger {
     display: block;
@@ -1401,6 +1448,7 @@ a {
     text-align: center;
     background-color: #000000;
     transform: translateX(100%);
+    transition: 0.3s ease;
     z-index: 2;
   }
   .nav__active {
@@ -1415,13 +1463,10 @@ a {
   .header .item:last-child {
     margin: 0;
   }
-  .favorites .left-container {
-    margin: auto;
+  .about .slick-list {
+    margin-bottom: 12px;
   }
-  .favorites .winter {
-    display: block;
-  }
-  .favorites .card:nth-child(2) {
+  .coffeShop .left__container {
     margin-bottom: 40px;
   }
   .coffeShop .menu {
@@ -1436,7 +1481,67 @@ a {
   .contacts .number:last-child {
     margin-bottom: 100px;
   }
+  .contacts .map {
+    text-align: center;
+  }
+  .contacts .map iframe {
+    max-width: 100%;
+    max-height: 100%;
+  }
   .libraryCard .card__wrapper {
     display: block;
+  }
+  .libraryCard .find {
+    margin-bottom: 21px;
+  }
+  .libraryCard .form {
+    margin: auto;
+  }
+  .libraryCard .get {
+    text-align: center;
+  }
+  .libraryCard .get__sibtitle {
+    margin-bottom: 40px;
+  }
+  .libraryCard .get__info {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 35px;
+  }
+  .footer .footer__wrapper {
+    padding-bottom: 30px;
+  }
+  .footer .school {
+    margin: 0 55px 0 0;
+  }
+}
+@media screen and (max-width: 769px) {
+  .about .slider {
+    text-align: center;
+  }
+  .about .slick-track {
+    gap: 0;
+  }
+  .about .pic {
+    margin: auto;
+    max-width: 450px !important;
+  }
+  .about .prev,
+  .about .next {
+    display: block;
+  }
+}
+@media screen and (max-width: 736px) {
+  .favorites .label {
+    margin-right: 40px;
+  }
+  .footer .footer__item {
+    font-size: 18px;
+  }
+  .about .prev {
+    left: 40px;
+  }
+  .about .next {
+    right: 45px;
   }
 }
