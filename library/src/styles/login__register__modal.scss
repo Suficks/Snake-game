@@ -3,12 +3,14 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(300%);
 
   padding: 20px 25px;
   box-sizing: border-box;
 
   background-color: $color-white;
+
+  z-index: 2;
 
   .close {
     position: absolute;
@@ -71,21 +73,10 @@
     @include inter (10px, 700, 13px);
     letter-spacing: 1px;
     border-bottom: 1px solid $color-dark-blue;
+    cursor: pointer;
   }
 }
 
-.login__modal {
-  display: none;
-}
-
-.register__modal {
-  display: none;
-}
-
-.login__modal.active {
-  display: block;
-}
-
-.register__modal.active {
-  display: block;
+.modal__active {
+  transform: translate(-50%, -50%);
 }

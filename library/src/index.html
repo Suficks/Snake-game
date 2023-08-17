@@ -49,12 +49,12 @@
         <!-- burger menu -->
 
         <!-- profile modals -->
-        <div class="profile__modal">
+        <div class="profile__modal profile__before">
           <p class="title">Profile</p>
-          <p class="info">Log In</p>
-          <p class="info">Register</p>
+          <p class="info login__button">Log In</p>
+          <p class="info register__button">Register</p>
         </div>
-        <div class="profile__modal">
+        <div class="profile__modal profile__after">
           <p class="title">Profile</p>
           <p class="info">My profile</p>
           <p class="info">Log Out</p>
@@ -169,7 +169,8 @@
               <p class="description">A timely and revelatory new biography of Queen Elizabeth (and her family)
                 exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
               <img class="pic" src="./common/img/jpg/winter_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
+              <button class="button">Buy</button>
+              <!-- <button class="button own__button" disabled>Own</button> -->
             </div>
           </div>
           <div class="season spring">
@@ -207,7 +208,8 @@
               <p class="description">A timely and revelatory new biography of Queen Elizabeth (and her family)
                 exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
               <img class="pic" src="./common/img/jpg/spring_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
+              <button class="button">Buy</button>
+              <!-- <button class="button own__button" disabled>Own</button> -->
             </div>
           </div>
           <div class="season summer">
@@ -249,7 +251,8 @@
                 history of Hawaii as a Hawaiian woman gathers her four granddaughters together in an erotic tale of
                 villains and dreamers, queens and revolutionaries, lepers and healers.</p>
               <img class="pic" src="./common/img/jpg/summer_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
+              <button class="button">Buy</button>
+              <!-- <button class="button own__button" disabled>Own</button> -->
             </div>
           </div>
           <div class="season autumn">
@@ -291,7 +294,8 @@
                 codependency. A father and child experience the shared trauma of giving birth to gods from their
                 wounds.</p>
               <img class="pic" src="./common/img/jpg/spring_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
+              <button class="button">Buy</button>
+              <!-- <button class="button own__button" disabled>Own</button> -->
             </div>
           </div>
         </div>
@@ -412,8 +416,8 @@
               new account
             </p>
             <div class="button__wrap">
-              <button class="button">Sign Up</button>
-              <button class="button second__button">Log in</button>
+              <button class="button register__button">Sign Up</button>
+              <button class="button login__button">Log in</button>
             </div>
           </div>
         </div>
@@ -545,7 +549,7 @@
   <!-- login modal -->
   <div class="login__modal">
     <p class="login__title">Login</p>
-    <div class="close">
+    <div class="close login__close">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="label">
@@ -554,12 +558,12 @@
     </label>
     <label class="label">
       <span class="name">Password</span>
-      <input type="password" class="input password">
+      <input type="password" maxlength="8" class="input password">
     </label>
     <button class="button">Log in</button>
     <div class="account">
       <span class="have__account">Don’t have an account?</span>
-      <a href="" class="link">Register</a>
+      <span class="link register__button">Register</span>
     </div>
   </div>
   <!-- login modal -->
@@ -567,7 +571,7 @@
   <!-- register modal -->
   <div class="register__modal">
     <p class="login__title">Register</p>
-    <div class="close">
+    <div class="close register__close">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="label">
@@ -584,12 +588,12 @@
     </label>
     <label class="label">
       <span class="name">Password</span>
-      <input type="password" class="input password">
+      <input type="password" maxlength="8" class="input password">
     </label>
     <button class="button">Sign Up</button>
     <div class="account">
       <span class="have__account">Already have an account?</span>
-      <a href="" class="link">Login</a>
+      <span class="link login__button">Login</span>
     </div>
   </div>
   <!-- register modal -->

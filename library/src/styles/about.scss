@@ -61,6 +61,7 @@
   .button__active {
     &:after {
       background-color: $color-brown;
+      cursor: auto;
     }
   }
 
