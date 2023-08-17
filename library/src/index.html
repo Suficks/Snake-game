@@ -382,7 +382,7 @@
             <p class="number">Putterham Library: <a href="tel:(617)-730-2370">(617) 730-2385</a></p>
             <p class="subtitle">Senior Staff</p>
             <p class="number">Library Director:
-              <a class="email" href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a>
+              <a class="contacts__email" href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a>
             </p>
           </div>
           <div class="map"><iframe
@@ -401,7 +401,7 @@
         <div class="card__wrapper">
           <div class="find">
             <p class="sibtitle">Find your Library card</p>
-            <form class="form">
+            <form action="#" class="form">
               <div class="info">
                 <p class="library">Brooklyn Public Library</p>
                 <input class="input" type="text" placeholder="Reader's name">
@@ -539,7 +539,7 @@
       </ul>
       <div class="card">
         <p class="headline">Card number</p>
-        <p class="number">F00234030</p>
+        <p class="card__number">F00234030</p>
         <img class="copy" src="./common/img/svg/icon-copy.svg" alt="copy">
       </div>
     </div>
@@ -547,55 +547,55 @@
   <!-- my profile modal -->
 
   <!-- login modal -->
-  <div class="login__modal">
+  <form action="#" class="login__modal">
     <p class="login__title">Login</p>
     <div class="close login__close">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="label">
       <span class="name">E-mail or readers card</span>
-      <input type="text" class="input">
+      <input type="text" class="input login__email">
     </label>
     <label class="label">
       <span class="name">Password</span>
-      <input type="password" maxlength="8" class="input password">
+      <input type="password" maxlength="8" class="input login__password">
     </label>
     <button class="button">Log in</button>
     <div class="account">
       <span class="have__account">Don’t have an account?</span>
       <span class="link register__button">Register</span>
     </div>
-  </div>
+  </form>
   <!-- login modal -->
 
   <!-- register modal -->
-  <div class="register__modal">
+  <form action="#" class="register__modal">
     <p class="login__title">Register</p>
     <div class="close register__close">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="label">
       <span class="name">First name</span>
-      <input type="text" class="input">
+      <input type="text" class="input firstName">
     </label>
     <label class="label">
       <span class="name">Last name</span>
-      <input type="text" class="input">
+      <input type="text" class="input lastName">
     </label>
     <label class="label">
       <span class="name">E-mail</span>
-      <input type="email" class="input">
+      <input type="email" class="input email">
     </label>
     <label class="label">
       <span class="name">Password</span>
       <input type="password" maxlength="8" class="input password">
     </label>
-    <button class="button">Sign Up</button>
+    <button class="button submit">Sign Up</button>
     <div class="account">
       <span class="have__account">Already have an account?</span>
       <span class="link login__button">Login</span>
     </div>
-  </div>
+  </form>
   <!-- register modal -->
 
   <!-- buy a library card modal -->
