@@ -38,93 +38,20 @@ itemLink.forEach(item => {
 
 // burger menu
 
-// favorite cards cort
-
-const labelsSeason = document.querySelectorAll('.season__label')
-const winter = document.querySelector('.winter')
-const spring = document.querySelector('.spring')
-const summer = document.querySelector('.summer')
-const autumn = document.querySelector('.autumn')
-
-const fadeIn = (el, timeout, display) => {
-  el.style.opacity = 0;
-  el.style.display = display || 'block';
-  el.style.transition = `opacity ${timeout}ms`;
-  setTimeout(() => {
-    el.style.opacity = 1;
-  }, 10)
-};
-
-const fadeOut = (el, timeout) => {
-  el.style.opacity = 1;
-  el.style.transition = `opacity ${timeout}ms`;
-  el.style.opacity = 0;
-  setTimeout(() => {
-    el.style.display = 'none'
-  }, timeout);
-};
-
-let flag = false;
-
-function seasonSort() {
-  labelsSeason[0].addEventListener('click', () => {
-    if (!flag) {
-      fadeIn(winter, 3000, 'flex');
-      flag = true;
-    } else {
-      fadeOut(spring, 500);
-      flag = false;
-      fadeOut(summer, 500);
-      flag = false;
-      fadeOut(autumn, 500);
-      flag = false;
-
-    }
-  })
-  labelsSeason[1].addEventListener('click', () => {
-    if (!flag) {
-      fadeIn(spring, 3000, 'flex');
-      flag = true;
-    } else {
-      fadeOut(winter, 500);
-      flag = false;
-      fadeOut(summer, 500);
-      flag = false;
-      fadeOut(autumn, 500);
-      flag = false;
-    }
-  })
-  labelsSeason[2].addEventListener('click', () => {
-    if (!flag) {
-      fadeIn(summer, 3000, 'flex');
-      flag = true;
-    } else {
-      fadeOut(winter, 500);
-      flag = false;
-      fadeOut(spring, 500);
-      flag = false;
-      fadeOut(autumn, 500);
-      flag = false;
-    }
-  })
-  labelsSeason[3].addEventListener('click', () => {
-    if (!flag) {
-      fadeIn(autumn, 3000, 'flex');
-      flag = true;
-    } else {
-      fadeOut(winter, 500);
-      flag = false;
-      fadeOut(spring, 500);
-      flag = false;
-      fadeOut(summer, 500);
-      flag = false;
-    }
-  })
-}
-
-seasonSort()
-
-// favorite cards cort
+//   labelsSeason[3].addEventListener('click', () => {
+//     if (!flag) {
+//       fadeIn(autumn, 3000, 'flex');
+//       flag = true;
+//     } else {
+//       fadeOut(winter, 500);
+//       flag = false;
+//       fadeOut(spring, 500);
+//       flag = false;
+//       fadeOut(summer, 500);
+//       flag = false;
+//     }
+//   })
+// }
 
 // profile modal
 const profileModal = document.querySelector('.profile__modal');
@@ -132,8 +59,8 @@ const profileModalBefore = document.querySelector('.profile__before');
 const profileModalAfter = document.querySelector('.profile__after');
 
 function profileModalActive() {
-  // if () {
-  // profileModalAfter.toggle('profile__modal__active');
+  // if (loginCheck()) {
+  // profileModal.classList.toggle('profile__modal__active');
   // } else {
   profileModal.classList.toggle('profile__modal__active');
 }
@@ -196,3 +123,190 @@ logInCloseLogo.addEventListener('click', () => modalClose(logInModal));
 
 // register/login modal
 
+// registration to localStorage
+
+const registrInputs = document.querySelectorAll('.registr__input')
+const registSubmitBtn = document.querySelector('.registr__submit')
+const loginInputs = document.querySelectorAll('.login__input')
+const loginSubmitBtn = document.querySelector('.login__submit')
+
+const MIN_PASSWORD_LENGTH = 8
+
+const user = {}
+
+
+registSubmitBtn.addEventListener('click', () => {
+  if (addUserToLocalStorage()) {
+    // registSubmitBtn.setAttribute('disabled', '')
+    modalClose(registerModal)
+    resetInputValue(registrInputs)
+  }
+})
+
+
+function setUser() {
+  registrInputs.forEach(item => {
+    const inputName = item.getAttribute('data-input')
+    user[inputName] = item.value
+  })
+}
+
+function getLocalStorageData() {
+  return JSON.parse(localStorage.getItem('users'))
+}
+
+function setLocalStorageData(data) {
+  localStorage.setItem('users', JSON.stringify(data))
+}
+
+function addUserToLocalStorage() {
+  setUser()
+  const localStorageData = getLocalStorageData()
+  let isDataAdded = false
+
+  if (localStorageData === null) {
+    setLocalStorageData([user])
+    isDataAdded = true
+  }
+  else if (!checkEmail(localStorageData)) {
+    isDataAdded = true
+    localStorageData.push(user)
+    setLocalStorageData(localStorageData)
+  }
+  return isDataAdded
+}
+
+function checkEmail(data) {
+  const inputEmail = document.querySelector('.email')
+  const error = inputEmail.nextElementSibling
+
+  const isEmailMatch = data.find(item => item.email === inputEmail.value)
+
+  if (isEmailMatch) {
+    error.innerHTML = 'User with this email is already registered'
+  } else {
+    error.innerHTML = ''
+  }
+  return Boolean(isEmailMatch)
+}
+
+function resetInputValue(inputs) {
+  inputs.forEach(item => {
+    item.value = ''
+  })
+}
+
+const emptyFieldText = {
+  firstName: 'Fill First name',
+  lastName: 'Fill Last name',
+  email: 'Fill E-mail',
+  password: 'Fill Password',
+  emailOrReader: 'Fill E-mail or readers card',
+  incorrectPasswordLength: 'Minimum number of characters 8',
+}
+
+function inputChange(inputs, button) {
+  inputs.forEach(item => {
+    const inputName = item.getAttribute('data-input')
+
+    item.addEventListener('input', () => {
+      emptyCheck(item, inputName)
+      isAllFieldsFill(inputs, button, inputName)
+    })
+  })
+}
+
+function emptyCheck(item, inputName) {
+  const error = item.nextElementSibling
+
+  if (inputName === 'password' && item.value.length < MIN_PASSWORD_LENGTH) {
+    error.innerHTML = emptyFieldText.incorrectPasswordLength
+  }
+  else error.innerHTML = ''
+
+  if (item.value === '') {
+    item.classList.add('input__invalid')
+    error.innerHTML = emptyFieldText[inputName]
+  } else if (item.classList.contains('input__invalid')) {
+    item.classList.remove('input__invalid')
+    error.innerHTML = ''
+  }
+}
+
+function isAllFieldsFill(inputs, button, inputName) {
+  let isDisabled = false
+
+  inputs.forEach(item => {
+    const isInputPassword = inputName === 'password'
+
+    if (isInputPassword) {
+      if (item.value.length < MIN_PASSWORD_LENGTH) isDisabled = true
+      else isDisabled = false
+    }
+
+    if (item.value === '') {
+      isDisabled = true
+    }
+    console.log(item.value, isDisabled)
+  })
+
+  if (isDisabled) {
+    button.setAttribute('disabled', '')
+  } else {
+    button.removeAttribute('disabled')
+  }
+}
+
+inputChange(registrInputs, registSubmitBtn)
+inputChange(loginInputs, loginSubmitBtn)
+
+// registration to localStorage
+
+// login check
+
+const localStorageData = getLocalStorageData()
+
+function loginCheck() {
+  const loginInputEmail = document.querySelector('.login__email')
+  const loginInputPassword = document.querySelector('.login__password')
+  const { email, password } = localStorageData.reduce((acc, item) => {
+    if (item.email === loginInputEmail.value) {
+      acc.email = item.email
+      acc.password = item.password
+    }
+    return acc
+  }, {})
+
+  const isPasswordMatch = password === loginInputPassword.value
+  const errorEmail = loginInputEmail.nextElementSibling
+  const errorPassword = loginInputPassword.nextElementSibling
+  let isMatch = false
+
+  if (!email) {
+    errorEmail.innerHTML = 'User with this email was not found'
+    isMatch = false
+  }
+  else {
+    errorEmail.innerHTML = ''
+
+    if (!isPasswordMatch) {
+      errorPassword.innerHTML = 'User with this password was not found'
+      isMatch = false
+    }
+    else {
+      errorPassword.innerHTML = ''
+      isMatch = true
+    }
+  }
+
+  return isMatch
+}
+
+loginSubmitBtn.addEventListener('click', () => {
+  if (loginCheck()) {
+    modalClose(logInModal)
+    resetInputValue(loginInputs)
+  }
+})
+
+// login check

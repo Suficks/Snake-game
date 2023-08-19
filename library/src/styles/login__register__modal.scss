@@ -18,6 +18,11 @@
     right: 15px;
   }
 
+  .regist__label,
+  .login__label {
+    position: relative;
+  }
+
   .login__title {
     margin: 0 0 20px;
 
@@ -38,6 +43,18 @@
     border: 1px solid $color-brown;
 
     outline: none;
+  }
+
+  .input__invalid {
+    border: 1px solid red;
+  }
+
+  .error {
+    position: absolute;
+    bottom: -18px;
+    margin: 0 0 5px;
+    color: red;
+    @include inter (9px, 400, 10px);
   }
 
   .name {
