@@ -1,6 +1,6 @@
 @media screen and (max-width: 1230px) {
   .favorites {
-    .winter {
+    .season {
       flex-direction: column;
       align-items: center;
     }
@@ -137,6 +137,10 @@
     }
   }
 
+  .profile__modal {
+    right: 85px;
+  }
+
 }
 
 @media screen and (max-width: 769px) {
@@ -163,7 +167,7 @@
 
 @media screen and (max-width: 736px) {
   .favorites {
-    .label {
+    .season__label {
       margin-right: 40px;
     }
   }
