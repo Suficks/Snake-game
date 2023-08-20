@@ -54,31 +54,30 @@ itemLink.forEach(item => {
 // }
 
 // profile modal
-const profileModal = document.querySelector('.profile__modal');
 const profileModalBefore = document.querySelector('.profile__before');
 const profileModalAfter = document.querySelector('.profile__after');
 
-function profileModalActive() {
-  // if (loginCheck() || addUserToLocalStorage()) {
-  // profileModal.classList.toggle('profile__modal__active');
-  // } else {
-  profileModal.classList.toggle('profile__modal__active');
+let isAuth = false
+
+function profileModalToggle(e) {
+  e.stopPropagation()
+  if (isAuth) {
+    profileModalAfter.classList.toggle('profile__modal__active')
+  } else profileModalBefore.classList.toggle('profile__modal__active')
 }
 
 function closeMenuOnClickOutside(event) {
   const target = event.target;
-  if (!profileModal.contains(target) && target !== profileLogo) {
-    profileModal.classList.remove('profile__modal__active');
+  const profileModalActive = document.querySelector('.profile__modal__active');
+
+  if (profileModalActive && target !== profileLogo) {
+    profileModalActive.classList.remove('profile__modal__active');
   }
 }
 
-function addClickOutsideListener() {
-  document.addEventListener('click', closeMenuOnClickOutside);
-}
-
-profileLogo.addEventListener('click', profileModalActive);
+document.addEventListener('click', closeMenuOnClickOutside);
+profileLogo.addEventListener('click', profileModalToggle);
 profileLogo.addEventListener('click', burgerMenuClose);
-addClickOutsideListener();
 
 // profile modal
 
@@ -92,10 +91,10 @@ const logInButton = document.querySelectorAll('.login__button');
 const logInModal = document.querySelector('.login__modal');
 const logInCloseLogo = document.querySelector('.login__close');
 
-function ModalOpen(modalType) {
+function modalOpen(modalType) {
   modalType.classList.add('modal__active');
   overlay.classList.add('overlay__active');
-  profileModal.classList.remove('profile__modal__active');
+
   if (modalType === registerModal) {
     logInModal.classList.remove('modal__active')
   }
@@ -110,13 +109,13 @@ function modalClose(modalType) {
 }
 
 registerButton.forEach(item => {
-  item.addEventListener('click', () => ModalOpen(registerModal));
+  item.addEventListener('click', () => modalOpen(registerModal));
 });
 overlay.addEventListener('click', () => modalClose(registerModal));
 registerCloseLogo.addEventListener('click', () => modalClose(registerModal));
 
 logInButton.forEach(item => {
-  item.addEventListener('click', () => ModalOpen(logInModal));
+  item.addEventListener('click', () => modalOpen(logInModal));
 });
 overlay.addEventListener('click', () => modalClose(logInModal));
 logInCloseLogo.addEventListener('click', () => modalClose(logInModal));
@@ -140,6 +139,7 @@ registSubmitBtn.addEventListener('click', () => {
     resetInputValue(registrInputs)
     readersCodeGeneration()
     checkUserAuth()
+    isAuth = true
   }
 })
 
@@ -312,6 +312,7 @@ loginSubmitBtn.addEventListener('click', () => {
     profileLogoChange()
     readersCodeGeneration()
     checkUserAuth()
+    isAuth = true
   }
 })
 
@@ -328,7 +329,9 @@ function checkUserAuth() {
     const initials = (firstName[0] + lastName[0]).toUpperCase()
     changeProfileLogo(initials, fullName)
     addCardNumber(cardNumber)
+    isAuth = true
   }
+
 }
 
 checkUserAuth()
@@ -350,6 +353,7 @@ function changeProfileLogo(initials, fullName) {
 function addCardNumber(cardNumber) {
   const cardNumberContainer = document.querySelector('.card__number')
   const profileTitle = document.querySelector('.profile__button')
+
   cardNumberContainer.innerHTML = cardNumber
   profileTitle.innerHTML = cardNumber
 }
