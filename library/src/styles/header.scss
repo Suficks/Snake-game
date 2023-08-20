@@ -75,4 +75,15 @@ a {
 
     cursor: pointer;
   }
+
+  .profile__logo__name {
+    background-color: $color-white;
+    border-radius: 50%;
+
+    width: 28px;
+    padding: 4px;
+
+    color: $color-brown;
+    @include inter (15px, 400, 20px);
+  }
 }

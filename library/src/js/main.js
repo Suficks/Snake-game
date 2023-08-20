@@ -4,17 +4,17 @@ const nav = document.querySelector('.nav')
 const overlay = document.querySelector('.overlay')
 const burgerClose = document.querySelector('.burger__close')
 const itemLink = document.querySelectorAll('.item__link')
-const profileBurger = document.querySelector('.profile__logo')
+const profileLogo = document.querySelector('.profile__logo')
 
 function burgerActive() {
   burger.addEventListener('click', () => {
     nav.classList.toggle('nav__active')
     overlay.classList.add('overlay__active')
     burgerClose.classList.add('burger__close_active')
-    profileBurger.style.position = 'fixed'
-    profileBurger.style.top = '31px'
-    profileBurger.style.right = '17px'
-    profileBurger.style.zIndex = '2'
+    profileLogo.style.position = 'fixed'
+    profileLogo.style.top = '31px'
+    profileLogo.style.right = '17px'
+    profileLogo.style.zIndex = '2'
   })
 }
 
@@ -24,10 +24,10 @@ function burgerMenuClose() {
   overlay.classList.remove('overlay__active')
   nav.classList.remove('nav__active')
   burgerClose.classList.remove('burger__close_active')
-  profileBurger.style.position = 'static'
-  profileBurger.style.top = '0'
-  profileBurger.style.right = '0'
-  profileBurger.style.zIndex = '0'
+  profileLogo.style.position = 'static'
+  profileLogo.style.top = '0'
+  profileLogo.style.right = '0'
+  profileLogo.style.zIndex = '0'
 }
 
 overlay.addEventListener('click', burgerMenuClose)
@@ -59,7 +59,7 @@ const profileModalBefore = document.querySelector('.profile__before');
 const profileModalAfter = document.querySelector('.profile__after');
 
 function profileModalActive() {
-  // if (loginCheck()) {
+  // if (loginCheck() || addUserToLocalStorage()) {
   // profileModal.classList.toggle('profile__modal__active');
   // } else {
   profileModal.classList.toggle('profile__modal__active');
@@ -67,7 +67,7 @@ function profileModalActive() {
 
 function closeMenuOnClickOutside(event) {
   const target = event.target;
-  if (!profileModal.contains(target) && target !== profileBurger) {
+  if (!profileModal.contains(target) && target !== profileLogo) {
     profileModal.classList.remove('profile__modal__active');
   }
 }
@@ -76,8 +76,8 @@ function addClickOutsideListener() {
   document.addEventListener('click', closeMenuOnClickOutside);
 }
 
-profileBurger.addEventListener('click', profileModalActive);
-profileBurger.addEventListener('click', burgerMenuClose);
+profileLogo.addEventListener('click', profileModalActive);
+profileLogo.addEventListener('click', burgerMenuClose);
 addClickOutsideListener();
 
 // profile modal
@@ -134,29 +134,30 @@ const MIN_PASSWORD_LENGTH = 8
 
 const user = {}
 
-
 registSubmitBtn.addEventListener('click', () => {
   if (addUserToLocalStorage()) {
-    // registSubmitBtn.setAttribute('disabled', '')
     modalClose(registerModal)
     resetInputValue(registrInputs)
+    readersCodeGeneration()
+    checkUserAuth()
   }
 })
-
 
 function setUser() {
   registrInputs.forEach(item => {
     const inputName = item.getAttribute('data-input')
     user[inputName] = item.value
   })
+  user.cardNumber = readersCodeGeneration()
 }
 
 function getLocalStorageData() {
   return JSON.parse(localStorage.getItem('users'))
 }
 
-function setLocalStorageData(data) {
-  localStorage.setItem('users', JSON.stringify(data))
+function setLocalStorageData(data, key) {
+  localStorage.setItem(key, JSON.stringify(data))
+
 }
 
 function addUserToLocalStorage() {
@@ -165,13 +166,15 @@ function addUserToLocalStorage() {
   let isDataAdded = false
 
   if (localStorageData === null) {
-    setLocalStorageData([user])
+    setLocalStorageData([user], 'users')
+    setLocalStorageData(user, 'currentUser')
     isDataAdded = true
   }
   else if (!checkEmail(localStorageData)) {
     isDataAdded = true
-    localStorageData.push(user)
-    setLocalStorageData(localStorageData)
+    localStorageData.push(user,)
+    setLocalStorageData(localStorageData, 'users')
+    setLocalStorageData(user, 'currentUser')
   }
   return isDataAdded
 }
@@ -247,7 +250,6 @@ function isAllFieldsFill(inputs, button, inputName) {
     if (item.value === '') {
       isDisabled = true
     }
-    console.log(item.value, isDisabled)
   })
 
   if (isDisabled) {
@@ -269,6 +271,7 @@ const localStorageData = getLocalStorageData()
 function loginCheck() {
   const loginInputEmail = document.querySelector('.login__email')
   const loginInputPassword = document.querySelector('.login__password')
+
   const { email, password } = localStorageData.reduce((acc, item) => {
     if (item.email === loginInputEmail.value) {
       acc.email = item.email
@@ -306,7 +309,66 @@ loginSubmitBtn.addEventListener('click', () => {
   if (loginCheck()) {
     modalClose(logInModal)
     resetInputValue(loginInputs)
+    profileLogoChange()
+    readersCodeGeneration()
+    checkUserAuth()
   }
 })
 
 // login check
+
+// check user authentification
+
+function checkUserAuth() {
+  const currentUserData = JSON.parse(localStorage.getItem('currentUser'))
+
+  if (currentUserData !== null) {
+    const { firstName, lastName, cardNumber } = currentUserData
+    const fullName = `${firstName} ${lastName}`
+    const initials = (firstName[0] + lastName[0]).toUpperCase()
+    changeProfileLogo(initials, fullName)
+    addCardNumber(cardNumber)
+  }
+}
+
+checkUserAuth()
+
+// check user authentification
+
+// change profile logo 
+
+function changeProfileLogo(initials, fullName) {
+  profileLogo.classList.add('profile__logo__name')
+  profileLogo.innerHTML = initials
+  profileLogo.setAttribute('title', fullName)
+}
+
+// change profile logo 
+
+// add cardNumber 
+
+function addCardNumber(cardNumber) {
+  const cardNumberContainer = document.querySelector('.card__number')
+  const profileTitle = document.querySelector('.profile__button')
+  cardNumberContainer.innerHTML = cardNumber
+  profileTitle.innerHTML = cardNumber
+}
+
+// add cardNumber 
+
+// readers code generation
+
+function readersCodeGeneration() {
+  let cardNumber = ''
+  const NUMBER__LENGTH = 9
+  const HEX__CHAR__COUNT = 16
+
+  for (let i = 0; i < NUMBER__LENGTH; i++) {
+    const HEXRandomNumber = Math.trunc((Math.random() * HEX__CHAR__COUNT)).toString(16).toUpperCase()
+    cardNumber += HEXRandomNumber
+  }
+  return cardNumber
+}
+
+// readers code generation
+
