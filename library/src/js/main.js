@@ -81,6 +81,7 @@ const myProfileModal = document.querySelector('.my__profile')
 const myProfileCloseLogo = document.querySelector('.my__profile__close')
 
 const buyLibraryCardModal = document.querySelector('.buy__modal')
+const buyLibraryCardCloseLogo = document.querySelector('.buy__modal__close')
 
 const copyButton = document.querySelector('.copy')
 
@@ -122,6 +123,9 @@ myProfileButtons.forEach(item => {
 overlay.addEventListener('click', () => modalClose(myProfileModal));
 myProfileCloseLogo.addEventListener('click', () => modalClose(myProfileModal));
 
+overlay.addEventListener('click', () => modalClose(buyLibraryCardModal));
+buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(buyLibraryCardModal));
+
 // register/login/my profile modals
 
 // registration to localStorage
@@ -136,6 +140,7 @@ const MIN_PASSWORD_LENGTH = 8
 const user = {}
 
 registSubmitBtn.addEventListener('click', () => {
+  e.preventDefault()
   if (addUserToLocalStorage()) {
     modalClose(registerModal)
     resetInputValue(registrInputs)
@@ -239,23 +244,23 @@ function emptyCheck(item, inputName) {
   }
 }
 
+const hasEmptyFields = new Set()
+
 function isAllFieldsFill(inputs, button, inputName) {
-  let isDisabled = false
 
   inputs.forEach(item => {
+    const inputName = item.getAttribute('data-input')
     const isInputPassword = inputName === 'password'
 
     if (isInputPassword) {
-      if (item.value.length < MIN_PASSWORD_LENGTH) isDisabled = true
-      else isDisabled = false
+      if (item.value.length < MIN_PASSWORD_LENGTH) hasEmptyFields.add(inputName)
+      else hasEmptyFields.delete(inputName)
     }
-
-    if (item.value === '') {
-      isDisabled = true
-    }
+    else if (item.value === '') hasEmptyFields.add(inputName)
+    else hasEmptyFields.delete(inputName)
   })
 
-  if (isDisabled) {
+  if (hasEmptyFields.size) {
     button.setAttribute('disabled', '')
   } else {
     button.removeAttribute('disabled')
@@ -312,7 +317,8 @@ function loginCheck() {
   return isMatch
 }
 
-loginSubmitBtn.addEventListener('click', () => {
+loginSubmitBtn.addEventListener('click', (e) => {
+  e.preventDefault()
   if (loginCheck()) {
     addCurrentUserAfterAuth()
     modalClose(logInModal)
@@ -364,6 +370,7 @@ function addCurrentUserAfterAuth() {
 function addFullName(initials, capitalizedName) {
   const myProfileInitials = document.querySelector('.initials')
   const myProfileName = document.querySelector('.my__profile__name')
+  // const inputName = document.querySelector('.input__name')
 
   profileLogo.classList.add('profile__logo__name')
   profileLogo.innerHTML = initials
@@ -371,6 +378,8 @@ function addFullName(initials, capitalizedName) {
 
   myProfileInitials.innerHTML = initials
   myProfileName.innerHTML = capitalizedName
+
+  // inputName.value = capitalizedName
 }
 
 // add full name to elements according localStorage data
@@ -396,6 +405,7 @@ function readersCodeGeneration() {
 function addCardNumber(cardNumber) {
   const cardNumberContainer = document.querySelector('.card__number')
   const profileTitle = document.querySelector('.profile__button')
+  // const inputCardNumber = document.querySelector('.input__cardNumber')
 
   cardNumberContainer.innerHTML = cardNumber
   profileTitle.innerHTML = cardNumber
@@ -404,30 +414,23 @@ function addCardNumber(cardNumber) {
     window.navigator.clipboard.writeText(cardNumber)
     copyButton.setAttribute('src', 'assets/check-icon.svg')
   })
+
+  // inputCardNumber.value = cardNumber
 }
 
 // add cardNumber
 
-
 // buy library card modal 
 
-export function buyLibraryCard(buttons) {
-  const buyLibraryCardCloseLogo = document.querySelector('.buy__modal__close')
+export function buyLibraryCard() {
+  const buttons = document.querySelectorAll('.buy__button')
 
-  if (isAuth) {
-    buttons.forEach(button => {
-      button.addEventListener('click', () => modalOpen(buyLibraryCardModal))
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (isAuth) modalOpen(buyLibraryCardModal)
+      else modalOpen(logInModal)
     })
-    overlay.addEventListener('click', () => modalClose(buyLibraryCardModal));
-    buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(buyLibraryCardModal));
-  }
-  else {
-    buttons.forEach(button => {
-      button.addEventListener('click', () => modalOpen(logInModal))
-    })
-    overlay.addEventListener('click', () => modalClose(logInModal));
-    buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(logInModal));
-  }
+  })
 }
 
 // buy library card modal 
@@ -445,6 +448,7 @@ function libraryCardProfile() {
 }
 
 libraryCardProfile()
+
 // library card according auth
 
 // show/hide password
@@ -455,7 +459,6 @@ function showHidePassword() {
 
   eyeImg.forEach(item => {
     item.addEventListener('click', () => {
-
       password.forEach(password => {
         if (password.getAttribute('type') === 'password') {
           item.setAttribute('src', 'assets/close_eye.png')
@@ -482,7 +485,7 @@ function logOut() {
   logOutButton.addEventListener('click', () => {
     localStorage.removeItem('currentUser')
   })
-  isAuth = false
+  // isAuth = false
 }
 
 logOut()
