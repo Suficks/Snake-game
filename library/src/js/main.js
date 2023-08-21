@@ -14,7 +14,7 @@ function burgerActive() {
     profileLogo.style.position = 'fixed'
     profileLogo.style.top = '31px'
     profileLogo.style.right = '17px'
-    profileLogo.style.zIndex = '2'
+    profileLogo.style.zIndex = '3'
   })
 }
 
@@ -37,21 +37,6 @@ itemLink.forEach(item => {
 })
 
 // burger menu
-
-//   labelsSeason[3].addEventListener('click', () => {
-//     if (!flag) {
-//       fadeIn(autumn, 3000, 'flex');
-//       flag = true;
-//     } else {
-//       fadeOut(winter, 500);
-//       flag = false;
-//       fadeOut(spring, 500);
-//       flag = false;
-//       fadeOut(summer, 500);
-//       flag = false;
-//     }
-//   })
-// }
 
 // profile modal
 const profileModalBefore = document.querySelector('.profile__before');
@@ -81,7 +66,7 @@ profileLogo.addEventListener('click', burgerMenuClose);
 
 // profile modal
 
-// register/login modal
+// register/login/my profile modals
 
 const registerButton = document.querySelectorAll('.register__button');
 const registerModal = document.querySelector('.register__modal');
@@ -90,6 +75,12 @@ const registerCloseLogo = document.querySelector('.register__close');
 const logInButton = document.querySelectorAll('.login__button');
 const logInModal = document.querySelector('.login__modal');
 const logInCloseLogo = document.querySelector('.login__close');
+
+const profileButton = document.querySelector('.my__profile__button')
+const myProfileModal = document.querySelector('.my__profile')
+const myProfileCloseLogo = document.querySelector('.my__profile__close')
+
+const copyButton = document.querySelector('.copy')
 
 function modalOpen(modalType) {
   modalType.classList.add('modal__active');
@@ -106,6 +97,9 @@ function modalOpen(modalType) {
 function modalClose(modalType) {
   modalType.classList.remove('modal__active');
   overlay.classList.remove('overlay__active');
+  if (modalType === myProfileModal) {
+    copyButton.setAttribute('src', 'assets/icon-copy.svg')
+  }
 }
 
 registerButton.forEach(item => {
@@ -120,7 +114,11 @@ logInButton.forEach(item => {
 overlay.addEventListener('click', () => modalClose(logInModal));
 logInCloseLogo.addEventListener('click', () => modalClose(logInModal));
 
-// register/login modal
+profileButton.addEventListener('click', () => modalOpen(myProfileModal));
+overlay.addEventListener('click', () => modalClose(myProfileModal));
+myProfileCloseLogo.addEventListener('click', () => modalClose(myProfileModal));
+
+// register/login/my profile modals
 
 // registration to localStorage
 
@@ -172,7 +170,7 @@ function addUserToLocalStorage() {
   }
   else if (!checkEmail(localStorageData)) {
     isDataAdded = true
-    localStorageData.push(user,)
+    localStorageData.push(user)
     setLocalStorageData(localStorageData, 'users')
     setLocalStorageData(user, 'currentUser')
   }
@@ -272,24 +270,24 @@ function loginCheck() {
   const loginInputEmail = document.querySelector('.login__email')
   const loginInputPassword = document.querySelector('.login__password')
 
-  const { email, password } = localStorageData.reduce((acc, item) => {
-    if (item.email === loginInputEmail.value) {
+  const { email, cardNumber, password } = localStorageData.reduce((acc, item) => {
+    if (item.email === loginInputEmail.value || item.cardNumber === loginInputEmail.value) {
       acc.email = item.email
+      acc.cardNumber = item.cardNumber
       acc.password = item.password
     }
     return acc
   }, {})
 
   const isPasswordMatch = password === loginInputPassword.value
+  const isCardNumberMatch = cardNumber === loginInputEmail.value
+  const isEmailMatch = email === loginInputEmail.value
+
   const errorEmail = loginInputEmail.nextElementSibling
   const errorPassword = loginInputPassword.nextElementSibling
   let isMatch = false
 
-  if (!email) {
-    errorEmail.innerHTML = 'User with this email was not found'
-    isMatch = false
-  }
-  else {
+  if (isEmailMatch || isCardNumberMatch) {
     errorEmail.innerHTML = ''
 
     if (!isPasswordMatch) {
@@ -301,6 +299,10 @@ function loginCheck() {
       isMatch = true
     }
   }
+  else {
+    errorEmail.innerHTML = 'User with this email or card was not found'
+    isMatch = false
+  }
 
   return isMatch
 }
@@ -309,7 +311,6 @@ loginSubmitBtn.addEventListener('click', () => {
   if (loginCheck()) {
     modalClose(logInModal)
     resetInputValue(loginInputs)
-    profileLogoChange()
     readersCodeGeneration()
     checkUserAuth()
     isAuth = true
@@ -321,44 +322,40 @@ loginSubmitBtn.addEventListener('click', () => {
 // check user authentification
 
 function checkUserAuth() {
-  const currentUserData = JSON.parse(localStorage.getItem('currentUser'))
+  let currentUserData = JSON.parse(localStorage.getItem('currentUser'))
 
   if (currentUserData !== null) {
     const { firstName, lastName, cardNumber } = currentUserData
     const fullName = `${firstName} ${lastName}`
+    const capitalizedName = fullName.split(' ')
+      .map(item => item[0].toUpperCase() + item.slice(1))
+      .join(' ')
     const initials = (firstName[0] + lastName[0]).toUpperCase()
-    changeProfileLogo(initials, fullName)
+    addFullName(initials, capitalizedName)
     addCardNumber(cardNumber)
     isAuth = true
   }
-
 }
 
 checkUserAuth()
 
 // check user authentification
 
-// change profile logo 
+// add full name to elements according localStorage data
 
-function changeProfileLogo(initials, fullName) {
+function addFullName(initials, capitalizedName) {
+  const myProfileInitials = document.querySelector('.initials')
+  const myProfileName = document.querySelector('.my__profile__name')
+
   profileLogo.classList.add('profile__logo__name')
   profileLogo.innerHTML = initials
-  profileLogo.setAttribute('title', fullName)
+  profileLogo.setAttribute('title', capitalizedName)
+
+  myProfileInitials.innerHTML = initials
+  myProfileName.innerHTML = capitalizedName
 }
 
-// change profile logo 
-
-// add cardNumber 
-
-function addCardNumber(cardNumber) {
-  const cardNumberContainer = document.querySelector('.card__number')
-  const profileTitle = document.querySelector('.profile__button')
-
-  cardNumberContainer.innerHTML = cardNumber
-  profileTitle.innerHTML = cardNumber
-}
-
-// add cardNumber 
+// add full name to elements according localStorage data
 
 // readers code generation
 
@@ -375,4 +372,35 @@ function readersCodeGeneration() {
 }
 
 // readers code generation
+
+// add cardNumber 
+
+function addCardNumber(cardNumber) {
+  const cardNumberContainer = document.querySelector('.card__number')
+  const profileTitle = document.querySelector('.profile__button')
+
+  cardNumberContainer.innerHTML = cardNumber
+  profileTitle.innerHTML = cardNumber
+
+  copyButton.addEventListener('click', () => {
+    window.navigator.clipboard.writeText(cardNumber)
+    copyButton.setAttribute('src', 'assets/check-icon.svg')
+  })
+}
+
+// add cardNumber 
+
+//  log out
+
+function logOut() {
+  const logOutButton = document.querySelector('.log__out__button')
+
+  logOutButton.addEventListener('click', () => {
+    localStorage.removeItem('currentUser')
+  })
+}
+
+logOut()
+
+//  log out
 

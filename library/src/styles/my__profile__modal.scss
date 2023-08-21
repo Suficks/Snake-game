@@ -6,7 +6,9 @@
 
   display: flex;
 
-  display: none;
+  transform: translateY(300%);
+
+  z-index: 3;
 
   .id {
     display: flex;
@@ -30,11 +32,17 @@
 
   .name {
     margin: 0;
-    padding: 5px 15px;
+    padding: 5px;
 
     background-color: $color-white;
 
     @include inter (20px, 400, 20px);
+    text-align: center;
+  }
+
+  .my__profile__name {
+    max-width: 156px;
+    box-sizing: border-box;
   }
 
   .info {
@@ -70,7 +78,7 @@
     gap: 10px;
   }
 
-  .name {
+  .item__name {
     margin: 0;
 
     @include inter (20px, 400, 20px);
@@ -129,8 +137,8 @@
   .copy {
     cursor: pointer;
   }
+}
 
-  .my__profile__active {
-    display: block;
-  }
+.modal__active {
+  transform: translate(-50%, -50%);
 }
