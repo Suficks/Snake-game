@@ -76,7 +76,7 @@ const logInButton = document.querySelectorAll('.login__button');
 const logInModal = document.querySelector('.login__modal');
 const logInCloseLogo = document.querySelector('.login__close');
 
-const profileButton = document.querySelector('.my__profile__button')
+const myProfileButtons = document.querySelectorAll('.my__profile__button')
 const myProfileModal = document.querySelector('.my__profile')
 const myProfileCloseLogo = document.querySelector('.my__profile__close')
 
@@ -116,7 +116,9 @@ logInButton.forEach(item => {
 overlay.addEventListener('click', () => modalClose(logInModal));
 logInCloseLogo.addEventListener('click', () => modalClose(logInModal));
 
-profileButton.addEventListener('click', () => modalOpen(myProfileModal));
+myProfileButtons.forEach(item => {
+  item.addEventListener('click', () => modalOpen(myProfileModal));
+})
 overlay.addEventListener('click', () => modalClose(myProfileModal));
 myProfileCloseLogo.addEventListener('click', () => modalClose(myProfileModal));
 
@@ -139,6 +141,7 @@ registSubmitBtn.addEventListener('click', () => {
     resetInputValue(registrInputs)
     readersCodeGeneration()
     checkUserAuth()
+    libraryCardProfile()
     isAuth = true
   }
 })
@@ -267,10 +270,10 @@ inputChange(loginInputs, loginSubmitBtn)
 // login check
 
 const localStorageData = getLocalStorageData()
+const loginInputEmail = document.querySelector('.login__email')
+const loginInputPassword = document.querySelector('.login__password')
 
 function loginCheck() {
-  const loginInputEmail = document.querySelector('.login__email')
-  const loginInputPassword = document.querySelector('.login__password')
 
   const { email, cardNumber, password } = localStorageData.reduce((acc, item) => {
     if (item.email === loginInputEmail.value || item.cardNumber === loginInputEmail.value) {
@@ -311,10 +314,11 @@ function loginCheck() {
 
 loginSubmitBtn.addEventListener('click', () => {
   if (loginCheck()) {
+    addCurrentUserAfterAuth()
     modalClose(logInModal)
     resetInputValue(loginInputs)
     checkUserAuth()
-    // buyLibraryCard(buyLibraryCardModal)
+    libraryCardProfile()
     isAuth = true
   }
 })
@@ -346,7 +350,11 @@ checkUserAuth()
 // add current user to localStorage after auth
 
 function addCurrentUserAfterAuth() {
-
+  let currentUser = {}
+  currentUser = localStorageData.find(user => user.email === loginInputEmail.value ||
+    user.cardNumber === loginInputEmail.value &&
+    user.password === loginInputPassword.value)
+  setLocalStorageData(currentUser, 'currentUser')
 }
 
 // add current user to localStorage after auth
@@ -400,19 +408,8 @@ function addCardNumber(cardNumber) {
 
 // add cardNumber
 
-//  log out
 
-// function logOut() {
-//   const logOutButton = document.querySelector('.log__out__button')
-
-//   logOutButton.addEventListener('click', () => {
-//     localStorage.removeItem('currentUser')
-//   })
-// }
-
-// logOut()
-
-//  log out
+// buy library card modal 
 
 export function buyLibraryCard(buttons) {
   const buyLibraryCardCloseLogo = document.querySelector('.buy__modal__close')
@@ -432,3 +429,62 @@ export function buyLibraryCard(buttons) {
     buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(logInModal));
   }
 }
+
+// buy library card modal 
+
+// library card according auth
+
+function libraryCardProfile() {
+  const libraryCard = document.querySelector('.libraryCard')
+  const libraryCardAfterAuth = document.querySelector('.after')
+
+  if (isAuth) {
+    libraryCard.style.display = 'none'
+    libraryCardAfterAuth.style.display = 'block'
+  }
+}
+
+libraryCardProfile()
+// library card according auth
+
+// show/hide password
+
+function showHidePassword() {
+  const password = document.querySelectorAll('.password')
+  const eyeImg = document.querySelectorAll('.eye')
+
+  eyeImg.forEach(item => {
+    item.addEventListener('click', () => {
+
+      password.forEach(password => {
+        if (password.getAttribute('type') === 'password') {
+          item.setAttribute('src', 'assets/close_eye.png')
+          password.setAttribute('type', 'text')
+        }
+        else {
+          item.setAttribute('src', 'assets/open-eye.png')
+          password.setAttribute('type', 'password')
+        }
+      })
+    })
+  })
+}
+
+showHidePassword()
+
+// show/hide password
+
+//  log out
+
+function logOut() {
+  const logOutButton = document.querySelector('.log__out__button')
+
+  logOutButton.addEventListener('click', () => {
+    localStorage.removeItem('currentUser')
+  })
+  isAuth = false
+}
+
+logOut()
+
+//  log out
