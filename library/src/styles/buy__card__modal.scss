@@ -2,11 +2,15 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(300%);
+
+  width: 640px;
 
   background-color: $color-white;
 
-  display: none;
+  transition: 0.3s ease;
+
+  z-index: 3;
 
   .buy__title {
     margin: 0 0 30px;
@@ -84,11 +88,7 @@
     max-width: 330px;
 
     @include inter (15px, 400, 20px);
-    letter-spacing: 2px;
+    letter-spacing: 1.9px;
     color: $color-grey;
-  }
-
-  .buy__modal.active {
-    display: block;
   }
 }

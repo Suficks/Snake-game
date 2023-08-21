@@ -113,6 +113,8 @@ const seasons = {
   autumn,
 }
 
+import { buyLibraryCard } from './main.js'
+
 const seasonRadio = document.querySelectorAll('.radio')
 
 function seasonChange() {
@@ -147,9 +149,15 @@ function renderSeasonCards(season = 'winter') {
     cards += cardTemplate
   })
 
+  function getBuyButtons() {
+    let buyButtons = document.querySelectorAll('.buy__button')
+    return buyButtons
+  }
+
   setTimeout(() => {
     cardContainer.innerHTML = ''
     cardContainer.insertAdjacentHTML('beforeend', cards)
+    buyLibraryCard(getBuyButtons())
     cardContainer.classList.add('season__change')
   }, 500)
 }

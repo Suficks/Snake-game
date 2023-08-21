@@ -80,6 +80,8 @@ const profileButton = document.querySelector('.my__profile__button')
 const myProfileModal = document.querySelector('.my__profile')
 const myProfileCloseLogo = document.querySelector('.my__profile__close')
 
+const buyLibraryCardModal = document.querySelector('.buy__modal')
+
 const copyButton = document.querySelector('.copy')
 
 function modalOpen(modalType) {
@@ -311,8 +313,8 @@ loginSubmitBtn.addEventListener('click', () => {
   if (loginCheck()) {
     modalClose(logInModal)
     resetInputValue(loginInputs)
-    readersCodeGeneration()
     checkUserAuth()
+    // buyLibraryCard(buyLibraryCardModal)
     isAuth = true
   }
 })
@@ -340,6 +342,14 @@ function checkUserAuth() {
 checkUserAuth()
 
 // check user authentification
+
+// add current user to localStorage after auth
+
+function addCurrentUserAfterAuth() {
+
+}
+
+// add current user to localStorage after auth
 
 // add full name to elements according localStorage data
 
@@ -388,19 +398,37 @@ function addCardNumber(cardNumber) {
   })
 }
 
-// add cardNumber 
+// add cardNumber
 
 //  log out
 
-function logOut() {
-  const logOutButton = document.querySelector('.log__out__button')
+// function logOut() {
+//   const logOutButton = document.querySelector('.log__out__button')
 
-  logOutButton.addEventListener('click', () => {
-    localStorage.removeItem('currentUser')
-  })
+//   logOutButton.addEventListener('click', () => {
+//     localStorage.removeItem('currentUser')
+//   })
+// }
+
+// logOut()
+
+//  log out
+
+export function buyLibraryCard(buttons) {
+  const buyLibraryCardCloseLogo = document.querySelector('.buy__modal__close')
+
+  if (isAuth) {
+    buttons.forEach(button => {
+      button.addEventListener('click', () => modalOpen(buyLibraryCardModal))
+    })
+    overlay.addEventListener('click', () => modalClose(buyLibraryCardModal));
+    buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(buyLibraryCardModal));
+  }
+  else {
+    buttons.forEach(button => {
+      button.addEventListener('click', () => modalOpen(logInModal))
+    })
+    overlay.addEventListener('click', () => modalClose(logInModal));
+    buyLibraryCardCloseLogo.addEventListener('click', () => modalClose(logInModal));
+  }
 }
-
-logOut()
-
-//  log out
-
