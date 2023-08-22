@@ -99,3 +99,11 @@ html {
   opacity: 0.5;
   visibility: visible;
 }
+
+.error {
+  position: absolute;
+  bottom: -18px;
+  margin: 0 0 5px;
+  color: red;
+  @include inter (9px, 400, 10px);
+}
