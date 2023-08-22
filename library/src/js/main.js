@@ -68,6 +68,8 @@ profileLogo.addEventListener('click', burgerMenuClose);
 
 // register/login/my profile modals
 
+import { renderLibraryCard } from './libraryCardChange.js'
+
 const registerButton = document.querySelectorAll('.register__button');
 const registerModal = document.querySelector('.register__modal');
 const registerCloseLogo = document.querySelector('.register__close');
@@ -135,18 +137,24 @@ const registSubmitBtn = document.querySelector('.registr__submit')
 const loginInputs = document.querySelectorAll('.login__input')
 const loginSubmitBtn = document.querySelector('.login__submit')
 
+const buyModalInputs = document.querySelectorAll('.buy__input')
+const buyModalButton = document.querySelector('.buy__modal__btn')
+
 const MIN_PASSWORD_LENGTH = 8
+const MIN_BANK_CARD_LENGTH = 16
+const MAX_EXP_CODE_LENGTH = 2
+const MAX_CVC_LENGTH = 3
 
 const user = {}
 
-registSubmitBtn.addEventListener('click', () => {
+registSubmitBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (addUserToLocalStorage()) {
     modalClose(registerModal)
     resetInputValue(registrInputs)
     readersCodeGeneration()
     checkUserAuth()
-    libraryCardProfile()
+    // libraryCardCheck()
     isAuth = true
   }
 })
@@ -157,6 +165,9 @@ function setUser() {
     user[inputName] = item.value
   })
   user.cardNumber = readersCodeGeneration()
+  // user.visitsCount = visitsCount
+  // user.booksCount = 
+  // user.libraryCard = 
 }
 
 function getLocalStorageData() {
@@ -214,6 +225,13 @@ const emptyFieldText = {
   password: 'Fill Password',
   emailOrReader: 'Fill E-mail or readers card',
   incorrectPasswordLength: 'Minimum number of characters 8',
+  number: 'Fill Bank card number',
+  code: 'Fill Expiration code',
+  cvc: 'Fill CVC',
+  name: 'Fill Cardholder name',
+  postal: 'Fill Postal code',
+  city: 'Fill City / Town',
+  incorrectBankCardLength: 'Minimum number of characters 16',
 }
 
 function inputChange(inputs, button) {
@@ -222,18 +240,30 @@ function inputChange(inputs, button) {
 
     item.addEventListener('input', () => {
       emptyCheck(item, inputName)
-      isAllFieldsFill(inputs, button, inputName)
+      isAllFieldsFill(inputs, button)
     })
   })
 }
 
 function emptyCheck(item, inputName) {
   const error = item.nextElementSibling
-
+  console.log(typeof item.value)
   if (inputName === 'password' && item.value.length < MIN_PASSWORD_LENGTH) {
     error.innerHTML = emptyFieldText.incorrectPasswordLength
   }
   else error.innerHTML = ''
+
+  if (inputName === 'number' && item.value.length < MIN_BANK_CARD_LENGTH) {
+    error.innerHTML = emptyFieldText.incorrectBankCardLength
+  }
+  else error.innerHTML = ''
+
+  if (inputName === 'code' && item.value.length > MAX_EXP_CODE_LENGTH) {
+    item.value = item.value.slice(0, MAX_EXP_CODE_LENGTH)
+  }
+  if (inputName === 'cvc' && item.value.length > MAX_CVC_LENGTH) {
+    item.value = item.value.slice(0, MAX_CVC_LENGTH)
+  }
 
   if (item.value === '') {
     item.classList.add('input__invalid')
@@ -246,12 +276,17 @@ function emptyCheck(item, inputName) {
 
 const hasEmptyFields = new Set()
 
-function isAllFieldsFill(inputs, button, inputName) {
+function isAllFieldsFill(inputs, button) {
 
   inputs.forEach(item => {
     const inputName = item.getAttribute('data-input')
     const isInputPassword = inputName === 'password'
+    const isInputBankCardNumber = inputName === 'number'
 
+    if (isInputBankCardNumber) {
+      if (item.value.length < MIN_BANK_CARD_LENGTH) hasEmptyFields.add(inputName)
+      else hasEmptyFields.delete(inputName)
+    }
     if (isInputPassword) {
       if (item.value.length < MIN_PASSWORD_LENGTH) hasEmptyFields.add(inputName)
       else hasEmptyFields.delete(inputName)
@@ -269,6 +304,7 @@ function isAllFieldsFill(inputs, button, inputName) {
 
 inputChange(registrInputs, registSubmitBtn)
 inputChange(loginInputs, loginSubmitBtn)
+inputChange(buyModalInputs, buyModalButton)
 
 // registration to localStorage
 
@@ -324,8 +360,8 @@ loginSubmitBtn.addEventListener('click', (e) => {
     modalClose(logInModal)
     resetInputValue(loginInputs)
     checkUserAuth()
-    libraryCardProfile()
     isAuth = true
+    renderLibraryCard(isAuth)
   }
 })
 
@@ -370,7 +406,6 @@ function addCurrentUserAfterAuth() {
 function addFullName(initials, capitalizedName) {
   const myProfileInitials = document.querySelector('.initials')
   const myProfileName = document.querySelector('.my__profile__name')
-  // const inputName = document.querySelector('.input__name')
 
   profileLogo.classList.add('profile__logo__name')
   profileLogo.innerHTML = initials
@@ -379,7 +414,7 @@ function addFullName(initials, capitalizedName) {
   myProfileInitials.innerHTML = initials
   myProfileName.innerHTML = capitalizedName
 
-  // inputName.value = capitalizedName
+  // inputCardName.value = capitalizedName
 }
 
 // add full name to elements according localStorage data
@@ -405,7 +440,6 @@ function readersCodeGeneration() {
 function addCardNumber(cardNumber) {
   const cardNumberContainer = document.querySelector('.card__number')
   const profileTitle = document.querySelector('.profile__button')
-  // const inputCardNumber = document.querySelector('.input__cardNumber')
 
   cardNumberContainer.innerHTML = cardNumber
   profileTitle.innerHTML = cardNumber
@@ -414,8 +448,6 @@ function addCardNumber(cardNumber) {
     window.navigator.clipboard.writeText(cardNumber)
     copyButton.setAttribute('src', 'assets/check-icon.svg')
   })
-
-  // inputCardNumber.value = cardNumber
 }
 
 // add cardNumber
@@ -433,23 +465,36 @@ export function buyLibraryCard() {
   })
 }
 
+buyModalButton.addEventListener('click', () => modalClose(buyLibraryCardModal))
+
 // buy library card modal 
 
-// library card according auth
+// const checkBtn = document.querySelector('.check__btn')
 
-function libraryCardProfile() {
-  const libraryCard = document.querySelector('.libraryCard')
-  const libraryCardAfterAuth = document.querySelector('.after')
+// function libraryCardCheck() {
+//   const inputCardName = document.querySelector('.input__name')
+//   const inputCardNumber = document.querySelector('.input__cardNumber')
+//   const libraryCardInfo = document.querySelector('.library__card__info')
 
-  if (isAuth) {
-    libraryCard.style.display = 'none'
-    libraryCardAfterAuth.style.display = 'block'
-  }
-}
+//   checkBtn.addEventListener('click', () => {
+//     let userMatch = localStorageData.find(user => (user.firstName + ' ' + user.lastName) === inputCardName.value
+//       && user.cardNumber === inputCardNumber.value)
 
-libraryCardProfile()
+//     if (userMatch !== undefined) {
+//       checkBtn.style.opacity = '0'
+//       checkBtn.style.pointerEvents = 'none'
+//       libraryCardInfo
+//       setTimeout(() => {
+//         checkBtn.style.opacity = '1'
+//         checkBtn.style.pointerEvents = 'all'
+//         inputCardName.value = ''
+//         inputCardNumber.value = ''
+//       }, 10000)
+//     }
+//   })
+// }
 
-// library card according auth
+// libraryCardCheck()
 
 // show/hide password
 
@@ -479,15 +524,17 @@ showHidePassword()
 
 //  log out
 
-function logOut() {
-  const logOutButton = document.querySelector('.log__out__button')
+const logOutButton = document.querySelector('.log__out__button')
 
-  logOutButton.addEventListener('click', () => {
-    localStorage.removeItem('currentUser')
-  })
-  // isAuth = false
+function logOut() {
+  isAuth = false
+  localStorage.removeItem('currentUser')
+  profileLogo.classList.remove('profile__logo__name')
+  profileLogo.innerHTML = ''
+  profileLogo.removeAttribute('title')
+  buyLibraryCard()
 }
 
-logOut()
+logOutButton.addEventListener('click', logOut)
 
-//  log out
+  //  log out
