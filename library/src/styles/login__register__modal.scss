@@ -49,14 +49,6 @@
     border: 1px solid red;
   }
 
-  .error {
-    position: absolute;
-    bottom: -18px;
-    margin: 0 0 5px;
-    color: red;
-    @include inter (9px, 400, 10px);
-  }
-
   .name {
     display: block;
     margin: 0 0 10px;
