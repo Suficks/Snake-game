@@ -63,11 +63,12 @@ a {
 
   .profile__logo {
     background-image: url("./common/img/svg/icon_profile.svg");
-    background-size: 28px 28px;
+    background-size: 30px 28px;
     background-repeat: no-repeat;
 
     width: 31px;
     height: 28px;
+
 
     background-color: transparent;
 
@@ -80,7 +81,7 @@ a {
     background-color: $color-white;
     border-radius: 50%;
 
-    width: 28px;
+    width: 30px;
     padding: 4px;
 
     color: $color-brown;
