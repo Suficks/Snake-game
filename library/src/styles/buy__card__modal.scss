@@ -8,7 +8,7 @@
 
   background-color: $color-white;
 
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 
   z-index: 3;
 
@@ -33,11 +33,15 @@
     padding: 0 40px 40px;
   }
 
+  .label {
+    position: relative;
+  }
+
   .inputs {
     margin-right: 40px;
   }
 
-  .input {
+  .buy__input {
     margin-bottom: 10px;
     height: 20px;
 
@@ -47,6 +51,15 @@
     border: 1px solid $color-brown;
 
     outline: none;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+
+  .input__invalid {
+    border: 1px solid red;
   }
 
   .name {
