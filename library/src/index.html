@@ -48,18 +48,12 @@
         </div>
         <!-- burger menu -->
 
-        <!-- profile modals -->
-        <div class="profile__modal profile__before">
+        <!-- profile modal -->
+        <div class="auth__modal modal">
           <p class="title">Profile</p>
-          <p class="info login__button">Log In</p>
-          <p class="info register__button">Register</p>
+          <div class="buttons__wrapper"></div>
         </div>
-        <div class="profile__modal profile__after">
-          <p class="title profile__button">Profile</p>
-          <p class="info my__profile__button">My profile</p>
-          <p class="info log__out__button">Log Out</p>
-        </div>
-        <!-- profile modals -->
+        <!-- profile modal -->
 
       </div>
     </div>
@@ -233,70 +227,44 @@
         <h2 class="title">Digital Library Cards</h2>
         <div class="card__wrapper">
           <div class="find">
-            <p class="sibtitle">Find your Library card</p>
+            <p class="sibtitle card__subtitle"></p>
             <form action="#" class="form">
               <div class="info">
                 <p class="library">Brooklyn Public Library</p>
-                <input class="input" type="text" placeholder="Reader's name">
-                <input class="input" type="text" placeholder="Card number">
+                <input class="input input__name" type="text" placeholder="Reader's name">
+                <input class="input input__cardNumber" type="text" placeholder="Card number">
               </div>
-              <button class="button">Check the card</button>
+              <div class="items check__books"></div>
             </form>
           </div>
           <div class="get">
-            <p class="get__sibtitle">Get a reader card</p>
-            <p class="get__info">You will be able to see a reader card after logging into account or you can register a
-              new account
-            </p>
-            <div class="button__wrap">
-              <button class="button register__button">Sign Up</button>
-              <button class="button login__button">Log in</button>
-            </div>
+            <p class="get__sibtitle"></p>
+            <p class="get__info"></p>
+            <div class="button__wrap"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="libraryCard after">
-      <div class="wrapper">
-        <h2 class="title">Digital Library Cards</h2>
-        <div class="card__wrapper after">
-          <div class="find">
-            <p class="sibtitle">Your Library card</p>
-            <div class="form">
-              <div class="info">
-                <p class="library">Brooklyn Public Library</p>
-                <input class="input input__name" type="text">
-                <input class="input input__cardNumber" type="text">
-              </div>
-              <div class="items">
-                <div class="item">
-                  <p class="name">Visits</p>
-                  <img class="logo" src="./common/img/svg/visits-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">23</p>
-                </div>
-                <div class="item">
-                  <p class="name">Bonuses</p>
-                  <img class="logo" src="./common/img/svg/bonuses-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">1240</p>
-                </div>
-                <div class="item">
-                  <p class="name">Books</p>
-                  <img class="logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">2</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="get">
-            <p class="get__sibtitle">Visit your profile</p>
-            <p class="get__info">With a digital library card you get free access to the Library’s wide array of digital
-              resources including e-books, databases, educational resources, and more.</p>
-            <button class="button my__profile__button">Profile</button>
-          </div>
-        </div>
+    <template id="cardTemplate">
+      <div class="item">
+        <p class="name">Visits</p>
+        <img class="logo" src="./common/img/svg/visits-logo.svg" width="20" height="21" alt="logo">
+        <p class="count visits__count" id="visitsTemplate"></p>
       </div>
-    </section>
+      <div class="item">
+        <p class="name">Bonuses</p>
+        <img class="logo" src="./common/img/svg/bonuses-logo.svg" width="20" height="21" alt="logo">
+        <p class="count">1240</p>
+      </div>
+      <div class="item">
+        <p class="name">Books</p>
+        <img class="logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
+        <p class="count books__count"></p>
+      </div>
+    </template>
+
+    <button class="arrow__up"></button>
   </main>
   <!-- libraryCard section -->
 
@@ -338,21 +306,21 @@
   <!-- footer -->
 
   <!-- my profile modal -->
-  <div class="my__profile">
+  <div class="my__profile modal">
     <div class="id">
       <div class="initials"></div>
       <div class="name my__profile__name"></div>
     </div>
     <div class="info">
       <div class="profile__title">My profile</div>
-      <div class="close my__profile__close">
+      <div class="close" data-close="myProfileModal">
         <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
       </div>
       <div class="items">
         <div class="item">
           <p class="name item__name">Visits</p>
           <img class="logo" src="./common/img/svg/visits-logo.svg" width="20" height="21" alt="logo">
-          <p class="count">23</p>
+          <p class="count visits__count"></p>
         </div>
         <div class="item">
           <p class="name item__name">Bonuses</p>
@@ -362,7 +330,7 @@
         <div class="item item__name">
           <p class="name">Books</p>
           <img class="logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
-          <p class="count">2</p>
+          <p class="count"></p>
         </div>
       </div>
       <p class="rented">Rented books</p>
@@ -380,9 +348,9 @@
   <!-- my profile modal -->
 
   <!-- login modal -->
-  <form action="#" class="login__modal">
+  <form action="#" class="login__modal modal">
     <p class="login__title">Login</p>
-    <div class="close login__close">
+    <div class="close" data-close="logInModal">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="login__label">
@@ -405,9 +373,9 @@
   <!-- login modal -->
 
   <!-- register modal -->
-  <form action="#" class="register__modal">
+  <form action="#" class="register__modal modal">
     <p class="login__title">Register</p>
-    <div class="close register__close">
+    <div class="close" data-close="registerModal">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
     </div>
     <label class="regist__label">
@@ -440,42 +408,49 @@
   <!-- register modal -->
 
   <!-- buy a library card modal -->
-  <div class="buy__modal">
+  <div class="buy__modal modal">
     <div class="buy__title">Buy a library card</div>
-    <div class="close buy__modal__close">
+    <div class="close" data-close="buyLibraryCardModal">
       <img class="close__logo" src="./common/img/svg/close-btn-white.svg" alt="close">
     </div>
     <div class="modal__wrapper">
       <div class="inputs">
         <label class="label">
           <span class="name">Bank card number</span>
-          <input type="text" class="input">
+          <input type="number" class="buy__input" data-input="number">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Expiration code</span>
-          <input type="text" class="input code">
+          <input type="number" class="buy__input code" data-input="code__month">
+          <div class="error"></div>
         </label>
         <label class="label">
-          <input type="text" class="input code">
+          <input type="number" class="buy__input code" data-input="code__year">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">CVC</span>
-          <input type="text" class="input code last__input">
+          <input type="number" s class="buy__input code last__input" data-input="cvc">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Cardholder name</span>
-          <input type="text" class="input">
+          <input type="text" class="buy__input" data-input="name">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Postal code</span>
-          <input type="text" class="input">
+          <input type="text" class="buy__input" data-input="postal">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">City / Town</span>
-          <input type="text" class="input last__input">
+          <input type="text" class="buy__input last__input" data-input="city">
+          <div class="error"></div>
         </label>
         <div class="buy__cost">
-          <button class="button">Buy</button>
+          <button class="button buy__modal__btn" disabled>Buy</button>
           <span class="cost">$ 25.00</span>
         </div>
       </div>

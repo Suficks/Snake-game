@@ -3,13 +3,16 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateY(300%);
 
   padding: 20px 25px;
   box-sizing: border-box;
 
   background-color: $color-white;
 
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
   z-index: 3;
 
   .close {
@@ -95,8 +98,4 @@
 
     cursor: pointer;
   }
-}
-
-.modal__active {
-  transform: translate(-50%, -50%);
 }

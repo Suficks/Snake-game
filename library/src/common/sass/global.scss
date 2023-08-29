@@ -53,7 +53,7 @@ html {
 
   cursor: pointer;
 
-  &:not([disabled]):hover {
+  &:hover {
     border: 1px solid $color-brown;
     background-color: $color-brown;
   }
@@ -106,4 +106,33 @@ html {
   margin: 0 0 5px;
   color: red;
   @include inter (9px, 400, 10px);
+}
+
+.modal.modal__active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.arrow__up {
+  display: block;
+  background-image: url('./common/img/png/arrow__up.png');
+  background-size: 50px;
+  background-color: transparent;
+
+  position: sticky;
+  bottom: 0;
+  margin-left: auto;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 1;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }

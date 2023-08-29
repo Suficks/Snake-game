@@ -5,7 +5,10 @@
 
   display: flex;
 
-  transform: translateY(300%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
 
   z-index: 3;
 
@@ -136,8 +139,4 @@
   .copy {
     cursor: pointer;
   }
-}
-
-.modal__active {
-  transform: translate(-50%, -50%);
 }
