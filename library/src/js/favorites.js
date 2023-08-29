@@ -33,6 +33,8 @@ const seasonChange = () => {
 
 seasonChange()
 
+const booksCache = {}
+
 const renderSeasonCards = (season = 'winter') => {
   const cardContainer = document.querySelector('.season')
   let cards = ''
@@ -51,7 +53,14 @@ const renderSeasonCards = (season = 'winter') => {
         <button class="button buy__button" data-id="${id}">Buy</button>
       </div>
     `
+    // if (id === )
     cards += cardTemplate
+
+    const book = {
+      title,
+      author,
+    }
+    booksCache[id] = book
   })
 
   setTimeout(() => {
@@ -73,10 +82,11 @@ function openLibraryCardModal(item) {
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      console.log(item)
       if (isAuth) {
         const { hasLibraryCard } = getLocalStorageData('currentUser')
         if (hasLibraryCard) {
+          let id = button.getAttribute('data-id')
+          addBooksToLocalStorage(id)
           button.innerHTML = 'Own'
           button.classList.add('own__button')
         }
@@ -100,3 +110,17 @@ function buyLibraryCard() {
 }
 
 buyCard.addEventListener('click', buyLibraryCard)
+
+function addBooksToLocalStorage(id) {
+  const currentUser = getLocalStorageData('currentUser')
+  currentUser.books[id] = booksCache[id]
+  setLocalStorageData(currentUser, 'currentUser')
+
+  const users = getLocalStorageData('users')
+  const userMatch = users.find(item => currentUser.email === item.email)
+  userMatch.books[id] = booksCache[id]
+  setLocalStorageData(users, 'users')
+
+
+  console.log(currentUser.books.id)
+}

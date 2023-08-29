@@ -32,7 +32,7 @@ const setUser = () => {
   })
   user.cardNumber = readersCodeGeneration()
   user.visitsCount = 1
-  user.books = []
+  user.books = {}
   user.hasLibraryCard = false
 }
 
