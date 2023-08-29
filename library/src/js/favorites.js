@@ -21,6 +21,8 @@ const seasons = {
 }
 
 const seasonRadio = document.querySelectorAll('.radio')
+const currentUser = getLocalStorageData('currentUser')
+const users = getLocalStorageData('users')
 
 const seasonChange = () => {
   seasonRadio.forEach(item => {
@@ -53,14 +55,13 @@ const renderSeasonCards = (season = 'winter') => {
         <button class="button buy__button" data-id="${id}">Buy</button>
       </div>
     `
-    // if (id === )
-    cards += cardTemplate
-
     const book = {
       title,
       author,
     }
     booksCache[id] = book
+
+    cards += cardTemplate
   })
 
   setTimeout(() => {
@@ -77,15 +78,21 @@ const buyLibraryCardModal = document.querySelector('.buy__modal')
 const buyCard = document.querySelector('.buy__modal__btn')
 const logInModal = document.querySelector('.login__modal')
 
-function openLibraryCardModal(item) {
+function openLibraryCardModal() {
   const buttons = document.querySelectorAll('.buy__button')
+  const booksId = Object.keys(currentUser.books)
 
   buttons.forEach(button => {
+    const id = button.getAttribute('data-id')
+
+    if (booksId.includes(id)) {
+      button.innerHTML = 'Own'
+      button.classList.add('own__button')
+    }
     button.addEventListener('click', () => {
       if (isAuth) {
         const { hasLibraryCard } = getLocalStorageData('currentUser')
         if (hasLibraryCard) {
-          let id = button.getAttribute('data-id')
           addBooksToLocalStorage(id)
           button.innerHTML = 'Own'
           button.classList.add('own__button')
@@ -96,12 +103,12 @@ function openLibraryCardModal(item) {
   })
 }
 
+openLibraryCardModal()
+
 function buyLibraryCard() {
-  const currentUser = getLocalStorageData('currentUser')
   currentUser.hasLibraryCard = true
   setLocalStorageData(currentUser, 'currentUser')
 
-  const users = getLocalStorageData('users')
   const userMatch = users.find(item => currentUser.email === item.email)
   userMatch.hasLibraryCard = true
   setLocalStorageData(users, 'users')
@@ -112,15 +119,10 @@ function buyLibraryCard() {
 buyCard.addEventListener('click', buyLibraryCard)
 
 function addBooksToLocalStorage(id) {
-  const currentUser = getLocalStorageData('currentUser')
   currentUser.books[id] = booksCache[id]
   setLocalStorageData(currentUser, 'currentUser')
 
-  const users = getLocalStorageData('users')
   const userMatch = users.find(item => currentUser.email === item.email)
   userMatch.books[id] = booksCache[id]
   setLocalStorageData(users, 'users')
-
-
-  console.log(currentUser.books.id)
 }
