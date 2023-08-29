@@ -67,7 +67,9 @@ function libraryCardCheck(checkBtn) {
       itemsContainer.innerHTML = ''
       itemsContainer.append(template.content.cloneNode(true))
       const visitsCount = document.getElementById('visitsTemplate')
+      const booksCount = document.getElementById('booksTemplate')
       visitsCount.innerHTML = userMatch.visitsCount
+      booksCount.innerHTML = Object.keys(userMatch.books).length
 
       setTimeout(() => {
         itemsContainer.innerHTML = checkBtn

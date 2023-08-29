@@ -6,7 +6,7 @@ import {
   resetInputValue,
 } from './main.js'
 
-import { visitsCountShow } from './login.js'
+import { visitsAndBooksCountShow } from './login.js'
 
 const MIN_PASSWORD_LENGTH = 8
 const MIN_BANK_CARD_LENGTH = 16
@@ -203,7 +203,7 @@ const registration = () => {
     resetInputValue(registrInputs)
     readersCodeGeneration()
     checkUserAuth()
-    visitsCountShow()
+    visitsAndBooksCountShow()
   }
 }
 

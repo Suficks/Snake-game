@@ -64,16 +64,22 @@ const visitsCounter = () => {
   setLocalStorageData(users, 'users')
 }
 
-export const visitsCountShow = () => {
+export const visitsAndBooksCountShow = () => {
   const visitsCount = document.querySelectorAll('.visits__count')
+  const booksCount = document.querySelectorAll('.books__count')
   const currentUser = getLocalStorageData('currentUser')
 
   visitsCount.forEach(item => {
     item.innerHTML = currentUser?.visitsCount
   })
+  booksCount.forEach(item => {
+    if (currentUser) {
+      item.innerHTML = Object.keys(currentUser.books).length
+    }
+  })
 }
 
-visitsCountShow()
+visitsAndBooksCountShow()
 
 loginSubmitBtn.addEventListener('click', (e) => {
   e.preventDefault()
@@ -82,6 +88,6 @@ loginSubmitBtn.addEventListener('click', (e) => {
     resetInputValue(loginInputs)
     checkUserAuth()
     visitsCounter()
-    visitsCountShow()
+    visitsAndBooksCountShow()
   }
 })
