@@ -59,8 +59,8 @@ const visitsCounter = () => {
   currentUser.visitsCount += 1
   setLocalStorageData(currentUser, 'currentUser')
 
-  const userMatch = users.find(item => currentUser.email === item.email)
-  userMatch.visitsCount += 1
+  const userIndex = users.findIndex(item => currentUser.email === item.email)
+  users[userIndex].visitsCount += 1
   setLocalStorageData(users, 'users')
 }
 
@@ -79,8 +79,6 @@ export const visitsAndBooksCountShow = () => {
   })
 }
 
-visitsAndBooksCountShow()
-
 loginSubmitBtn.addEventListener('click', (e) => {
   e.preventDefault()
   if (isUserDataMatch()) {
@@ -88,6 +86,5 @@ loginSubmitBtn.addEventListener('click', (e) => {
     resetInputValue(loginInputs)
     checkUserAuth()
     visitsCounter()
-    visitsAndBooksCountShow()
   }
 })

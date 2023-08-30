@@ -6,12 +6,11 @@ import {
   resetInputValue,
 } from './main.js'
 
-import { visitsAndBooksCountShow } from './login.js'
-
 const MIN_PASSWORD_LENGTH = 8
 const MIN_BANK_CARD_LENGTH = 16
 const MAX_EXP_CODE_LENGTH = 2
 const MAX_CVC_LENGTH = 3
+const EMAIL_REGEXP = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 
 const registrInputs = document.querySelectorAll('.registr__input')
 const registerModal = document.querySelector('.register__modal')
@@ -74,6 +73,7 @@ const emptyFieldText = {
   email: 'Fill E-mail',
   password: 'Fill Password',
   emailOrReader: 'Fill E-mail or readers card',
+  wrongEmail: 'Invalid email address',
   incorrectPasswordLength: 'Minimum number of characters 8',
   number: 'Fill Bank card number',
   code__month: 'Fill Expiration code',
@@ -92,6 +92,13 @@ const emptyCheck = (item, inputName) => {
       if (item.value.length < MIN_PASSWORD_LENGTH) {
         error.innerHTML = emptyFieldText.incorrectPasswordLength
       } else error.innerHTML = ''
+      break
+    case 'email':
+      if (!item.value.match(EMAIL_REGEXP)) {
+        error.innerHTML = emptyFieldText.wrongEmail
+      } else {
+        error.innerHTML = ''
+      }
       break
     case 'number':
       if (item.value.length < MIN_BANK_CARD_LENGTH) {
@@ -134,9 +141,15 @@ const isAllFieldsFill = (inputs, button) => {
     const isInputCodeMonth = inputName === 'code__month'
     const isInputCodeYear = inputName === 'code__year'
     const isInputCVC = inputName === 'cvc'
+    const isInputEmail = inputName === 'email'
 
     if (isInputBankCardNumber) {
       if (item.value.length < MIN_BANK_CARD_LENGTH) hasEmptyFields.add(inputName)
+      else hasEmptyFields.delete(inputName)
+      return
+    }
+    if (isInputEmail) {
+      if (!item.value.match(EMAIL_REGEXP)) hasEmptyFields.add(inputName)
       else hasEmptyFields.delete(inputName)
       return
     }
@@ -203,7 +216,6 @@ const registration = () => {
     resetInputValue(registrInputs)
     readersCodeGeneration()
     checkUserAuth()
-    visitsAndBooksCountShow()
   }
 }
 

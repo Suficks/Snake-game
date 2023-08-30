@@ -1,4 +1,4 @@
-import { isAuth, localStorageData } from './main.js'
+import { isAuth, getLocalStorageData } from './main.js'
 
 const template = document.getElementById('cardTemplate')
 const itemsContainer = document.querySelector('.check__books')
@@ -60,7 +60,9 @@ function libraryCardCheck(checkBtn) {
 
   checkBtnAfterRender.addEventListener('click', (e) => {
     e.preventDefault()
-    let userMatch = localStorageData?.find(user => (user.firstName + ' ' + user.lastName) === inputName.value
+
+    const users = getLocalStorageData('users')
+    const userMatch = users?.find(user => (user.firstName + ' ' + user.lastName) === inputName.value
       && user.cardNumber === inputCardNumber.value)
 
     if (userMatch !== undefined) {

@@ -2,6 +2,8 @@ import { authModalRender } from './authModal.js'
 import { changeLogo } from './changeLogo.js'
 import { libraryCardRender } from './libraryCard.js'
 import { myProfileRender } from './profileModal.js'
+import { renderSeasonCards } from './favorites.js'
+import { visitsAndBooksCountShow } from './login.js'
 
 const modals = document.querySelectorAll('.modal')
 const registerModal = document.querySelector('.register__modal')
@@ -21,6 +23,8 @@ const initRender = (userData) => {
   libraryCardRender(userData)
   authModalRender(userData)
   myProfileRender(userData)
+  renderSeasonCards()
+  visitsAndBooksCountShow()
 }
 
 // Получение и запись данных в localStorage

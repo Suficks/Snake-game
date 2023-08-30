@@ -13,6 +13,8 @@ import {
   autumn
 } from './seasonsData.js'
 
+import { visitsAndBooksCountShow } from './login.js'
+
 const seasons = {
   winter,
   spring,
@@ -21,8 +23,6 @@ const seasons = {
 }
 
 const seasonRadio = document.querySelectorAll('.radio')
-const currentUser = getLocalStorageData('currentUser')
-const users = getLocalStorageData('users')
 
 const seasonChange = () => {
   seasonRadio.forEach(item => {
@@ -37,7 +37,7 @@ seasonChange()
 
 const booksCache = {}
 
-const renderSeasonCards = (season = 'winter') => {
+export const renderSeasonCards = (season = 'winter') => {
   const cardContainer = document.querySelector('.season')
   let cards = ''
 
@@ -72,7 +72,7 @@ const renderSeasonCards = (season = 'winter') => {
   }, 500)
 }
 
-renderSeasonCards()
+// renderSeasonCards()
 
 const buyLibraryCardModal = document.querySelector('.buy__modal')
 const buyCard = document.querySelector('.buy__modal__btn')
@@ -80,20 +80,28 @@ const logInModal = document.querySelector('.login__modal')
 
 function openLibraryCardModal() {
   const buttons = document.querySelectorAll('.buy__button')
-  const booksId = Object.keys(currentUser.books)
 
   buttons.forEach(button => {
+    const currentUser = getLocalStorageData('currentUser')
     const id = button.getAttribute('data-id')
 
-    if (booksId.includes(id)) {
-      button.innerHTML = 'Own'
-      button.classList.add('own__button')
+    if (currentUser) {
+      const booksId = Object.keys(currentUser.books)
+      if (booksId.includes(id)) {
+        button.innerHTML = 'Own'
+        button.classList.add('own__button')
+      }
+    } else {
+      button.innerHTML = 'Buy'
+      button.classList.remove('own__button')
     }
+
     button.addEventListener('click', () => {
       if (isAuth) {
         const { hasLibraryCard } = getLocalStorageData('currentUser')
         if (hasLibraryCard) {
           addBooksToLocalStorage(id)
+          visitsAndBooksCountShow()
           button.innerHTML = 'Own'
           button.classList.add('own__button')
         }
@@ -103,14 +111,19 @@ function openLibraryCardModal() {
   })
 }
 
-openLibraryCardModal()
+// openLibraryCardModal()
+
+// Функция добавления libraryCard в localStorage
 
 function buyLibraryCard() {
+  const currentUser = getLocalStorageData('currentUser')
+  const users = getLocalStorageData('users')
+
   currentUser.hasLibraryCard = true
   setLocalStorageData(currentUser, 'currentUser')
 
-  const userMatch = users.find(item => currentUser.email === item.email)
-  userMatch.hasLibraryCard = true
+  const userIndex = users.findIndex(item => currentUser.email === item.email)
+  users[userIndex].hasLibraryCard = true
   setLocalStorageData(users, 'users')
 
   modalClose(buyLibraryCardModal)
@@ -118,11 +131,39 @@ function buyLibraryCard() {
 
 buyCard.addEventListener('click', buyLibraryCard)
 
+// Функция добавления книг в localStorage
+
 function addBooksToLocalStorage(id) {
+  const currentUser = getLocalStorageData('currentUser')
+  const users = getLocalStorageData('users')
+
   currentUser.books[id] = booksCache[id]
   setLocalStorageData(currentUser, 'currentUser')
 
-  const userMatch = users.find(item => currentUser.email === item.email)
-  userMatch.books[id] = booksCache[id]
+  const userIndex = users.findIndex(item => currentUser.email === item.email)
+  users[userIndex].books[id] = booksCache[id]
   setLocalStorageData(users, 'users')
 }
+
+// Функция проверки покупки книг и смены кнопки Buy
+
+// export const booksCheck = () => {
+//   const buttons = document.querySelectorAll('.buy__button')
+//   const currentUser = getLocalStorageData('currentUser')
+
+//   buttons.forEach(button => {
+//     const id = button.getAttribute('data-id')
+//     if (currentUser) {
+//       const booksId = Object.keys(currentUser.books)
+//       if (booksId.includes(id)) {
+//         button.innerHTML = 'Own'
+//         button.classList.add('own__button')
+//       } else {
+//         button.innerHTML = 'Buy'
+//         button.classList.remove('own__button')
+//       }
+//     }
+//   })
+// }
+
+// booksCheck()
