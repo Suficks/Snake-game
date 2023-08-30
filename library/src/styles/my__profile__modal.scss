@@ -15,7 +15,6 @@
   .id {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     width: 170px;
@@ -23,7 +22,7 @@
   }
 
   .initials {
-    margin: 0 0 15px;
+    margin: 139px 0 15px;
     padding: 30px 27px;
 
     background-color: $color-white;
@@ -34,7 +33,6 @@
 
   .name {
     margin: 0;
-    padding: 5px;
 
     background-color: $color-white;
 
@@ -43,6 +41,8 @@
   }
 
   .my__profile__name {
+    padding: 5px;
+
     max-width: 156px;
     box-sizing: border-box;
   }
@@ -52,7 +52,7 @@
 
     width: 430px;
 
-    padding: 30px 20px 40px;
+    padding: 30px 30px 39px 20px;
     box-sizing: border-box;
     background-color: $color-white;
   }
@@ -102,6 +102,13 @@
 
   .list {
     margin: 0 0 40px;
+    padding-left: 31px;
+    height: 52px;
+    overflow-y: hidden;
+  }
+
+  .list__scroll__show {
+    overflow-y: auto;
   }
 
   .books__item {
@@ -109,6 +116,8 @@
 
     @include inter (20px, 400, 20px);
     letter-spacing: 2px;
+
+    text-transform: capitalize;
 
     &:last-child {
       margin: 0;
@@ -138,5 +147,9 @@
 
   .copy {
     cursor: pointer;
+  }
+
+  .close {
+    top: 24px;
   }
 }

@@ -2,7 +2,7 @@ import { authModalRender } from './authModal.js'
 import { changeLogo } from './changeLogo.js'
 import { libraryCardRender } from './libraryCard.js'
 import { myProfileRender } from './profileModal.js'
-import { renderSeasonCards } from './favorites.js'
+import { renderSeasonCards, addBooksToMyProfile } from './favorites.js'
 import { visitsAndBooksCountShow } from './login.js'
 
 const modals = document.querySelectorAll('.modal')
@@ -25,6 +25,7 @@ const initRender = (userData) => {
   myProfileRender(userData)
   renderSeasonCards()
   visitsAndBooksCountShow()
+  addBooksToMyProfile()
 }
 
 // Получение и запись данных в localStorage
@@ -164,3 +165,14 @@ window.addEventListener('scroll', () => {
   if (scrollY < document.documentElement.clientWidth) arrowUp.style.display = 'none'
   else arrowUp.style.display = 'block'
 })
+
+// Функция для прокрутки книг в MyProfile 
+
+export const toggleScroll = () => {
+  const list = document.querySelector('.rentedBooksList')
+  if (list.scrollHeight > list.clientHeight) {
+    list.classList.add('list__scroll__show')
+  } else list.classList.remove('list__scroll__show')
+}
+
+toggleScroll()

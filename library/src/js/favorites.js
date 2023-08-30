@@ -3,7 +3,8 @@ import {
   modalOpen,
   modalClose,
   getLocalStorageData,
-  setLocalStorageData
+  setLocalStorageData,
+  toggleScroll
 } from './main.js'
 
 import {
@@ -49,7 +50,7 @@ export const renderSeasonCards = (season = 'winter') => {
       <div class="card">
         <p class="card__title">Staff Picks</p>
         <p class="book__title">${title}</p>
-        <p class="author">${author}</p>
+        <p class="author">By ${author}</p>
         <p class="description">${description}</p>
         <img class="pic" src=${imgSrc}>
         <button class="button buy__button" data-id="${id}">Buy</button>
@@ -71,8 +72,6 @@ export const renderSeasonCards = (season = 'winter') => {
     cardContainer.classList.add('season__change')
   }, 500)
 }
-
-// renderSeasonCards()
 
 const buyLibraryCardModal = document.querySelector('.buy__modal')
 const buyCard = document.querySelector('.buy__modal__btn')
@@ -101,7 +100,9 @@ function openLibraryCardModal() {
         const { hasLibraryCard } = getLocalStorageData('currentUser')
         if (hasLibraryCard) {
           addBooksToLocalStorage(id)
+          addBooksToMyProfile()
           visitsAndBooksCountShow()
+          toggleScroll()
           button.innerHTML = 'Own'
           button.classList.add('own__button')
         }
@@ -110,8 +111,6 @@ function openLibraryCardModal() {
     })
   })
 }
-
-// openLibraryCardModal()
 
 // Функция добавления libraryCard в localStorage
 
@@ -145,25 +144,21 @@ function addBooksToLocalStorage(id) {
   setLocalStorageData(users, 'users')
 }
 
-// Функция проверки покупки книг и смены кнопки Buy
+// Функция добавления книг в MyProfile
 
-// export const booksCheck = () => {
-//   const buttons = document.querySelectorAll('.buy__button')
-//   const currentUser = getLocalStorageData('currentUser')
+export function addBooksToMyProfile() {
+  const booksContainer = document.querySelector('.rentedBooksList')
+  const currentUser = getLocalStorageData('currentUser')
 
-//   buttons.forEach(button => {
-//     const id = button.getAttribute('data-id')
-//     if (currentUser) {
-//       const booksId = Object.keys(currentUser.books)
-//       if (booksId.includes(id)) {
-//         button.innerHTML = 'Own'
-//         button.classList.add('own__button')
-//       } else {
-//         button.innerHTML = 'Buy'
-//         button.classList.remove('own__button')
-//       }
-//     }
-//   })
-// }
+  if (currentUser) {
+    const booksObj = currentUser.books
+    booksContainer.innerHTML = ''
 
-// booksCheck()
+    for (let key in booksObj) {
+      const title = booksObj[key].title
+      const author = booksObj[key].author
+      const bookItem = `<li class="books__item">${title}, ${author}</li>`
+      booksContainer.insertAdjacentHTML('beforeend', bookItem)
+    }
+  }
+}

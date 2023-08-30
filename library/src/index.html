@@ -260,7 +260,7 @@
       <div class="item">
         <p class="name">Books</p>
         <img class="logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
-        <p class="count books__count"></p>
+        <p class="count books__count" id="booksTemplate"></p>
       </div>
     </template>
 
@@ -330,14 +330,11 @@
         <div class="item item__name">
           <p class="name">Books</p>
           <img class="logo" src="./common/img/svg/books-logo.svg" width="20" height="21" alt="logo">
-          <p class="count"></p>
+          <p class="count books__count"></p>
         </div>
       </div>
       <p class="rented">Rented books</p>
-      <ul class="list">
-        <li class="books__item">The Last Queen, Clive Irving</li>
-        <li class="books__item">Dominicana, Angie Cruz</li>
-      </ul>
+      <ul class="list rentedBooksList"></ul>
       <div class="card">
         <p class="headline">Card number</p>
         <p class="card__number"></p>
@@ -373,7 +370,7 @@
   <!-- login modal -->
 
   <!-- register modal -->
-  <form action="#" class="register__modal modal">
+  <form class="register__modal modal">
     <p class="login__title">Register</p>
     <div class="close" data-close="registerModal">
       <img class="close__logo" src="./common/img/svg/close-btn.svg" alt="close">
