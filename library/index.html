@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="assets/favicon-32x32.png">
   <title>Library</title>
-<script defer src="index.e88682aefa7e14cfe33e.js"></script><link href="index.1ef0f929956724fbd959.css" rel="stylesheet"></head>
+<script defer src="index.69dfa59dd7884f44198b.js"></script><link href="index.d700732bfe069f46b629.css" rel="stylesheet"></head>
 
 <body>
   <!-- header -->
@@ -48,18 +48,12 @@
         </div>
         <!-- burger menu -->
 
-        <!-- profile modals -->
-        <div class="profile__modal">
+        <!-- profile modal -->
+        <div class="auth__modal modal">
           <p class="title">Profile</p>
-          <p class="info">Log In</p>
-          <p class="info">Register</p>
+          <div class="buttons__wrapper"></div>
         </div>
-        <div class="profile__modal">
-          <p class="title">Profile</p>
-          <p class="info">My profile</p>
-          <p class="info">Log Out</p>
-        </div>
-        <!-- profile modals -->
+        <!-- profile modal -->
 
       </div>
     </div>
@@ -85,12 +79,15 @@
         <p class="subtitle">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee
           shop inside </p>
         <div class="slider">
-          <img class="pic" src="assets/slider_pic_1.jpg" alt="slider">
-          <img class="pic" src="assets/slider_pic_2.jpg" alt="slider">
-          <img class="pic" src="assets/slider_pic_3.jpg" alt="slider">
-          <img class="pic" src="assets/slider_pic_4.jpg" alt="slider">
-          <img class="pic" src="assets/slider_pic_5.jpg" alt="slider">
+          <div class="slider__track">
+            <img class="pic" src="assets/slider_pic_1.jpg" alt="slider">
+            <img class="pic" src="assets/slider_pic_2.jpg" alt="slider">
+            <img class="pic" src="assets/slider_pic_3.jpg" alt="slider">
+            <img class="pic" src="assets/slider_pic_4.jpg" alt="slider">
+            <img class="pic" src="assets/slider_pic_5.jpg" alt="slider">
+          </div>
         </div>
+        <div class="slider__buttons"></div>
         <span class="prev"></span>
         <span class="next"></span>
       </div>
@@ -104,193 +101,30 @@
         <div class="filter">
           <p class="subtitle">Pick favorites of season</p>
           <div class="labels">
-            <label class="label">
-              <input checked class="radio" type="radio" name="season">
+            <label class="season__label">
+              <input checked class="radio" type="radio" data-season="winter" name="season">
               <span class="fake"></span>
               <span class="name">Winter</span>
             </label>
-            <label class="label">
-              <input class="radio" type="radio" name="season">
+            <label class="season__label">
+              <input class="radio" type="radio" data-season="spring" name="season">
               <span class="fake"></span>
               <span class="name">Spring</span>
             </label>
-            <label class="label">
-              <input class="radio" type="radio" name="season">
+            <label class="season__label">
+              <input class="radio" type="radio" data-season="summer" name="season">
               <span class="fake"></span>
               <span class="name">Summer</span>
             </label>
-            <label class="label">
-              <input class="radio" type="radio" name="season">
+            <label class="season__label">
+              <input class="radio" type="radio" data-season="autumn" name="season">
               <span class="fake"></span>
               <span class="name">Autumn</span>
             </label>
           </div>
         </div>
         <div class="cards">
-          <div class="winter">
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">The Book Eaters</p>
-              <p class="author">By Sunyi Dean</p>
-              <p class="description">An unusual sci-fi story about a book eater woman who tries desperately to
-                save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family
-                values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.</p>
-              <img class="pic" src="assets/winter_book_1.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Cackle</p>
-              <p class="author">By Rachel Harrison</p>
-              <p class="description">Are your Halloween movies of choice The Witches of Eastwick and Practical
-                Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in
-                upstate New York and befriends a beautiful witch.</p>
-              <img class="pic" src="assets/winter_book_3.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Dante: Poet of the Secular World</p>
-              <p class="author">By Erich Auerbach</p>
-              <p class="description">Auerbach's engaging book places the 'Comedy' within the tradition of epic,
-                tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual
-                and his drama of soul into something of divine significance—an inspired introduction to Dante's main
-                themes.</p>
-              <img class="pic" src="assets/winter_book_2.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">The Last Queen</p>
-              <p class="author">By Clive Irving</p>
-              <p class="description">A timely and revelatory new biography of Queen Elizabeth (and her family)
-                exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-              <img class="pic" src="assets/winter_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
-            </div>
-          </div>
-          <div class="spring">
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">The body</p>
-              <p class="author">By Stephen King</p>
-              <p class="description">Powerful novel that takes you back to a nostalgic time, exploring both the
-                beauty and danger and loss of innocence that is youth.</p>
-              <img class="pic" src="assets/spring_book_1.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Carry: A Memoir of Survival on Stolen Land</p>
-              <p class="author">By Toni Jenson</p>
-              <p class="description">This memoir about the author's relationship with gun violence feels both
-                expansive and intimate, resulting in a lyrical indictment of the way things are.</p>
-              <img class="pic" src="assets/spring_book_3.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Days of Distraction</p>
-              <p class="author">By Alexandra Chang</p>
-              <p class="description">A sardonic view of Silicon Valley culture, a meditation on race, and a
-                journal of displacement and belonging, all in one form-defying package of spare prose.</p>
-              <img class="pic" src="assets/spring_book_2.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Dominicana</p>
-              <p class="author">By Angie Cruz</p>
-              <p class="description">A timely and revelatory new biography of Queen Elizabeth (and her family)
-                exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-              <img class="pic" src="assets/spring_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
-            </div>
-          </div>
-          <div class="summer">
-            <div class="card ">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Crude: A Memoir</p>
-              <p class="author"> By Pablo Fajardo & ​​Sophie Tardy-Joubert</p>
-              <p class="description">Drawing and color by Damien Roudeau | This book illustrates the struggles
-                of a group of indigenous Ecuadoreans as they try to sue the ChevronTexaco company for damage their oil
-                fields did to the Amazon and her people</p>
-              <img class="pic" src="assets/summer_book_1.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Let My People Go Surfing</p>
-              <p class="author">By Yvon Chouinard</p>
-              <p class="description">Chouinard—climber, businessman, environmentalist—shares tales of courage
-                and persistence from his experience of founding and leading Patagonia, Inc. Full title: Let My People
-                Go Surfing: The Education of a Reluctant Businessman, Including 10 More Years of Business Unusual.</p>
-              <img class="pic" src="assets/summer_book_3.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">The Octopus Museum: Poems</p>
-              <p class="author">By Brenda Shaughnessy</p>
-              <p class="description">This collection of bold and scathingly beautiful feminist poems imagines
-                what comes after our current age of environmental destruction, racism, sexism, and divisive politics.
-              </p>
-              <img class="pic" src="assets/summer_book_2.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Shark Dialogues: A Novel</p>
-              <p class="author">By Kiana Davenport</p>
-              <p class="description">An epic saga of seven generations of one family encompasses the tumultuous
-                history of Hawaii as a Hawaiian woman gathers her four granddaughters together in an erotic tale of
-                villains and dreamers, queens and revolutionaries, lepers and healers.</p>
-              <img class="pic" src="assets/summer_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
-            </div>
-          </div>
-          <div class="autumn">
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Casual Conversation</p>
-              <p class="author"> By Renia White</p>
-              <p class="description">White's impressive debut collection takes readers through and beyond the
-                concepts of conversation and the casual - both what we say to each other and what we don't, examining
-                the possibilities around how we construct and communicate identity. </p>
-              <img class="pic" src="assets/spring_book_1.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">The Great Fire</p>
-              <p class="author">By Lou Ureneck</p>
-              <p class="description">The harrowing story of an ordinary American and a principled Naval officer
-                who, horrified by the burning of Smyrna, led an extraordinary rescue effort that saved a quarter of a
-                million refugees from the Armenian Genocide.</p>
-              <img class="pic" src="assets/spring_book_3.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Rickey: The Life and Legend</p>
-              <p class="author">By Howard Bryant</p>
-              <p class="description">With the fall rolling around, one can't help but think of baseball's
-                postseason coming up! And what better way to prepare for it than reading the biography of one of the
-                game's all-time greatest performers, the Man of Steal, Rickey Henderson?</p>
-              <img class="pic" src="assets/spring_book_2.jpg" alt="book__pic">
-              <button class="button">Buy</button>
-            </div>
-            <div class="card">
-              <p class="card__title">Staff Picks</p>
-              <p class="book__title">Slug: And Other Stories</p>
-              <p class="author">By Megan Milks</p>
-              <p class="description">Exes Tegan and Sara find themselves chained together by hairballs of
-                codependency. A father and child experience the shared trauma of giving birth to gods from their
-                wounds.</p>
-              <img class="pic" src="assets/spring_book_4.jpg" alt="book__pic">
-              <button class="button own__button" disabled>Own</button>
-            </div>
-          </div>
+          <div class="season"></div>
         </div>
       </div>
     </section>
@@ -375,7 +209,7 @@
             <p class="number">Putterham Library: <a href="tel:(617)-730-2370">(617) 730-2385</a></p>
             <p class="subtitle">Senior Staff</p>
             <p class="number">Library Director:
-              <a class="email" href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a>
+              <a class="contacts__email" href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a>
             </p>
           </div>
           <div class="map"><iframe
@@ -393,70 +227,44 @@
         <h2 class="title">Digital Library Cards</h2>
         <div class="card__wrapper">
           <div class="find">
-            <p class="sibtitle">Find your Library card</p>
-            <form class="form">
+            <p class="sibtitle card__subtitle"></p>
+            <form action="#" class="form">
               <div class="info">
                 <p class="library">Brooklyn Public Library</p>
-                <input class="input" type="text" placeholder="Reader's name">
-                <input class="input" type="text" placeholder="Card number">
+                <input class="input input__name" type="text" placeholder="Reader's name">
+                <input class="input input__cardNumber" type="text" placeholder="Card number">
               </div>
-              <button class="button">Check the card</button>
+              <div class="items check__books"></div>
             </form>
           </div>
           <div class="get">
-            <p class="get__sibtitle">Get a reader card</p>
-            <p class="get__info">You will be able to see a reader card after logging into account or you can register a
-              new account
-            </p>
-            <div class="button__wrap">
-              <button class="button">Sign Up</button>
-              <button class="button second__button">Log in</button>
-            </div>
+            <p class="get__sibtitle"></p>
+            <p class="get__info"></p>
+            <div class="button__wrap"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="libraryCard after">
-      <div class="wrapper">
-        <h2 class="title">Digital Library Cards</h2>
-        <div class="card__wrapper after">
-          <div class="find">
-            <p class="sibtitle">Your Library card</p>
-            <div class="form">
-              <div class="info">
-                <p class="library">Brooklyn Public Library</p>
-                <input class="input" type="text" placeholder="John Doe">
-                <input class="input" type="text" placeholder="F00234030">
-              </div>
-              <div class="items">
-                <div class="item">
-                  <p class="name">Visits</p>
-                  <img class="logo" src="assets/visits-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">23</p>
-                </div>
-                <div class="item">
-                  <p class="name">Bonuses</p>
-                  <img class="logo" src="assets/bonuses-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">1240</p>
-                </div>
-                <div class="item">
-                  <p class="name">Books</p>
-                  <img class="logo" src="assets/books-logo.svg" width="20" height="21" alt="logo">
-                  <p class="count">2</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="get">
-            <p class="get__sibtitle">Visit your profile</p>
-            <p class="get__info">With a digital library card you get free access to the Library’s wide array of digital
-              resources including e-books, databases, educational resources, and more.</p>
-            <button class="button">Profile</button>
-          </div>
-        </div>
+    <template id="cardTemplate">
+      <div class="item">
+        <p class="name">Visits</p>
+        <img class="logo" src="assets/visits-logo.svg" width="20" height="21" alt="logo">
+        <p class="count visits__count" id="visitsTemplate"></p>
       </div>
-    </section>
+      <div class="item">
+        <p class="name">Bonuses</p>
+        <img class="logo" src="assets/bonuses-logo.svg" width="20" height="21" alt="logo">
+        <p class="count">1240</p>
+      </div>
+      <div class="item">
+        <p class="name">Books</p>
+        <img class="logo" src="assets/books-logo.svg" width="20" height="21" alt="logo">
+        <p class="count books__count" id="booksTemplate"></p>
+      </div>
+    </template>
+
+    <button class="arrow__up"></button>
   </main>
   <!-- libraryCard section -->
 
@@ -498,41 +306,38 @@
   <!-- footer -->
 
   <!-- my profile modal -->
-  <div class="my__profile">
+  <div class="my__profile modal">
     <div class="id">
-      <div class="initials">JD</div>
-      <p class="name">John Doe</p>
+      <div class="initials"></div>
+      <div class="name my__profile__name"></div>
     </div>
     <div class="info">
       <div class="profile__title">My profile</div>
-      <div class="close">
+      <div class="close" data-close="myProfileModal">
         <img class="close__logo" src="assets/close-btn.svg" alt="close">
       </div>
       <div class="items">
         <div class="item">
-          <p class="name">Visits</p>
+          <p class="name item__name">Visits</p>
           <img class="logo" src="assets/visits-logo.svg" width="20" height="21" alt="logo">
-          <p class="count">23</p>
+          <p class="count visits__count"></p>
         </div>
         <div class="item">
-          <p class="name">Bonuses</p>
+          <p class="name item__name">Bonuses</p>
           <img class="logo" src="assets/bonuses-logo.svg" width="20" height="21" alt="logo">
           <p class="count">1240</p>
         </div>
-        <div class="item">
+        <div class="item item__name">
           <p class="name">Books</p>
           <img class="logo" src="assets/books-logo.svg" width="20" height="21" alt="logo">
-          <p class="count">2</p>
+          <p class="count books__count"></p>
         </div>
       </div>
       <p class="rented">Rented books</p>
-      <ul class="list">
-        <li class="books__item">The Last Queen, Clive Irving</li>
-        <li class="books__item">Dominicana, Angie Cruz</li>
-      </ul>
+      <ul class="list rentedBooksList"></ul>
       <div class="card">
         <p class="headline">Card number</p>
-        <p class="number">F00234030</p>
+        <p class="card__number"></p>
         <img class="copy" src="assets/icon-copy.svg" alt="copy">
       </div>
     </div>
@@ -540,94 +345,109 @@
   <!-- my profile modal -->
 
   <!-- login modal -->
-  <div class="login__modal">
+  <form action="#" class="login__modal modal">
     <p class="login__title">Login</p>
-    <div class="close">
+    <div class="close" data-close="logInModal">
       <img class="close__logo" src="assets/close-btn.svg" alt="close">
     </div>
-    <label class="label">
+    <label class="login__label">
       <span class="name">E-mail or readers card</span>
-      <input type="text" class="input">
+      <input type="text" class="input login__input login__email" data-input="emailOrReader">
+      <div class="error"></div>
     </label>
-    <label class="label">
+    <label class="login__label">
       <span class="name">Password</span>
-      <input type="password" class="input password">
+      <input type="password" class="input login__input password login__password" data-input="password">
+      <div class="error"></div>
+      <img class="eye" src="assets/open-eye.png"></img>
     </label>
-    <button class="button">Log in</button>
+    <button class="button login__submit" disabled>Log in</button>
     <div class="account">
       <span class="have__account">Don’t have an account?</span>
-      <a href="" class="link">Register</a>
+      <span class="link register__button">Register</span>
     </div>
-  </div>
+  </form>
   <!-- login modal -->
 
   <!-- register modal -->
-  <div class="register__modal">
+  <form class="register__modal modal">
     <p class="login__title">Register</p>
-    <div class="close">
+    <div class="close" data-close="registerModal">
       <img class="close__logo" src="assets/close-btn.svg" alt="close">
     </div>
-    <label class="label">
+    <label class="regist__label">
       <span class="name">First name</span>
-      <input type="text" class="input">
+      <input type="text" class="input registr__input" data-input="firstName">
+      <div class="error"></div>
     </label>
-    <label class="label">
+    <label class="regist__label">
       <span class="name">Last name</span>
-      <input type="text" class="input">
+      <input type="text" class="input registr__input" data-input="lastName">
+      <div class="error"></div>
     </label>
-    <label class="label">
+    <label class="regist__label">
       <span class="name">E-mail</span>
-      <input type="email" class="input">
+      <input type="email" class="input registr__input email" data-input="email">
+      <div class="error"></div>
     </label>
-    <label class="label">
+    <label class="regist__label">
       <span class="name">Password</span>
-      <input type="password" class="input password">
+      <input type="password" class="input registr__input password" data-input="password">
+      <div class="error"></div>
+      <img class="eye" src="assets/open-eye.png"></img>
     </label>
-    <button class="button">Sign Up</button>
+    <button class="button registr__submit" disabled>Sign Up</button>
     <div class="account">
       <span class="have__account">Already have an account?</span>
-      <a href="" class="link">Login</a>
+      <span class="link login__button">Login</span>
     </div>
-  </div>
+  </form>
   <!-- register modal -->
 
   <!-- buy a library card modal -->
-  <div class="buy__modal">
+  <div class="buy__modal modal">
     <div class="buy__title">Buy a library card</div>
-    <div class="close">
+    <div class="close" data-close="buyLibraryCardModal">
       <img class="close__logo" src="assets/close-btn-white.svg" alt="close">
     </div>
     <div class="modal__wrapper">
       <div class="inputs">
         <label class="label">
           <span class="name">Bank card number</span>
-          <input type="text" class="input">
+          <input type="number" class="buy__input" data-input="number">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Expiration code</span>
-          <input type="text" class="input code">
+          <input type="number" class="buy__input code" data-input="code__month">
+          <div class="error"></div>
         </label>
         <label class="label">
-          <input type="text" class="input code">
+          <input type="number" class="buy__input code" data-input="code__year">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">CVC</span>
-          <input type="text" class="input code">
+          <input type="number" s class="buy__input code last__input" data-input="cvc">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Cardholder name</span>
-          <input type="text" class="input">
+          <input type="text" class="buy__input" data-input="name">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">Postal code</span>
-          <input type="text" class="input">
+          <input type="text" class="buy__input" data-input="postal">
+          <div class="error"></div>
         </label>
         <label class="label">
           <span class="name">City / Town</span>
-          <input type="text" class="input password">
+          <input type="text" class="buy__input last__input" data-input="city">
+          <div class="error"></div>
         </label>
         <div class="buy__cost">
-          <button class="button">Buy</button>
+          <button class="button buy__modal__btn" disabled>Buy</button>
           <span class="cost">$ 25.00</span>
         </div>
       </div>

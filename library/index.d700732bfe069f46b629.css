@@ -381,7 +381,7 @@ html {
   transition: 0.5s ease;
   cursor: pointer;
 }
-.button:not([disabled]):hover {
+.button:hover {
   border: 1px solid #BB945F;
   background-color: #BB945F;
 }
@@ -413,11 +413,47 @@ html {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s ease;
+  z-index: 2;
 }
 
 .overlay__active {
   opacity: 0.5;
   visibility: visible;
+}
+
+.error {
+  position: absolute;
+  bottom: -18px;
+  margin: 0 0 5px;
+  color: red;
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.modal.modal__active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.arrow__up {
+  display: none;
+  background-image: url(assets/arrow__up.png);
+  background-size: 50px;
+  background-color: transparent;
+  position: sticky;
+  bottom: 0;
+  margin-left: auto;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 1;
+}
+.arrow__up:hover {
+  opacity: 0.5;
 }
 
 a {
@@ -474,14 +510,24 @@ a {
 }
 .header .profile__logo {
   background-image: url(assets/icon_profile.svg);
-  background-size: 28px 28px;
+  background-size: 30px 28px;
   background-repeat: no-repeat;
-  width: 31px;
+  width: 34px;
   height: 28px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  z-index: 5;
+}
+.header .profile__logo__name {
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 30px;
+  padding: 4px;
+  color: #BB945F;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 .welcome {
@@ -540,45 +586,51 @@ a {
   font-weight: 400;
   line-height: 40px;
 }
-.about .slick-track {
+.about .slider {
+  margin: auto;
+  max-width: 1400px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.about .slider__track {
   display: flex;
   gap: 25px;
+  width: fit-content;
+  transition: 0.3s ease;
 }
-.about .slick-list {
-  margin-bottom: 33px;
-  overflow: hidden;
-}
-.about .slick-dots {
+.about .slider__buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+  margin: auto;
 }
-.about .slick-dots li {
-  list-style: none;
+.about .slider__button {
+  position: relative;
   width: 26px;
   height: 26px;
-  text-align: center;
   cursor: pointer;
 }
-.about .slick-dots button {
-  font-size: 0;
+.about .slider__button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
   border-radius: 50%;
   border: none;
   background-color: #0C0C0E;
-  cursor: pointer;
 }
-.about .slick-dots li.slick-active button {
+.about .button__active:after {
   background-color: #BB945F;
+  cursor: auto;
 }
-.about .prev {
+.about .prev,
+.about .next {
   display: none;
   position: absolute;
   top: 61%;
-  left: 77px;
   width: 25px;
   height: 25px;
   background-image: url(assets/Arrow.svg);
@@ -586,22 +638,25 @@ a {
   cursor: pointer;
 }
 .about .next {
-  display: none;
-  position: absolute;
-  top: 61%;
-  right: 77px;
-  width: 25px;
-  height: 25px;
-  background-image: url(assets/Arrow.svg);
-  background-repeat: no-repeat;
   transform: rotate(180deg);
-  cursor: pointer;
+  right: 77px;
+}
+.about .prev {
+  left: 77px;
+}
+.about .arrow__disabled {
+  opacity: 0.5;
+  cursor: auto;
 }
 
 .favorites {
   margin-bottom: 60px;
 }
+.favorites .title {
+  margin: 0;
+}
 .favorites .filter {
+  padding-top: 41px;
   margin-bottom: 34px;
 }
 .favorites .subtitle {
@@ -611,7 +666,7 @@ a {
   font-weight: 700;
   line-height: 24px;
 }
-.favorites .label {
+.favorites .season__label {
   display: inline-flex;
   align-items: center;
   margin-right: 80px;
@@ -623,10 +678,10 @@ a {
   line-height: 24px;
   cursor: pointer;
 }
-.favorites .label:first-child {
+.favorites .season__label:first-child {
   margin-left: -5px;
 }
-.favorites .label:last-child {
+.favorites .season__label:last-child {
   margin-right: 0;
 }
 .favorites .radio {
@@ -659,10 +714,15 @@ a {
 .favorites .radio:checked ~ .name {
   text-shadow: 0 0 0.8px #000000, 0 0 0.8px #000000;
 }
-.favorites .winter {
+.favorites .season {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.favorites .season__change {
+  opacity: 1;
 }
 .favorites .card {
   display: flex;
@@ -698,6 +758,7 @@ a {
 }
 .favorites .book__title {
   margin: 0;
+  text-transform: uppercase;
   font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -736,10 +797,8 @@ a {
   padding: 8px 24px;
   cursor: auto;
 }
-.favorites .spring,
-.favorites .summer,
-.favorites .autumn {
-  display: none;
+.favorites .own__button:hover {
+  background-color: transparent;
 }
 
 .coffeShop {
@@ -848,7 +907,7 @@ a {
 .contacts .number:nth-child(4) {
   margin-bottom: 40px;
 }
-.contacts .email {
+.contacts .contacts__email {
   font-weight: 700;
 }
 
@@ -872,7 +931,7 @@ a {
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  padding: 17px 17px 27px;
+  padding: 17px 17px 13px;
   margin-right: 10px;
   box-sizing: border-box;
   border: 3px solid #BB945F;
@@ -886,6 +945,7 @@ a {
 .libraryCard .form .button {
   align-self: center;
   padding: 9px 39px;
+  margin: 5px 0 12px;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -894,7 +954,7 @@ a {
 }
 .libraryCard .info {
   padding: 20px 20px 25px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background-color: #BB945F;
 }
 .libraryCard .library {
@@ -909,6 +969,8 @@ a {
   border-radius: 10px;
   border: none;
   outline: none;
+  color: #BB945F;
+  text-transform: capitalize;
 }
 .libraryCard .input:last-child {
   margin-bottom: 0;
@@ -947,25 +1009,22 @@ a {
   line-height: 40px;
   letter-spacing: 0.4px;
 }
-
-.after {
-  display: none;
+.libraryCard .input__name__after,
+.libraryCard .input__cardNumber__after {
+  pointer-events: none;
 }
-.after .input::placeholder {
-  color: #BB945F;
-}
-.after .items {
+.libraryCard .items {
   display: flex;
   justify-content: center;
   gap: 35px;
 }
-.after .item {
+.libraryCard .item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.after .name,
-.after .count {
+.libraryCard .name,
+.libraryCard .count {
   margin: 0;
   font-family: "Inter", sans-serif;
   font-size: 10px;
@@ -1043,9 +1102,14 @@ a {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(300%);
+  width: 640px;
   background-color: #FFFFFF;
-  display: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
 }
 .buy__modal .buy__title {
   margin: 0 0 30px;
@@ -1065,16 +1129,25 @@ a {
   justify-content: flex-start;
   padding: 0 40px 40px;
 }
+.buy__modal .label {
+  position: relative;
+}
 .buy__modal .inputs {
   margin-right: 40px;
 }
-.buy__modal .input {
+.buy__modal .buy__input {
   margin-bottom: 10px;
   height: 20px;
   box-sizing: border-box;
   background-color: #FFFFFF;
   border: 1px solid #BB945F;
   outline: none;
+}
+.buy__modal .buy__input::-webkit-outer-spin-button, .buy__modal .buy__input::-webkit-inner-spin-button {
+  display: none;
+}
+.buy__modal .input__invalid {
+  border: 1px solid red;
 }
 .buy__modal .name {
   display: block;
@@ -1091,7 +1164,7 @@ a {
 .buy__modal .code:nth-child(2) {
   margin-right: 10px;
 }
-.buy__modal .password {
+.buy__modal .last__input {
   margin-bottom: 20px;
 }
 .buy__modal .buy__cost {
@@ -1115,11 +1188,8 @@ a {
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
-  letter-spacing: 2px;
+  letter-spacing: 1.9px;
   color: #8E8E8E;
-}
-.buy__modal .buy__modal.active {
-  display: block;
 }
 
 .login__modal,
@@ -1127,16 +1197,26 @@ a {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   padding: 20px 25px;
   box-sizing: border-box;
   background-color: #FFFFFF;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
 }
 .login__modal .close,
 .register__modal .close {
   position: absolute;
   top: 15px;
   right: 15px;
+}
+.login__modal .regist__label,
+.login__modal .login__label,
+.register__modal .regist__label,
+.register__modal .login__label {
+  position: relative;
 }
 .login__modal .login__title,
 .register__modal .login__title {
@@ -1157,6 +1237,10 @@ a {
   background-color: #FFFFFF;
   border: 1px solid #BB945F;
   outline: none;
+}
+.login__modal .input__invalid,
+.register__modal .input__invalid {
+  border: 1px solid red;
 }
 .login__modal .name,
 .register__modal .name {
@@ -1198,42 +1282,38 @@ a {
   line-height: 13px;
   letter-spacing: 1px;
   border-bottom: 1px solid #0C0C0E;
+  cursor: pointer;
 }
-
-.login__modal {
-  display: none;
-}
-
-.register__modal {
-  display: none;
-}
-
-.login__modal.active {
-  display: block;
-}
-
-.register__modal.active {
-  display: block;
+.login__modal .eye,
+.register__modal .eye {
+  position: absolute;
+  bottom: -2px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .my__profile {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
-  display: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
 }
 .my__profile .id {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 170px;
   background-color: #0C0C0E;
 }
 .my__profile .initials {
-  margin: 0 0 15px;
+  margin: 139px 0 15px;
   padding: 30px 27px;
   background-color: #FFFFFF;
   font-family: "Inter", sans-serif;
@@ -1244,17 +1324,22 @@ a {
 }
 .my__profile .name {
   margin: 0;
-  padding: 5px 15px;
   background-color: #FFFFFF;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 20px;
+  text-align: center;
+}
+.my__profile .my__profile__name {
+  padding: 5px;
+  max-width: 156px;
+  box-sizing: border-box;
 }
 .my__profile .info {
   position: relative;
   width: 430px;
-  padding: 30px 20px 40px;
+  padding: 30px 35px 39px 20px;
   box-sizing: border-box;
   background-color: #FFFFFF;
 }
@@ -1278,7 +1363,7 @@ a {
   margin-bottom: 20px;
   gap: 10px;
 }
-.my__profile .name {
+.my__profile .item__name {
   margin: 0;
   font-family: "Inter", sans-serif;
   font-size: 20px;
@@ -1303,6 +1388,24 @@ a {
 }
 .my__profile .list {
   margin: 0 0 40px;
+  padding-left: 31px;
+  height: 52px;
+  overflow-y: hidden;
+}
+.my__profile .list::-webkit-scrollbar {
+  width: 8px;
+}
+.my__profile .list::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #BB945F;
+}
+.my__profile .list::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #0C0C0E;
+  border-radius: 5px;
+}
+.my__profile .list__scroll__show {
+  overflow-y: auto;
 }
 .my__profile .books__item {
   margin: 0 0 10px;
@@ -1311,6 +1414,7 @@ a {
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 2px;
+  text-transform: capitalize;
 }
 .my__profile .books__item:last-child {
   margin: 0;
@@ -1327,7 +1431,7 @@ a {
   font-weight: 400;
   line-height: 20px;
 }
-.my__profile .number {
+.my__profile .card__number {
   margin: 0;
   font-family: "Inter", sans-serif;
   font-size: 20px;
@@ -1339,28 +1443,27 @@ a {
 .my__profile .copy {
   cursor: pointer;
 }
-.my__profile .my__profile.active {
-  display: block;
+.my__profile .close {
+  top: 24px;
 }
 
 .header__wrapper {
   position: relative;
 }
 
-.profile__modal {
+.auth__modal {
   position: absolute;
-  top: 60px;
+  top: 50px;
   right: 0;
   padding: 5px 10px 20px;
   text-align: center;
   background-color: #FFFFFF;
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
   z-index: 1;
-  display: none;
 }
-.profile__modal:last-child {
-  padding: 5px 4px 20px;
-}
-.profile__modal .title {
+.auth__modal .title {
   position: relative;
   margin: 0 0 15px;
   padding-bottom: 5px;
@@ -1368,8 +1471,10 @@ a {
   font-size: 15px;
   font-weight: 700;
   line-height: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
-.profile__modal .title::after {
+.auth__modal .title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1379,18 +1484,24 @@ a {
   height: 1px;
   background-color: #BB945F;
 }
-.profile__modal .info {
-  margin: 0 0 10px;
+.auth__modal .title__card__number {
+  letter-spacing: 0.5px;
+  font-size: 13px;
+}
+.auth__modal .info {
+  display: block;
+  margin: auto;
+  padding: 0;
+  background-color: transparent;
+  border: none;
   font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
+  cursor: pointer;
 }
-.profile__modal .info:last-child {
-  margin: 0;
-}
-.profile__modal .profile__modal.active {
-  display: block;
+.auth__modal .info:nth-child(1) {
+  margin-bottom: 10px;
 }
 
 .burger {
@@ -1418,7 +1529,7 @@ a {
   transform: translateX(300%);
   transition: 0.3s ease;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
 }
 
 .burger__close_active {
@@ -1426,9 +1537,15 @@ a {
 }
 
 @media screen and (max-width: 1230px) {
-  .favorites .winter {
+  .favorites .season {
     flex-direction: column;
     align-items: center;
+  }
+  .favorites .filter {
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
   }
   .favorites .card:nth-child(2) {
     margin-bottom: 40px;
@@ -1449,7 +1566,7 @@ a {
     background-color: #000000;
     transform: translateX(100%);
     transition: 0.3s ease;
-    z-index: 2;
+    z-index: 3;
   }
   .nav__active {
     transform: translateX(0);
@@ -1514,6 +1631,9 @@ a {
   .footer .school {
     margin: 0 55px 0 0;
   }
+  .auth__modal {
+    right: 85px;
+  }
 }
 @media screen and (max-width: 769px) {
   .about .slider {
@@ -1532,7 +1652,7 @@ a {
   }
 }
 @media screen and (max-width: 736px) {
-  .favorites .label {
+  .favorites .season__label {
     margin-right: 40px;
   }
   .footer .footer__item {
