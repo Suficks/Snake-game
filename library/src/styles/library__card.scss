@@ -21,7 +21,7 @@
 
     max-width: 600px;
 
-    padding: 17px 17px 27px;
+    padding: 17px 17px 13px;
     margin-right: 10px;
     box-sizing: border-box;
 
@@ -35,7 +35,7 @@
       align-self: center;
 
       padding: 9px 39px;
-
+      margin: 5px 0 12px;
       @include inter (20px, 700, 24px);
       letter-spacing: 1px;
     }
@@ -43,7 +43,7 @@
 
   .info {
     padding: 20px 20px 25px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     background-color: $color-brown;
   }
@@ -65,6 +65,8 @@
     border: none;
 
     outline: none;
+    color: $color-brown;
+    text-transform: capitalize;
 
     &:last-child {
       margin-bottom: 0;
@@ -103,13 +105,10 @@
     @include inter (20px, 400, 40px);
     letter-spacing: 0.4px;
   }
-}
 
-.after {
-  display: none;
-
-  .input::placeholder {
-    color: $color-brown;
+  .input__name__after,
+  .input__cardNumber__after {
+    pointer-events: none;
   }
 
   .items {

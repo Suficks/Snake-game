@@ -1,7 +1,12 @@
 .favorites {
   margin-bottom: 60px;
 
+  .title {
+    margin: 0;
+  }
+
   .filter {
+    padding-top: 41px;
     margin-bottom: 34px;
   }
 
@@ -11,7 +16,7 @@
     @include inter (20px, 700, 24px);
   }
 
-  .label {
+  .season__label {
     display: inline-flex;
     align-items: center;
 
@@ -77,10 +82,17 @@
     text-shadow: 0 0 .8px $color-black, 0 0 .8px $color-black;
   }
 
-  .winter {
+  .season {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    opacity: 0;
+    transition: 0.5s ease;
+  }
+
+  .season__change {
+    opacity: 1;
   }
 
   .card {
@@ -126,6 +138,7 @@
 
   .book__title {
     margin: 0;
+    text-transform: uppercase;
 
     @include inter (15px, 700, 40px);
     letter-spacing: 2px;
@@ -165,11 +178,9 @@
 
     padding: 8px 24px;
     cursor: auto;
-  }
 
-  .spring,
-  .summer,
-  .autumn {
-    display: none;
+    &:hover {
+      background-color: transparent;
+    }
   }
 }

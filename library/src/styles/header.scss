@@ -63,18 +63,28 @@ a {
 
   .profile__logo {
     background-image: url("./common/img/svg/icon_profile.svg");
-    background-size: 28px 28px;
+    background-size: 30px 28px;
     background-repeat: no-repeat;
 
-    width: 31px;
+    width: 34px;
     height: 28px;
+
 
     background-color: transparent;
 
     border: none;
 
     cursor: pointer;
+  }
 
-    z-index: 5;
+  .profile__logo__name {
+    background-color: $color-white;
+    border-radius: 50%;
+
+    width: 30px;
+    padding: 4px;
+
+    color: $color-brown;
+    @include inter (15px, 400, 20px);
   }
 }

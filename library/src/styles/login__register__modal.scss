@@ -3,17 +3,27 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
   padding: 20px 25px;
   box-sizing: border-box;
 
   background-color: $color-white;
 
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+
   .close {
     position: absolute;
     top: 15px;
     right: 15px;
+  }
+
+  .regist__label,
+  .login__label {
+    position: relative;
   }
 
   .login__title {
@@ -36,6 +46,10 @@
     border: 1px solid $color-brown;
 
     outline: none;
+  }
+
+  .input__invalid {
+    border: 1px solid red;
   }
 
   .name {
@@ -71,21 +85,17 @@
     @include inter (10px, 700, 13px);
     letter-spacing: 1px;
     border-bottom: 1px solid $color-dark-blue;
+    cursor: pointer;
   }
-}
 
-.login__modal {
-  display: none;
-}
+  .eye {
+    position: absolute;
+    bottom: -2px;
+    right: 5px;
 
-.register__modal {
-  display: none;
-}
+    width: 20px;
+    height: 20px;
 
-.login__modal.active {
-  display: block;
-}
-
-.register__modal.active {
-  display: block;
+    cursor: pointer;
+  }
 }
