@@ -28,17 +28,39 @@ const loadSong = (title, author) => {
 
 loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 
+const setDurationTime = () => {
+  audio.onloadedmetadata = () => {
+    let minutes = Math.floor(audio.duration / 60);
+    let seconds = Math.floor(audio.duration % 60);
+
+    if (seconds < 10) {
+      seconds = '0' + String(seconds);
+    }
+    durationTime.innerHTML = `${minutes}:${seconds}`;
+  }
+}
+
+setDurationTime()
+
 let isPlay = false;
+
+const audioPlay = () => {
+  audio.play();
+  isPlay = true;
+  play.style.backgroundImage = 'url(./assets/img/pause.png)';
+}
+
+const audioPause = () => {
+  audio.pause();
+  isPlay = false;
+  play.style.backgroundImage = 'url(./assets/img/icons-play.png)';
+}
 
 const audioToggle = () => {
   if (!isPlay) {
-    audio.play();
-    isPlay = true;
-    play.style.backgroundImage = 'url(./assets/img/pause.png)';
+    audioPlay();
   } else {
-    audio.pause();
-    isPlay = false;
-    play.style.backgroundImage = 'url(./assets/img/icons-play.png)';
+    audioPause();
   };
 }
 
@@ -46,6 +68,14 @@ const audioProgress = () => {
   const progress = (Math.floor(audio.currentTime) / (Math.floor(audio.duration) / 100));
   progressLine.value = progress;
   progressLine.style.background = `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) ${progress}%, rgba(0, 0, 0, 0.5) ${progress}%, rgba(0, 0, 0, 0.5) 100%)`;
+
+  let minutes = Math.floor(audio.currentTime / 60);
+  let seconds = Math.floor(audio.currentTime % 60);
+
+  if (seconds < 10) {
+    seconds = '0' + String(seconds);
+  }
+  currentTime.innerHTML = `${minutes}:${seconds}`;
 };
 
 const audioChangeTime = (e) => {
@@ -97,6 +127,7 @@ const nextSong = () => {
     songIndex = 0;
   }
   loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+  audioPlay()
 }
 
 const prevSong = () => {
@@ -106,6 +137,7 @@ const prevSong = () => {
     songIndex = songsTitle.length - 1;
   }
   loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+  audioPlay()
 }
 
 play.addEventListener('click', audioToggle);

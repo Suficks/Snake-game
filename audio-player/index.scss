@@ -5,7 +5,18 @@
   font-family: 'Indie Flower';
   font-style: normal;
   font-weight: 400;
-  src: url('./assets/indie-flower-v21-latin-regular.woff2') format('woff2');
+  src: url('./assets/fonts/indie-flower-v21-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* oleo-script-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/oleo-script-v14-latin-regular.woff2') format('woff2');
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -112,13 +123,13 @@ button {
 
 .audio__bar {
   width: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .time {
   position: absolute;
   bottom: 0;
-  font: 15px / 15px 'Indie Flower';
+  font: 13px / 13px 'Oleo Script';
   color: #ffffff;
 }
 
