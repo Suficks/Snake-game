@@ -16,7 +16,7 @@ const volumeBar = document.querySelector('.volume__bar');
 const songsTitle = ['Dance The Night', 'Remember', 'Dog Days Are Over', 'Strangers', 'Brother', 'Skyline'];
 const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence and The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
 
-let songIndex = 0
+let songIndex = 0;
 
 const loadSong = (title, author) => {
   titleContainer.innerHTML = title;
@@ -30,6 +30,8 @@ loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
+    progressLine.value = 0;
+
     let minutes = Math.floor(audio.duration / 60);
     let seconds = Math.floor(audio.duration % 60);
 
@@ -62,7 +64,15 @@ const audioToggle = () => {
   } else {
     audioPause();
   };
-}
+};
+
+const autoPlay = () => {
+  if (audio.currentTime = audio.duration) {
+    nextSong()
+  };
+};
+
+autoPlay();
 
 const audioProgress = () => {
   const progress = (Math.floor(audio.currentTime) / (Math.floor(audio.duration) / 100));
@@ -76,6 +86,7 @@ const audioProgress = () => {
     seconds = '0' + String(seconds);
   }
   currentTime.innerHTML = `${minutes}:${seconds}`;
+  console.log(audio.currentTime, audio.duration);
 };
 
 const audioChangeTime = (e) => {
@@ -127,8 +138,8 @@ const nextSong = () => {
     songIndex = 0;
   }
   loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
-  audioPlay()
-}
+  audioPlay();
+};
 
 const prevSong = () => {
   songIndex--;
@@ -137,8 +148,8 @@ const prevSong = () => {
     songIndex = songsTitle.length - 1;
   }
   loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
-  audioPlay()
-}
+  audioPlay();
+};
 
 play.addEventListener('click', audioToggle);
 audio.addEventListener('timeupdate', audioProgress);

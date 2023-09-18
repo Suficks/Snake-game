@@ -174,4 +174,30 @@ button {
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer__item {
+  margin: 0;
+  font: 25px/27px "Indie Flower";
+  letter-spacing: 2px;
+  color: #FFF;
 }/*# sourceMappingURL=index.css.map */
