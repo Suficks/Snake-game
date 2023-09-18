@@ -150,6 +150,10 @@ button {
   &:hover {
     filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
   }
+
+  &:active {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
+  }
 }
 
 .next {
@@ -165,6 +169,10 @@ button {
 
   &:hover {
     filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+  }
+
+  &:active {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
   }
 }
 

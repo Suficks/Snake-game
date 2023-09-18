@@ -1,3 +1,5 @@
+import { songs } from './songsData.js'
+
 const background = document.querySelector('.background');
 const cover = document.querySelector('.cover');
 const titleContainer = document.querySelector('.title');
@@ -15,12 +17,9 @@ const volumeBar = document.querySelector('.volume__bar');
 
 // Загрузка аудио
 
-const songsTitle = ['Dance The Night', 'Remember', 'Dog Days Are Over', 'Strangers', 'Brother', 'Skyline'];
-const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence and The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
-
 let songIndex = 0;
 
-const loadSong = (title, author) => {
+const loadSong = ({ title, author }) => {
   titleContainer.innerHTML = title;
   authorContainer.innerHTML = author;
   audio.src = `./assets/audio/${author} - ${title}.mp3`;
@@ -28,7 +27,7 @@ const loadSong = (title, author) => {
   background.src = `./assets/img/${title}.jpg`;
 }
 
-loadSong(songsTitle[songIndex], songsAuthor[songIndex])
+loadSong(songs[songIndex])
 
 // Загрузка аудио
 
@@ -36,7 +35,8 @@ loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
-    console.log(progressLine.value);
+    progressLine.value = 0;
+
     let minutes = Math.floor(audio.duration / 60);
     let seconds = Math.floor(audio.duration % 60);
 
@@ -81,7 +81,7 @@ const audioToggle = () => {
 
 const audioProgress = () => {
   const progress = (audio.currentTime / audio.duration) * 100;
-  progressLine.value = progress;
+  progressLine.value = progress || 0;
   progressLine.style.background = `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) ${progress}%, rgba(0, 0, 0, 0.5) ${progress}%, rgba(0, 0, 0, 0.5) 100%)`;
 
   let minutes = Math.floor(audio.currentTime / 60);
@@ -154,10 +154,10 @@ const changeVolume = () => {
 function nextSong() {
   songIndex++;
 
-  if (songIndex > songsTitle.length - 1) {
+  if (songIndex > songs.length - 1) {
     songIndex = 0;
   }
-  loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+  loadSong(songs[songIndex]);
   audioPlay();
 };
 
@@ -169,9 +169,9 @@ const prevSong = () => {
   songIndex--;
 
   if (songIndex < 0) {
-    songIndex = songsTitle.length - 1;
+    songIndex = songs.length - 1;
   }
-  loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+  loadSong(songs[songIndex]);
   audioPlay();
 };
 

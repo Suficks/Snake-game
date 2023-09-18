@@ -144,6 +144,10 @@ button {
 .next:hover {
   filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
 }
+.prev:active,
+.next:active {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
+}
 
 .next {
   transform: rotate(180deg);
@@ -158,6 +162,9 @@ button {
 }
 .play:hover {
   filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+}
+.play:active {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
 }
 
 .volume__controls {
