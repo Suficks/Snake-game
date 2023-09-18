@@ -1,13 +1,33 @@
 const background = document.querySelector('.background');
 const cover = document.querySelector('.cover');
+const titleContainer = document.querySelector('.title');
+const authorContainer = document.querySelector('.author');
 const audio = document.querySelector('.audio');
 const play = document.querySelector('.play');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
+const currentTime = document.querySelector('.current__time');
+const durationTime = document.querySelector('.duration__time');
 const volume = document.querySelector('.volume');
 const mute = document.querySelector('.mute');
 const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
+
+const songsTitle = ['Dance The Night', 'Remember', 'Dog Days Are Over', 'Strangers', 'Brother', 'Skyline'];
+const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence And The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
+
+let songIndex = 0
+
+const loadSong = (title, author) => {
+  titleContainer.innerHTML = title;
+  authorContainer.innerHTML = author;
+  console.log(title);
+  audio.src = `./assets/audio/${author} - ${title}.mp3`;
+  cover.src = `./assets/img/${title}.jpg`;
+  background.src = `./assets/img/${title}.jpg`;
+}
+
+loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 
 let isPlay = false;
 

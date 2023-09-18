@@ -30,7 +30,10 @@
   transform: translate(-50%, -50%);
   width: 350px;
   margin: 0 15px;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.7),
+    1px 2px 4px 0px rgba(0, 0, 0, 0.7),
+    2px 4px 8px 0px rgba(0, 0, 0, 0.7),
+    2px 4px 16px 0px rgba(0, 0, 0, 0.7);
   background: linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0.0) 80%),
     linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
 
@@ -43,11 +46,10 @@
   height: 100%;
   border-radius: 20px 20px 0 0;
   object-fit: cover;
-
 }
 
 .controls {
-  padding: 15px;
+  padding: 15px 15px 20px;
 }
 
 .title,
@@ -129,6 +131,12 @@ button {
   background-size: 30px 30px;
   width: 30px;
   height: 30px;
+  padding: 0;
+  transition: 0.3s ease;
+
+  &:hover {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+  }
 }
 
 .next {
@@ -140,7 +148,11 @@ button {
   width: 50px;
   height: 50px;
   padding: 0;
-  transition: 0.1s ease;
+  transition: 0.3s ease;
+
+  &:hover {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+  }
 }
 
 .volume__controls {
@@ -152,7 +164,6 @@ button {
 .volume__bar {
   width: 75%;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 100%);
-
 }
 
 .volume__icon {
