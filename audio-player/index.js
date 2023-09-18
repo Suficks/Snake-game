@@ -14,14 +14,13 @@ const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
 
 const songsTitle = ['Dance The Night', 'Remember', 'Dog Days Are Over', 'Strangers', 'Brother', 'Skyline'];
-const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence And The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
+const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence and The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
 
 let songIndex = 0
 
 const loadSong = (title, author) => {
   titleContainer.innerHTML = title;
   authorContainer.innerHTML = author;
-  console.log(title);
   audio.src = `./assets/audio/${author} - ${title}.mp3`;
   cover.src = `./assets/img/${title}.jpg`;
   background.src = `./assets/img/${title}.jpg`;
@@ -91,6 +90,24 @@ const changeVolume = () => {
   audio.volume = volume;
 };
 
+const nextSong = () => {
+  songIndex++;
+
+  if (songIndex > songsTitle.length - 1) {
+    songIndex = 0;
+  }
+  loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+}
+
+const prevSong = () => {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = songsTitle.length - 1;
+  }
+  loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
+}
+
 play.addEventListener('click', audioToggle);
 audio.addEventListener('timeupdate', audioProgress);
 progressLine.addEventListener('click', (e) => {
@@ -99,3 +116,5 @@ progressLine.addEventListener('click', (e) => {
 volumeBar.addEventListener('change', changeVolume);
 mute.addEventListener('click', toggleVolume);
 volume.addEventListener('click', fullVolume);
+next.addEventListener('click', nextSong);
+prev.addEventListener('click', prevSong);
