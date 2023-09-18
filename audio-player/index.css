@@ -62,6 +62,7 @@
 
 input[type=range] {
   border-radius: 20px;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -105,7 +106,7 @@ button {
 
 .audio__bar {
   width: 100%;
-  background: linear-gradient(to right, rgb(113, 7, 7) 0%, rgb(113, 7, 7) 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .time {
@@ -147,7 +148,7 @@ button {
 
 .volume__bar {
   width: 75%;
-  background: linear-gradient(to right, rgb(113, 7, 7) 0%, rgb(113, 7, 7) 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .volume__icon {
