@@ -10,24 +10,19 @@
 </head>
 
 <body>
-  <div class="main">
-    <img src="./assets/img/dance.jpeg" alt="background" class="background">
-    <div class="player__wrapper">
-      <img src="./assets/img/dance.jpeg" alt="cover" class="cover">
-      <audio src="./assets/audio/Dua Lipa - Dance The Night.mp3"></audio>
-      <audio src="./assets/audio/Florence_The_Machine_-_Dog_Days_Are_Over_(musmore.com).mp3"></audio>
-      <audio src="./assets/audio/Becky Hill - Remember (feat. David Guetta. TCTS Remix).mp3"></audio>
-      <audio src="./assets/audio/Kenya Grace - Strangers.mp3"></audio>
-      <audio src="./assets/audio/Matt_Corby_Brother.mp3"></audio>
-      <audio src="./assets/audio/Mowe - Skyline (Alex Schulz remix).mp3"></audio>
+  <main class="main">
+    <img src="./assets/img/dogs-day.jpg" alt="background" class="background">
+    <audio src="./assets/audio/Dua Lipa - Dance The Night.mp3"></audio>
 
-      <div class="player">
-        <p class="title"></p>
-        <p class="autor"></p>
+    <div class="player">
+      <img src="./assets/img/dogs-day.jpg" alt="cover" class="cover">
+      <div class="controls">
+        <p class="title">Dance the night</p>
+        <p class="author">Dua Lipa</p>
         <div class="audio__time">
-          <div class="time__change"></div>
-          <input type="range" class="audio_bar">
-          <div class="aido__duration"></div>
+          <input type="range" class="audio__bar">
+          <div class="time current__time">0:15</div>
+          <div class="time duration__time">2:53</div>
         </div>
         <div class="buttons">
           <button class="prev"></button>
@@ -35,13 +30,13 @@
           <button class="next"></button>
         </div>
         <div class="volume">
-          <img src="" alt="mute" class="mute">
+          <img src="./assets/img/mute.png" alt="mute" class="volume__icon">
           <input type="range" class="volume__bar">
-          <img src="" alt="volume" class="volume">
+          <img src="./assets/img/volume.png" alt="volume" class="volume__icon">
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <footer class="footer">
 
