@@ -40,7 +40,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
   margin: 0 15px;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.7),
     1px 2px 4px 0px rgba(0, 0, 0, 0.7),
@@ -209,4 +210,13 @@ a {
   letter-spacing: 2px;
 
   color: #FFF;
+}
+
+.school__link {
+  line-height: 0;
+}
+
+.logo {
+  width: 100px;
+  height: 65px;
 }

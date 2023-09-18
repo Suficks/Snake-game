@@ -38,7 +38,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
   margin: 0 15px;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.7), 1px 2px 4px 0px rgba(0, 0, 0, 0.7), 2px 4px 8px 0px rgba(0, 0, 0, 0.7), 2px 4px 16px 0px rgba(0, 0, 0, 0.7);
   background: linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0) 80%), linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
@@ -200,4 +201,13 @@ a {
   font: 25px/27px "Indie Flower";
   letter-spacing: 2px;
   color: #FFF;
+}
+
+.school__link {
+  line-height: 0;
+}
+
+.logo {
+  width: 100px;
+  height: 65px;
 }/*# sourceMappingURL=index.css.map */

@@ -37,8 +37,6 @@ loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
     console.log(progressLine.value);
-    progressLine.value = 0;
-
     let minutes = Math.floor(audio.duration / 60);
     let seconds = Math.floor(audio.duration % 60);
 
@@ -79,20 +77,10 @@ const audioToggle = () => {
 
 // Включение / пауза
 
-// Автовопроизведение следуюшего трека
-
-const autoPlay = () => {
-  if (audio.currentTime === audio.duration) {
-    nextSong()
-  };
-};
-
-// Автовопроизведение следуюшего трека
-
 // Прогресс аудио и перемотка
 
 const audioProgress = () => {
-  const progress = (Math.floor(audio.currentTime) / (Math.floor(audio.duration) / 100));
+  const progress = (audio.currentTime / audio.duration) * 100;
   progressLine.value = progress;
   progressLine.style.background = `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) ${progress}%, rgba(0, 0, 0, 0.5) ${progress}%, rgba(0, 0, 0, 0.5) 100%)`;
 
@@ -193,7 +181,7 @@ const prevSong = () => {
 
 play.addEventListener('click', audioToggle);
 audio.addEventListener('timeupdate', audioProgress);
-audio.addEventListener('timeupdate', autoPlay);
+audio.addEventListener('ended', nextSong);
 progressLine.addEventListener('click', (e) => {
   audioChangeTime(e);
 });
