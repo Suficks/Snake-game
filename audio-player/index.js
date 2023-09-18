@@ -13,6 +13,8 @@ const mute = document.querySelector('.mute');
 const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
 
+// Загрузка аудио
+
 const songsTitle = ['Dance The Night', 'Remember', 'Dog Days Are Over', 'Strangers', 'Brother', 'Skyline'];
 const songsAuthor = ['Dua Lipa', 'Becky Hill', 'Florence and The Machine', 'Kenya Grace', 'Matt Corby', 'Mowe'];
 
@@ -28,8 +30,13 @@ const loadSong = (title, author) => {
 
 loadSong(songsTitle[songIndex], songsAuthor[songIndex])
 
+// Загрузка аудио
+
+// Выставление продолжительности аудио
+
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
+    console.log(progressLine.value);
     progressLine.value = 0;
 
     let minutes = Math.floor(audio.duration / 60);
@@ -43,6 +50,10 @@ const setDurationTime = () => {
 }
 
 setDurationTime()
+
+// Выставление продолжительности аудио
+
+// Включение / пауза
 
 let isPlay = false;
 
@@ -66,13 +77,19 @@ const audioToggle = () => {
   };
 };
 
+// Включение / пауза
+
+// Автовопроизведение следуюшего трека
+
 const autoPlay = () => {
-  if (audio.currentTime = audio.duration) {
+  if (audio.currentTime === audio.duration) {
     nextSong()
   };
 };
 
-autoPlay();
+// Автовопроизведение следуюшего трека
+
+// Прогресс аудио и перемотка
 
 const audioProgress = () => {
   const progress = (Math.floor(audio.currentTime) / (Math.floor(audio.duration) / 100));
@@ -86,7 +103,6 @@ const audioProgress = () => {
     seconds = '0' + String(seconds);
   }
   currentTime.innerHTML = `${minutes}:${seconds}`;
-  console.log(audio.currentTime, audio.duration);
 };
 
 const audioChangeTime = (e) => {
@@ -94,6 +110,10 @@ const audioChangeTime = (e) => {
   audio.currentTime = audio.duration * (progress / 100);
   progressLine.style.background = `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) ${progress}%, rgba(0, 0, 0, 0.5) ${progress}%, rgba(0, 0, 0, 0.5) 100%)`;
 };
+
+// Прогресс аудио и перемотка
+
+// Включение / выключение звука
 
 let savedVolume = 50;
 
@@ -114,6 +134,10 @@ const toggleVolume = () => {
   };
 };
 
+// Включение / выключение звука
+
+// Звук на максимум
+
 const fullVolume = () => {
   if (audio.volume !== 1) {
     audio.volume = 1;
@@ -126,12 +150,20 @@ const fullVolume = () => {
   };
 };
 
+// Звук на максимум
+
+// Изменение звука
+
 const changeVolume = () => {
   const volume = volumeBar.value / 100;
   audio.volume = volume;
 };
 
-const nextSong = () => {
+// Изменение звука
+
+// Следующий трек
+
+function nextSong() {
   songIndex++;
 
   if (songIndex > songsTitle.length - 1) {
@@ -140,6 +172,10 @@ const nextSong = () => {
   loadSong(songsTitle[songIndex], songsAuthor[songIndex]);
   audioPlay();
 };
+
+// Следующий трек
+
+// Предыдущий трек
 
 const prevSong = () => {
   songIndex--;
@@ -151,8 +187,13 @@ const prevSong = () => {
   audioPlay();
 };
 
+// Предыдущий трек
+
+// Вызов функций
+
 play.addEventListener('click', audioToggle);
 audio.addEventListener('timeupdate', audioProgress);
+audio.addEventListener('timeupdate', autoPlay);
 progressLine.addEventListener('click', (e) => {
   audioChangeTime(e);
 });
@@ -161,3 +202,5 @@ mute.addEventListener('click', toggleVolume);
 volume.addEventListener('click', fullVolume);
 next.addEventListener('click', nextSong);
 prev.addEventListener('click', prevSong);
+
+// Вызов функций
