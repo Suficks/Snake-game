@@ -77,6 +77,20 @@
   margin-bottom: 15px;
 }
 
+.playlist__btn {
+  position: absolute;
+  top: 66%;
+  right: 20px;
+  background-image: url('./assets/img/playlist.png');
+  width: 30px;
+  height: 30px;
+  transition: 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 input[type=range] {
   border-radius: 20px;
   cursor: pointer;
@@ -155,7 +169,8 @@ button {
 
 .prev,
 .next,
-.repeat {
+.repeat,
+.shuffle {
   background-image: url('./assets/img/icon-prev.png');
   background-size: 30px 30px;
   width: 30px;
@@ -185,17 +200,31 @@ button {
   background-repeat: no-repeat;
   width: 26px;
   height: 26px;
+  transition: 0.5s ease;
 
   &:hover {
     filter: none;
     transform: rotate(360deg);
-    transition: 0.5s ease;
   }
 }
 
 .repeat__active {
   background-image: url('./assets/img/repeat-on.png');
   background-size: 25px 25px;
+}
+
+.shuffle {
+  position: absolute;
+  right: 30px;
+  bottom: 65px;
+  background-image: url('./assets/img/shuffle.png');
+  background-size: 26px 26px;
+  width: 26px;
+  height: 26px;
+}
+
+.shuffle__active {
+  background-image: url('./assets/img/shuffle__off.png');
 }
 
 .play {
