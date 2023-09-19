@@ -32,19 +32,65 @@ const formatTime = (time) => {
 
 // Получение минут и секунд
 
+// Появление плейлиста
+
+const playlistActiveToggle = () => {
+  playlist.classList.toggle('playlist__active')
+}
+
+// Появление плейлиста
+
+// Заполнение плейлиста треками
+
+function createPlaylist(songs) {
+  songs.forEach((item) => {
+    playlist.insertAdjacentHTML('beforeend', `<li class="playlist__item">${item.author} - ${item.title}</li>`)
+  });
+};
+
+createPlaylist(songs);
+
+// Заполнение плейлиста треками
+
+// Перемешка треков
+
+let isShuffle = false;
+
+const shuffleAudio = () => {
+  if (!isShuffle) {
+    const shuffledSongs = songs.slice().sort(() => Math.random() - 0.5);
+    playlist.innerHTML = '';
+    createPlaylist(shuffledSongs);
+    shuffle.classList.add('shuffle__active');
+    isShuffle = true;
+  } else {
+    playlist.innerHTML = '';
+    createPlaylist(songs);
+    shuffle.classList.remove('shuffle__active');
+    isShuffle = false;
+  };
+};
+
+// Перемешка треков
+
 // Загрузка аудио
 
 let songIndex = 0;
 
-const loadSong = ({ title, author }) => {
+function loadSong() {
+  const playlistItems = document.querySelectorAll('.playlist__item');
+  const text = playlistItems[songIndex].textContent;
+  const title = text.split('-')[1].trim();
+  const author = text.split('-')[0].trim();
+
   titleContainer.innerHTML = title;
   authorContainer.innerHTML = author;
   audio.src = `./assets/audio/${author} - ${title}.mp3`;
   cover.src = `./assets/img/${title}.jpg`;
   background.src = `./assets/img/${title}.jpg`;
-}
+};
 
-loadSong(songs[songIndex])
+loadSong();
 
 // Загрузка аудио
 
@@ -155,7 +201,7 @@ const changeVolume = () => {
 
 function nextSong() {
   if (repeatBtn.classList.contains('repeat__active')) {
-    loadSong(songs[songIndex]);
+    loadSong();
     audioPlay();
   } else {
     songIndex++;
@@ -163,7 +209,7 @@ function nextSong() {
     if (songIndex > songs.length - 1) {
       songIndex = 0;
     }
-    loadSong(songs[songIndex]);
+    loadSong();
     audioPlay();
   };
 };
@@ -172,13 +218,13 @@ function nextSong() {
 
 // Предыдущий трек
 
-const prevSong = () => {
+function prevSong() {
   songIndex--;
 
   if (songIndex < 0) {
     songIndex = songs.length - 1;
   }
-  loadSong(songs[songIndex]);
+  loadSong();
   audioPlay();
 };
 
@@ -204,47 +250,6 @@ const showTimeOnProgressLine = (e) => {
 
 // Отображение времени на progressLine
 
-// Появление плейлиста
-
-const playlistActiveToggle = () => {
-  playlist.classList.toggle('playlist__active')
-}
-
-// Появление плейлиста
-
-// Перемешка треков
-
-let isShuffle = false;
-
-const shuffleToggle = () => {
-  if (!isShuffle) {
-    const shuffledSongs = songs.slice().sort(() => Math.random() - 0.5);
-    playlist.innerHTML = '';
-    createPlayList(shuffledSongs);
-    shuffle.classList.add('shuffle__active');
-    isShuffle = true;
-  } else {
-    playlist.innerHTML = '';
-    createPlayList(songs);
-    shuffle.classList.remove('shuffle__active');
-    isShuffle = false;
-  }
-}
-
-// Перемешка треков
-
-// Заполнение плейлиста треками
-
-function createPlayList(songs) {
-  songs.forEach((item) => {
-    playlist.insertAdjacentHTML('beforeend', `<li class="playlist__item">${item.author} - ${item.title}</li>`)
-  });
-};
-
-createPlayList(songs);
-
-// Заполнение плейлиста треками
-
 // Вызов функций
 
 play.addEventListener('click', audioToggle);
@@ -264,6 +269,6 @@ next.addEventListener('click', nextSong);
 prev.addEventListener('click', prevSong);
 repeatBtn.addEventListener('click', audioRepeatToggle);
 playlistBtn.addEventListener('click', playlistActiveToggle);
-shuffle.addEventListener('click', shuffleToggle);
+shuffle.addEventListener('click', shuffleAudio);
 
 // Вызов функций
