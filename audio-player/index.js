@@ -73,13 +73,9 @@ const shuffleAudio = () => {
 
 // Перемешка треков
 
-// Загрузка аудио
+// Получение название и автора из плейлиста
 
-let songIndex = 0;
-
-function loadSong() {
-  const playlistItems = document.querySelectorAll('.playlist__item');
-  const text = playlistItems[songIndex].textContent;
+const getTitleAuthor = (text) => {
   const title = text.split('-')[1].trim();
   const author = text.split('-')[0].trim();
 
@@ -88,11 +84,35 @@ function loadSong() {
   audio.src = `./assets/audio/${author} - ${title}.mp3`;
   cover.src = `./assets/img/${title}.jpg`;
   background.src = `./assets/img/${title}.jpg`;
+}
+
+// Получение название и автора из плейлиста
+
+// Загрузка аудио
+
+let songIndex = 0;
+const playlistItems = document.querySelectorAll('.playlist__item');
+
+function loadSong() {
+  const text = playlistItems[songIndex].textContent;
+  getTitleAuthor(text)
 };
 
 loadSong();
 
 // Загрузка аудио
+
+// Воспроизведение при клике на трек в плейлисте
+
+playlistItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const text = item.textContent;
+    getTitleAuthor(text);
+    audioPlay();
+  });
+});
+
+// Воспроизведение при клике на трек в плейлисте
 
 // Выставление продолжительности аудио
 
@@ -110,7 +130,7 @@ setDurationTime()
 
 let isPlay = false;
 
-const audioPlay = () => {
+function audioPlay() {
   audio.play();
   isPlay = true;
   play.style.backgroundImage = 'url(./assets/img/pause.png)';
