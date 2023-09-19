@@ -132,7 +132,8 @@ button {
 }
 
 .prev,
-.next {
+.next,
+.repeat {
   background-image: url("./assets/img/icon-prev.png");
   background-size: 30px 30px;
   width: 30px;
@@ -141,16 +142,39 @@ button {
   transition: 0.3s ease;
 }
 .prev:hover,
-.next:hover {
+.next:hover,
+.repeat:hover {
   filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
 }
 .prev:active,
-.next:active {
+.next:active,
+.repeat:active {
   filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
 }
 
 .next {
   transform: rotate(180deg);
+}
+
+.repeat {
+  position: absolute;
+  left: 30px;
+  bottom: 65px;
+  background-image: url("./assets/img/icon-repeat.png");
+  background-size: 27px 27px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  transition: 0.5s ease;
+}
+.repeat:hover {
+  filter: none;
+  transform: rotate(360deg);
+}
+
+.repeat__active {
+  background-image: url("./assets/img/repeat-on.png");
+  background-size: 25px 25px;
 }
 
 .play {
@@ -208,6 +232,10 @@ a {
   font: 25px/27px "Indie Flower";
   letter-spacing: 2px;
   color: #FFF;
+}
+
+.github:hover {
+  font-weight: bold;
 }
 
 .school__link {

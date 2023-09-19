@@ -14,6 +14,7 @@ const volume = document.querySelector('.volume');
 const mute = document.querySelector('.mute');
 const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
+const repeatBtn = document.querySelector('.repeat');
 
 // Загрузка аудио
 
@@ -35,8 +36,6 @@ loadSong(songs[songIndex])
 
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
-    progressLine.value = 0;
-
     let minutes = Math.floor(audio.duration / 60);
     let seconds = Math.floor(audio.duration % 60);
 
@@ -152,13 +151,19 @@ const changeVolume = () => {
 // Следующий трек
 
 function nextSong() {
-  songIndex++;
+  if (repeatBtn.classList.contains('repeat__active')) {
+    console.log(songs[songIndex]);
+    loadSong(songs[songIndex]);
+    audioPlay();
+  } else {
+    songIndex++;
 
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
-  }
-  loadSong(songs[songIndex]);
-  audioPlay();
+    if (songIndex > songs.length - 1) {
+      songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    audioPlay();
+  };
 };
 
 // Следующий трек
@@ -177,6 +182,14 @@ const prevSong = () => {
 
 // Предыдущий трек
 
+// Повтор трека
+
+const audioRepeatToggle = () => {
+  repeatBtn.classList.toggle('repeat__active');
+}
+
+// Повтор трека
+
 // Вызов функций
 
 play.addEventListener('click', audioToggle);
@@ -190,5 +203,6 @@ mute.addEventListener('click', toggleVolume);
 volume.addEventListener('click', fullVolume);
 next.addEventListener('click', nextSong);
 prev.addEventListener('click', prevSong);
+repeatBtn.addEventListener('click', audioRepeatToggle);
 
 // Вызов функций

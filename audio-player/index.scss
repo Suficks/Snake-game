@@ -139,7 +139,8 @@ button {
 }
 
 .prev,
-.next {
+.next,
+.repeat {
   background-image: url('./assets/img/icon-prev.png');
   background-size: 30px 30px;
   width: 30px;
@@ -158,6 +159,28 @@ button {
 
 .next {
   transform: rotate(180deg);
+}
+
+.repeat {
+  position: absolute;
+  left: 30px;
+  bottom: 65px;
+  background-image: url('./assets/img/icon-repeat.png');
+  background-size: 27px 27px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  transition: 0.5s ease;
+
+  &:hover {
+    filter: none;
+    transform: rotate(360deg);
+  }
+}
+
+.repeat__active {
+  background-image: url('./assets/img/repeat-on.png');
+  background-size: 25px 25px;
 }
 
 .play {
@@ -218,6 +241,12 @@ a {
   letter-spacing: 2px;
 
   color: #FFF;
+}
+
+.github {
+  &:hover {
+    font-weight: bold;
+  }
 }
 
 .school__link {
