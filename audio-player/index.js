@@ -15,6 +15,19 @@ const mute = document.querySelector('.mute');
 const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
 const repeatBtn = document.querySelector('.repeat');
+const progressTime = document.querySelector('.show__time')
+
+// Получение минут и секунд
+
+const formatTime = (time) => {
+  let minutes = Math.floor(time / 60);
+  let seconds = Math.floor(time % 60);
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${minutes}:${seconds}`
+}
+
+// Получение минут и секунд
 
 // Загрузка аудио
 
@@ -36,13 +49,7 @@ loadSong(songs[songIndex])
 
 const setDurationTime = () => {
   audio.onloadedmetadata = () => {
-    let minutes = Math.floor(audio.duration / 60);
-    let seconds = Math.floor(audio.duration % 60);
-
-    if (seconds < 10) {
-      seconds = '0' + String(seconds);
-    }
-    durationTime.innerHTML = `${minutes}:${seconds}`;
+    durationTime.innerHTML = formatTime(audio.duration);
   }
 }
 
@@ -82,14 +89,7 @@ const audioProgress = () => {
   const progress = (audio.currentTime / audio.duration) * 100;
   progressLine.value = progress || 0;
   progressLine.style.background = `linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) ${progress}%, rgba(0, 0, 0, 0.5) ${progress}%, rgba(0, 0, 0, 0.5) 100%)`;
-
-  let minutes = Math.floor(audio.currentTime / 60);
-  let seconds = Math.floor(audio.currentTime % 60);
-
-  if (seconds < 10) {
-    seconds = '0' + String(seconds);
-  }
-  currentTime.innerHTML = `${minutes}:${seconds}`;
+  currentTime.innerHTML = formatTime(audio.currentTime);
 };
 
 const audioChangeTime = (e) => {
@@ -152,7 +152,6 @@ const changeVolume = () => {
 
 function nextSong() {
   if (repeatBtn.classList.contains('repeat__active')) {
-    console.log(songs[songIndex]);
     loadSong(songs[songIndex]);
     audioPlay();
   } else {
@@ -190,6 +189,18 @@ const audioRepeatToggle = () => {
 
 // Повтор трека
 
+// Отображение времени на progressLine
+
+const showTimeOnProgressLine = (e) => {
+  let offsetX = e.offsetX;
+  progressTime.style.left = `${offsetX}px`;
+  let timeLineWidth = progressLine.clientWidth;
+  let percent = (e.offsetX / timeLineWidth) * audio.duration;
+  progressTime.innerHTML = formatTime(percent);
+}
+
+// Отображение времени на progressLine
+
 // Вызов функций
 
 play.addEventListener('click', audioToggle);
@@ -197,6 +208,9 @@ audio.addEventListener('timeupdate', audioProgress);
 audio.addEventListener('ended', nextSong);
 progressLine.addEventListener('click', (e) => {
   audioChangeTime(e);
+});
+progressLine.addEventListener('mousemove', (e) => {
+  showTimeOnProgressLine(e);
 });
 volumeBar.addEventListener('change', changeVolume);
 mute.addEventListener('click', toggleVolume);

@@ -120,6 +120,21 @@ button {
   background: rgba(0, 0, 0, 0.5);
 }
 
+.audio__bar:hover ~ .show__time {
+  opacity: 1;
+}
+
+.show__time {
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-60%);
+  font: 12px/12px "Oleo Script";
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 .time {
   position: absolute;
   bottom: 0;
@@ -165,11 +180,11 @@ button {
   background-repeat: no-repeat;
   width: 26px;
   height: 26px;
-  transition: 0.5s ease;
 }
 .repeat:hover {
   filter: none;
   transform: rotate(360deg);
+  transition: 0.5s ease;
 }
 
 .repeat__active {
