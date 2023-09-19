@@ -16,6 +16,8 @@ const progressLine = document.querySelector('.audio__bar');
 const volumeBar = document.querySelector('.volume__bar');
 const repeatBtn = document.querySelector('.repeat');
 const progressTime = document.querySelector('.show__time')
+const playlistBtn = document.querySelector('.playlist__btn')
+const playlist = document.querySelector('.playlist')
 
 // Получение минут и секунд
 
@@ -201,6 +203,26 @@ const showTimeOnProgressLine = (e) => {
 
 // Отображение времени на progressLine
 
+// Заполнение плейлиста треками
+
+const createPlaylist = () => {
+  songs.forEach((item) => {
+    playlist.insertAdjacentHTML('beforeend', `<li class="playlist__item">${item.author} - ${item.title}</li>`)
+  });
+};
+
+createPlaylist();
+
+// Заполнение плейлиста треками
+
+// Появление плейлиста
+
+const playlistActiveToggle = () => {
+  playlist.classList.toggle('playlist__active')
+}
+
+// Появление плейлиста
+
 // Вызов функций
 
 play.addEventListener('click', audioToggle);
@@ -212,11 +234,13 @@ progressLine.addEventListener('click', (e) => {
 progressLine.addEventListener('mousemove', (e) => {
   showTimeOnProgressLine(e);
 });
+volumeBar.addEventListener('mousemove', changeVolume);
 volumeBar.addEventListener('change', changeVolume);
 mute.addEventListener('click', toggleVolume);
 volume.addEventListener('click', fullVolume);
 next.addEventListener('click', nextSong);
 prev.addEventListener('click', prevSong);
 repeatBtn.addEventListener('click', audioRepeatToggle);
+playlistBtn.addEventListener('click', playlistActiveToggle);
 
 // Вызов функций
