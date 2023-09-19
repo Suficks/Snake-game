@@ -91,28 +91,16 @@ const getTitleAuthor = (text) => {
 // Загрузка аудио
 
 let songIndex = 0;
-const playlistItems = document.querySelectorAll('.playlist__item');
 
 function loadSong() {
+  const playlistItems = document.querySelectorAll('.playlist__item');
   const text = playlistItems[songIndex].textContent;
-  getTitleAuthor(text)
+  getTitleAuthor(text);
 };
 
 loadSong();
 
 // Загрузка аудио
-
-// Воспроизведение при клике на трек в плейлисте
-
-playlistItems.forEach((item) => {
-  item.addEventListener('click', () => {
-    const text = item.textContent;
-    getTitleAuthor(text);
-    audioPlay();
-  });
-});
-
-// Воспроизведение при клике на трек в плейлисте
 
 // Выставление продолжительности аудио
 
@@ -151,6 +139,20 @@ const audioToggle = () => {
 };
 
 // Включение / пауза
+
+// Воспроизведение при клике на трек в плейлисте
+
+const playlistItems = document.querySelectorAll('.playlist__item');
+
+playlistItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const text = item.textContent;
+    getTitleAuthor(text);
+    audioPlay();
+  });
+});
+
+// Воспроизведение при клике на трек в плейлисте
 
 // Прогресс аудио и перемотка
 
@@ -254,7 +256,7 @@ function prevSong() {
 
 const audioRepeatToggle = () => {
   repeatBtn.classList.toggle('repeat__active');
-}
+};
 
 // Повтор трека
 
@@ -266,7 +268,7 @@ const showTimeOnProgressLine = (e) => {
   let timeLineWidth = progressLine.clientWidth;
   let percent = (e.offsetX / timeLineWidth) * audio.duration;
   progressTime.innerHTML = formatTime(percent);
-}
+};
 
 // Отображение времени на progressLine
 
