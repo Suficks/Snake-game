@@ -121,10 +121,10 @@
   content: "";
   position: absolute;
   left: 0;
-  background-image: url("./assets/img/playlist-play.png");
-  background-size: 18px 18px;
-  width: 18px;
-  height: 18px;
+  background-image: url("./assets/img/playlist-note.png");
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
 }
 .playlist__item:hover {
   font-weight: bold;
@@ -266,6 +266,9 @@ button {
 
 .shuffle__active {
   background-image: url("./assets/img/shuffle__off.png");
+  background-size: 28px 28px;
+  width: 28px;
+  height: 28px;
 }
 
 .play {

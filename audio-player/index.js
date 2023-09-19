@@ -18,6 +18,7 @@ const repeatBtn = document.querySelector('.repeat');
 const progressTime = document.querySelector('.show__time')
 const playlistBtn = document.querySelector('.playlist__btn')
 const playlist = document.querySelector('.playlist')
+const shuffle = document.querySelector('.shuffle')
 
 // Получение минут и секунд
 
@@ -203,18 +204,6 @@ const showTimeOnProgressLine = (e) => {
 
 // Отображение времени на progressLine
 
-// Заполнение плейлиста треками
-
-const createPlaylist = () => {
-  songs.forEach((item) => {
-    playlist.insertAdjacentHTML('beforeend', `<li class="playlist__item">${item.author} - ${item.title}</li>`)
-  });
-};
-
-createPlaylist();
-
-// Заполнение плейлиста треками
-
 // Появление плейлиста
 
 const playlistActiveToggle = () => {
@@ -222,6 +211,39 @@ const playlistActiveToggle = () => {
 }
 
 // Появление плейлиста
+
+// Перемешка треков
+
+let isShuffle = false;
+
+const shuffleToggle = () => {
+  if (!isShuffle) {
+    const shuffledSongs = songs.slice().sort(() => Math.random() - 0.5);
+    playlist.innerHTML = '';
+    createPlayList(shuffledSongs);
+    shuffle.classList.add('shuffle__active');
+    isShuffle = true;
+  } else {
+    playlist.innerHTML = '';
+    createPlayList(songs);
+    shuffle.classList.remove('shuffle__active');
+    isShuffle = false;
+  }
+}
+
+// Перемешка треков
+
+// Заполнение плейлиста треками
+
+function createPlayList(songs) {
+  songs.forEach((item) => {
+    playlist.insertAdjacentHTML('beforeend', `<li class="playlist__item">${item.author} - ${item.title}</li>`)
+  });
+};
+
+createPlayList(songs);
+
+// Заполнение плейлиста треками
 
 // Вызов функций
 
@@ -242,5 +264,6 @@ next.addEventListener('click', nextSong);
 prev.addEventListener('click', prevSong);
 repeatBtn.addEventListener('click', audioRepeatToggle);
 playlistBtn.addEventListener('click', playlistActiveToggle);
+shuffle.addEventListener('click', shuffleToggle);
 
 // Вызов функций
