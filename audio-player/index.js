@@ -204,6 +204,16 @@ const audioChangeTime = (e) => {
 
 // Прогресс аудио и перемотка
 
+// Перемотка с помощью mouse drag
+
+const draggableProgressLine = (e) => {
+  let timelineWidth = progressLine.clientWidth;
+  audio.currentTime = (e.offsetX / timelineWidth) * audio.duration;
+  currentTime.innerHTML = formatTime(audio.currentTime);
+}
+
+// Перемотка с помощью mouse drag
+
 // Включение / выключение звука
 
 let savedVolume = 50;
@@ -309,8 +319,8 @@ const audioRepeatToggle = () => {
 const showTimeOnProgressLine = (e) => {
   let offsetX = e.offsetX;
   progressTime.style.left = `${offsetX}px`;
-  let timeLineWidth = progressLine.clientWidth;
-  let percent = (e.offsetX / timeLineWidth) * audio.duration;
+  let timelineWidth = progressLine.clientWidth;
+  let percent = (e.offsetX / timelineWidth) * audio.duration;
   progressTime.innerHTML = formatTime(percent);
 };
 
@@ -322,6 +332,12 @@ play.addEventListener('click', audioToggle);
 audio.addEventListener('timeupdate', audioProgress);
 audio.addEventListener('ended', playAfterEnd);
 progressLine.addEventListener('click', audioChangeTime);
+progressLine.addEventListener('mousedown', () => {
+  progressLine.addEventListener('mousemove', draggableProgressLine)
+});
+progressLine.addEventListener('mouseup', () => {
+  progressLine.removeEventListener('mousemove', draggableProgressLine)
+});
 progressLine.addEventListener('mousemove', showTimeOnProgressLine);
 volumeBar.addEventListener('mousemove', changeVolume);
 volumeBar.addEventListener('change', changeVolume);
