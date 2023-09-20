@@ -131,8 +131,8 @@ function audioPause() {
   play.style.backgroundImage = 'url(./assets/img/icons-play.png)';
 }
 
-function audioToggle() {
-  if (!isPlay) {
+function audioToggle(index) {
+  if (!isPlay || songIndex !== index) {
     audioPlay();
     playlistActiveAudio();
   } else {
@@ -152,10 +152,7 @@ function playTrackFromPlaylist() {
     item.addEventListener('click', () => {
       const text = item.textContent;
       setTitleAuthor(text);
-      playlistActiveAudio();
-      if (songIndex === index) {
-        audioToggle();
-      } else audioPlay();
+      audioToggle(index);
       songIndex = index;
     });
   });
@@ -328,7 +325,9 @@ const showTimeOnProgressLine = (e) => {
 
 // Вызов функций
 
-play.addEventListener('click', audioToggle);
+play.addEventListener('click', () => {
+  audioToggle(songIndex)
+});
 audio.addEventListener('timeupdate', audioProgress);
 audio.addEventListener('ended', playAfterEnd);
 progressLine.addEventListener('click', audioChangeTime);
