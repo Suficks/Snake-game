@@ -20,6 +20,8 @@ const playlistBtn = document.querySelector('.playlist__btn')
 const playlist = document.querySelector('.playlist')
 const shuffle = document.querySelector('.shuffle')
 
+let isPlay = false;
+
 // Получение минут и секунд
 
 const formatTime = (time) => {
@@ -96,31 +98,12 @@ let songIndex = 0;
 function loadSong() {
   const playlistItems = document.querySelectorAll('.playlist__item');
   const text = playlistItems[songIndex].textContent;
-  console.log(text)
   setTitleAuthor(text);
 };
 
 loadSong();
 
 // Загрузка аудио
-
-// Включать трек из плейлиста 
-
-function playTrackFromPlaylist() {
-  const playlistItems = document.querySelectorAll('.playlist__item');
-
-  playlistItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      const text = item.textContent;
-      setTitleAuthor(text);
-      audioPlay();
-      songIndex = index;
-
-    });
-  });
-}
-
-// Включать трек из плейлиста 
 
 // Выставление продолжительности аудио
 
@@ -136,29 +119,73 @@ setDurationTime()
 
 // Включение / пауза
 
-let isPlay = false;
-
 function audioPlay() {
   audio.play();
   isPlay = true;
   play.style.backgroundImage = 'url(./assets/img/pause.png)';
 }
 
-const audioPause = () => {
+function audioPause() {
   audio.pause();
   isPlay = false;
   play.style.backgroundImage = 'url(./assets/img/icons-play.png)';
 }
 
-const audioToggle = () => {
+function audioToggle() {
   if (!isPlay) {
     audioPlay();
+    playlistActiveAudio();
   } else {
     audioPause();
+    playlistActiveAudio();
   };
 };
 
 // Включение / пауза
+
+// Включать трек из плейлиста 
+
+function playTrackFromPlaylist() {
+  const playlistItems = document.querySelectorAll('.playlist__item');
+
+  playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      const text = item.textContent;
+      setTitleAuthor(text);
+      playlistActiveAudio();
+      if (songIndex === index) {
+        audioToggle();
+      } else audioPlay();
+      songIndex = index;
+    });
+  });
+};
+
+// Включать трек из плейлиста 
+
+// Изменение иконки в плейлисте
+
+function playlistActiveAudio() {
+  const playlistItems = document.querySelectorAll('.playlist__item');
+
+  playlistItems.forEach((item) => {
+    const author = authorContainer.textContent;
+    const authorFromPlaylist = item.textContent.split('-')[0].trim();
+    if (author === authorFromPlaylist && isPlay) {
+      item.classList.add('playlist__item__active');
+      item.classList.add('playlist__pause__icon');
+    } else {
+      item.classList.remove('playlist__item__active');
+      item.classList.remove('playlist__pause__icon');
+    }
+    if (author === authorFromPlaylist && !isPlay) {
+      item.classList.add('playlist__item__active');
+      item.classList.add('playlist__active__icon');
+    } else item.classList.remove('playlist__active__icon');
+  });
+};
+
+// Изменение иконки в плейлисте
 
 // Прогресс аудио и перемотка
 
@@ -235,6 +262,7 @@ function nextSong() {
   }
   loadSong();
   audioPlay();
+  playlistActiveAudio();
 };
 
 // Следующий трек
@@ -243,9 +271,9 @@ function nextSong() {
 
 const playAfterEnd = () => {
   if (repeatBtn.classList.contains('repeat__active')) {
-    console.log('hello');
     loadSong();
     audioPlay();
+    playlistActiveAudio();
   } else {
     nextSong();
   };
@@ -263,6 +291,7 @@ function prevSong() {
   }
   loadSong();
   audioPlay();
+  playlistActiveAudio();
 };
 
 // Предыдущий трек
