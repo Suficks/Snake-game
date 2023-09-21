@@ -1,0 +1,373 @@
+/* indie-flower-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Indie Flower";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/indie-flower-v21-latin-regular.woff2") format("woff2");
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* oleo-script-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Oleo Script";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/oleo-script-v14-latin-regular.woff2") format("woff2");
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+  pointer-events: none;
+  filter: blur(10px);
+}
+
+.player {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.7), 1px 2px 4px 0px rgba(0, 0, 0, 0.7), 2px 4px 8px 0px rgba(0, 0, 0, 0.7), 2px 4px 16px 0px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(rgba(135, 60, 255, 0.4), rgba(135, 60, 255, 0) 80%), linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 25%, rgba(255, 160, 65, 0.9) 75%);
+  border-radius: 20px;
+  z-index: 3;
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+
+.controls {
+  padding: 15px 15px 20px;
+}
+
+.title,
+.author {
+  margin: 0;
+  color: #fff;
+  font: bold 26px/28px "Indie Flower";
+}
+
+.author {
+  font: 22px/24px "Indie Flower";
+  margin-bottom: 15px;
+}
+
+.playlist__btn {
+  position: absolute;
+  top: 66%;
+  right: 25px;
+  background-image: url("./assets/img/playlist.png");
+  width: 30px;
+  height: 30px;
+  transition: 0.3s ease;
+}
+.playlist__btn:hover {
+  transform: scale(1.1);
+}
+
+.playlist {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 25px 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
+  z-index: 2;
+  list-style: none;
+  font: 22.5px/22.5px "Indie Flower";
+  background: hsla(0, 0%, 100%, 0.9);
+  border-radius: 20px 20px 0 0;
+  transition: 1s ease;
+  transform: translateY(-300%);
+}
+
+.playlist__active {
+  transform: translateY(0);
+}
+
+.playlist__item {
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 26px;
+  cursor: pointer;
+}
+.playlist__item:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background-image: url("./assets/img/playlist-note.png");
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+}
+.playlist__item:hover {
+  font-weight: bold;
+}
+
+.playlist__item:last-child {
+  margin-bottom: 0;
+}
+
+.playlist__item__active {
+  color: rgba(120, 155, 255, 0.9);
+}
+
+.playlist__active__icon:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background-image: url("./assets/img/playlist-play.png");
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.playlist__pause__icon:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background-image: url("./assets/img/playlist-pause.png");
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+}
+
+input[type=range] {
+  border-radius: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 6px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background: #8789f0;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.audio__time {
+  position: relative;
+  margin-bottom: 8px;
+  padding-bottom: 17px;
+  text-align: center;
+}
+
+.audio__bar {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.audio__bar:hover ~ .show__time {
+  opacity: 1;
+}
+
+.show__time {
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-60%);
+  font: 12px/12px "Oleo Script";
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.time {
+  position: absolute;
+  bottom: 0;
+  font: 13px/13px "Oleo Script";
+  color: #ffffff;
+}
+
+.duration__time {
+  right: 0;
+}
+
+.prev,
+.next,
+.repeat,
+.shuffle {
+  background-image: url("./assets/img/icon-prev.png");
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  transition: 0.3s ease;
+}
+.prev:hover,
+.next:hover,
+.repeat:hover,
+.shuffle:hover {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+}
+.prev:active,
+.next:active,
+.repeat:active,
+.shuffle:active {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
+}
+
+.next {
+  transform: rotate(180deg);
+}
+
+.repeat {
+  position: absolute;
+  left: 30px;
+  bottom: 65px;
+  background-image: url("./assets/img/icon-repeat.png");
+  background-size: 27px 27px;
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  transition: 0.5s ease;
+}
+.repeat:hover {
+  filter: none;
+  transform: rotate(360deg);
+}
+
+.repeat__active {
+  background-image: url("./assets/img/repeat-on.png");
+  background-size: 25px 25px;
+}
+
+.shuffle {
+  position: absolute;
+  right: 30px;
+  bottom: 65px;
+  background-image: url("./assets/img/shuffle.png");
+  background-size: 26px 26px;
+  width: 26px;
+  height: 26px;
+}
+
+.shuffle__active {
+  background-image: url("./assets/img/shuffle__off.png");
+  background-size: 28px 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.play {
+  background-image: url("./assets/img/icons-play.png");
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  transition: 0.3s ease;
+}
+.play:hover {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(1273%) hue-rotate(187deg) brightness(90%) contrast(80%);
+}
+.play:active {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(90%) saturate(622%) hue-rotate(206deg) brightness(100%) contrast(89%);
+}
+
+.volume__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.volume__bar {
+  width: 75%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.volume__icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer__item {
+  margin: 0;
+  font: 25px/27px "Indie Flower";
+  letter-spacing: 2px;
+  color: #FFF;
+}
+
+.github:hover {
+  font-weight: bold;
+}
+
+.school__link {
+  line-height: 0;
+}
+
+.logo {
+  width: 90px;
+  height: 45px;
+  margin: 10px 0;
+  padding: 0 5px;
+  background: hsla(0, 0%, 100%, 0.9);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-radius: 3px;
+}/*# sourceMappingURL=index.css.map */

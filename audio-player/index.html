@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/x-icon" href="./assets/img/icons-note.svg">
+  <title>Document</title>
+</head>
+
+<body>
+  <main class="main">
+    <img src="" alt="background" class="background">
+    <audio class="audio" src="" preload="metadata"></audio>
+
+    <div class="player">
+      <img src="" alt="cover" class="cover">
+      <div class="controls">
+        <p class="title"></p>
+        <p class="author"></p>
+        <button class="playlist__btn"></button>
+        <div class="audio__time">
+          <input type="range" class="audio__bar" value="0">
+          <span class="show__time"></span>
+          <div class="time current__time"></div>
+          <div class="time duration__time"></div>
+        </div>
+        <div class="buttons">
+          <button class="prev"></button>
+          <button class="play"></button>
+          <button class="next"></button>
+        </div>
+        <button class="repeat"></button>
+        <button class="shuffle"></button>
+        <div class="volume__controls">
+          <img src="./assets/img/mute.png" alt="mute" class="mute volume__icon">
+          <input type="range" class="volume__bar">
+          <img src="./assets/img/volume.png" alt="volume" class="volume volume__icon">
+        </div>
+      </div>
+      <ul class="playlist"></ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="info">
+      <p class="footer__item">2023</p>
+      <a class="school__link" href="https://rs.school/js-stage0/" target="_blank">
+        <img src="./assets/img/rs_school_logo.svg" alt="logo" class="logo">
+      </a>
+      <a class="github footer__item" href="https://github.com/Suficks" target="_blank">Suficks</a>
+    </div>
+  </footer>
+  <script type="module" src="songsData.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+
+</html>
