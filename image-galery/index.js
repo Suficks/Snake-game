@@ -4,6 +4,7 @@ const input = document.querySelector('.input');
 const firstColumn = document.querySelector('.first');
 const secondColumn = document.querySelector('.second');
 const thirdColumn = document.querySelector('.third');
+const reset = document.querySelector('.reset');
 
 let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
@@ -15,7 +16,7 @@ async function getData() {
     .catch(error => {
       console.error('Ошибка:', error);
     });
-}
+};
 
 getData();
 
@@ -42,6 +43,16 @@ const searchPic = () => {
 magnifier.addEventListener('click', searchPic);
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') {
-    searchPic()
+    searchPic();
   };
+});
+
+const resetInput = () => {
+  reset.classList.toggle('reset__active', input.value !== '')
+};
+
+input.addEventListener('input', resetInput);
+reset.addEventListener('click', () => {
+  input.value = '';
+  resetInput();
 });
