@@ -2,13 +2,12 @@
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Delius';
+  font-family: "Delius";
   font-style: normal;
   font-weight: 400;
-  src: url('./assets/delius-v19-latin-regular.woff2') format('woff2');
+  src: url("./assets/delius-v19-latin-regular.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
 body {
   padding: 0;
   margin: 0;
@@ -51,7 +50,7 @@ body {
   border-radius: 20px;
   border: none;
   outline: none;
-  font: 18px / 18px 'Delius';
+  font: 18px/18px "Delius";
 }
 
 .magnifier {
@@ -72,10 +71,9 @@ body {
 
 .gallery__img {
   width: calc(33.3% - 16px);
-
-  &:first-child {
-    margin-top: 50px;
-  }
+}
+.gallery__img:first-child {
+  margin-top: 50px;
 }
 
 .container {
@@ -84,4 +82,4 @@ body {
   max-height: 2000px;
   height: 100%;
   gap: 24px;
-}
+}/*# sourceMappingURL=index.css.map */
