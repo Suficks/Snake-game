@@ -12,11 +12,12 @@
 body {
   padding: 0;
   margin: 0;
-  background: black;
+  background-color: black;
 }
 
 .header {
-  padding: 15px;
+  padding: 15px 15px 0;
+  background: black;
 }
 
 .header__wrap {
@@ -30,8 +31,8 @@ body {
 }
 
 .logo {
-  width: 350px;
-  height: 120px;
+  width: 420px;
+  height: 100px;
 }
 
 .unsplash {
@@ -95,9 +96,40 @@ hr {
   overflow-y: hidden;
 }
 
+.img__item {
+  position: relative;
+}
+
+.like {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .gallery__img {
   width: 100%;
   height: 100%;
+
+  &:hover~.like {
+    opacity: 1;
+  }
+}
+
+.like__active {
+  opacity: 1;
 }
 
 .container {
