@@ -69,6 +69,7 @@ hr {
 }
 
 .gallery {
+  max-height: 3286px;
   padding: 0 10px;
   box-sizing: border-box;
   overflow-y: hidden;
@@ -80,20 +81,21 @@ hr {
   &:first-child {
     margin-top: 50px;
   }
+
+  &:nth-child(21) {
+    margin-top: 50px;
+  }
 }
 
 .container {
   display: flex;
   flex-flow: column wrap;
-  max-height: 2000px;
+  max-height: 3286px;
   height: 100%;
   gap: 24px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   z-index: 2;
   background: black;
