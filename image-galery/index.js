@@ -5,8 +5,10 @@ const firstColumn = document.querySelector('.first');
 const secondColumn = document.querySelector('.second');
 const thirdColumn = document.querySelector('.third');
 const reset = document.querySelector('.reset');
+const header = document.querySelector('.header')
 
 let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
+
 input.focus();
 
 async function getData() {
@@ -30,11 +32,20 @@ function showData(data) {
       <img class="gallery__img" src='${pic}' alt="image">
       <img class="like" src="./assets/like-icon.png" alt="like">
     </div>`;
+    columnFill(index, img);
+    likePic();
+  });
+};
+
+function columnFill(index, img) {
+  if (window.innerWidth <= 880) {
+    if (index < 15) firstColumn.insertAdjacentHTML('beforeend', img);
+    if (index >= 15) secondColumn.insertAdjacentHTML('beforeend', img);
+  } else {
     if (index < 10) firstColumn.insertAdjacentHTML('beforeend', img);
     if (index >= 10 && index < 20) secondColumn.insertAdjacentHTML('beforeend', img);
     if (index >= 20) thirdColumn.insertAdjacentHTML('beforeend', img);
-    likePic();
-  });
+  };
 };
 
 const searchPic = () => {
@@ -74,7 +85,17 @@ function likePic() {
         item.classList.remove('like__active');
         item.src = './assets/like-icon.png';
         isActive = false;
-      }
-    })
-  })
-}
+      };
+    });
+  });
+};
+
+window.addEventListener('scroll', () => {
+  header.classList.add('header__scroll');
+});
+
+window.addEventListener('scrollend', () => {
+  header.classList.remove('header__scroll');
+});
+
+// window.addEventListener('resize', getData)
