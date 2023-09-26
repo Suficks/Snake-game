@@ -8,10 +8,11 @@ const reset = document.querySelector('.reset');
 const header = document.querySelector('.header');
 const preloader = document.querySelector('.preloader');
 
-
 let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
 input.focus();
+
+// Получение картинок
 
 async function getData() {
   const res = await fetch(url);
@@ -21,6 +22,10 @@ async function getData() {
 };
 
 getData();
+
+// Получение картинок
+
+// Отображение картинок
 
 function showData(data) {
   firstColumn.innerHTML = '';
@@ -39,6 +44,10 @@ function showData(data) {
   });
 };
 
+// Отображение картинок
+
+// Заполнение столбцов картинками
+
 function columnFill(index, img) {
   if (window.innerWidth <= 880) {
     if (index < 15) firstColumn.insertAdjacentHTML('beforeend', img);
@@ -49,6 +58,10 @@ function columnFill(index, img) {
     if (index >= 20) thirdColumn.insertAdjacentHTML('beforeend', img);
   };
 };
+
+// Заполнение столбцов картинками
+
+// Поиск картинки
 
 const searchPic = () => {
   const inputValue = input.value;
@@ -67,6 +80,10 @@ document.addEventListener('keydown', (e) => {
   };
 });
 
+// Поиск картинки
+
+// Очистка инпута
+
 const resetInput = () => {
   reset.classList.toggle('reset__active', input.value !== '')
 };
@@ -76,6 +93,10 @@ reset.addEventListener('click', () => {
   input.value = '';
   resetInput();
 });
+
+// Очистка инпута
+
+// Лайк картинке
 
 function likePic() {
   const likeBtn = document.querySelectorAll('.like');
@@ -96,6 +117,10 @@ function likePic() {
   });
 };
 
+// Лайк картинке
+
+// Исчезание хедера при скроле
+
 window.addEventListener('scroll', () => {
   header.classList.add('header__scroll');
 });
@@ -104,7 +129,15 @@ window.addEventListener('scrollend', () => {
   header.classList.remove('header__scroll');
 });
 
+// Исчезание хедера при скроле
+
+// Изменение колонок при ресайзе
+
 // window.addEventListener('resize', getData)
+
+// Изменение колонок при ресайзе
+
+// Прелоадер
 
 function preloaderActive() {
   preloader.classList.add('hide-preloader');
@@ -114,3 +147,5 @@ function preloaderActive() {
 };
 
 window.addEventListener('load', preloaderActive);
+
+// Прелоадер
