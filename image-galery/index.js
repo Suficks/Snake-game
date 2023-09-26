@@ -15,13 +15,19 @@ input.focus();
 // Получение картинок
 
 async function getData() {
+  preloader.classList.add('show__preloader');
   const res = await fetch(url);
   const data = await res.json();
-  if (!res.ok) throw new Error(response.statusText);
-  showData(data)
+  showData(data);
+
+  setTimeout(() => {
+    preloader.classList.remove('show__preloader');
+  }, 2000)
 };
 
 getData();
+
+// container.onload = () => console.log('img onload')
 
 // Получение картинок
 
@@ -66,17 +72,21 @@ function columnFill(index, img) {
 const searchPic = () => {
   const inputValue = input.value;
   url = `https://api.unsplash.com/search/photos?query=${inputValue}&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo`;
-  getData();
-}
+  getData()
+    .catch(() => {
+      const div = document.createElement('div');
+      div.classList.add('error__modal');
+      div.innerHTML = '<p class="error__text">Слишком частые запросы. Попробуйте позже</p>';
+      document.body.append(div)
+    });
+};
 
 magnifier.addEventListener('click', () => {
   searchPic();
-  preloaderActive()
 });
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') {
     searchPic();
-    preloaderActive()
   };
 });
 
@@ -122,30 +132,18 @@ function likePic() {
 // Исчезание хедера при скроле
 
 window.addEventListener('scroll', () => {
-  header.classList.add('header__scroll');
+  if (!header.classList.contains('header__scroll')) header.classList.add('header__scroll');
+  if (window.scrollY === 0) header.classList.add('header__scroll')
 });
 
 window.addEventListener('scrollend', () => {
-  header.classList.remove('header__scroll');
+  if (header.classList.contains('header__scroll')) header.classList.remove('header__scroll');
 });
 
 // Исчезание хедера при скроле
 
 // Изменение колонок при ресайзе
 
-// window.addEventListener('resize', getData)
+window.addEventListener('resize', getData);
 
 // Изменение колонок при ресайзе
-
-// Прелоадер
-
-function preloaderActive() {
-  preloader.classList.add('hide-preloader');
-  setInterval(() => {
-    preloader.classList.add('preloader-hidden');
-  }, 1490);
-};
-
-window.addEventListener('load', preloaderActive);
-
-// Прелоадер
