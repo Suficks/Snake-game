@@ -5,7 +5,9 @@ const firstColumn = document.querySelector('.first');
 const secondColumn = document.querySelector('.second');
 const thirdColumn = document.querySelector('.third');
 const reset = document.querySelector('.reset');
-const header = document.querySelector('.header')
+const header = document.querySelector('.header');
+const preloader = document.querySelector('.preloader');
+
 
 let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
@@ -54,10 +56,14 @@ const searchPic = () => {
   getData();
 }
 
-magnifier.addEventListener('click', searchPic);
+magnifier.addEventListener('click', () => {
+  searchPic();
+  preloaderActive()
+});
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') {
     searchPic();
+    preloaderActive()
   };
 });
 
@@ -99,3 +105,12 @@ window.addEventListener('scrollend', () => {
 });
 
 // window.addEventListener('resize', getData)
+
+function preloaderActive() {
+  preloader.classList.add('hide-preloader');
+  setInterval(() => {
+    preloader.classList.add('preloader-hidden');
+  }, 1490);
+};
+
+window.addEventListener('load', preloaderActive);

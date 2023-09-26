@@ -9,6 +9,10 @@
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -18,7 +22,7 @@ body {
 .header {
   position: fixed;
   width: calc(100% - 30px);
-  z-index: 2;
+  z-index: 3;
   padding: 15px 15px 0;
   background: black;
   transition: 0.2s ease;
@@ -47,7 +51,6 @@ body {
   width: 110px;
   height: 110px;
 }
-
 
 .search {
   position: relative;
@@ -98,6 +101,7 @@ hr {
   position: absolute;
   top: 135px;
   left: 0;
+  z-index: 3;
   width: calc(100% - 2px);
   margin: 0;
 }
@@ -204,6 +208,38 @@ a {
   border-radius: 3px;
 }
 
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: url('./assets/preloader.gif') no-repeat;
+  background-color: #000;
+  background-position: center;
+}
+
+.hide-preloader {
+  animation: hidePreloader 1.5s;
+}
+
+.preloader-hidden {
+  display: none;
+}
+
+@keyframes hidePreloader {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 880px) {
   .logo {
     width: 300px;
@@ -275,5 +311,3 @@ a {
     gap: 10px;
   }
 }
-
-// calc(280px + (330 - 280) * ((100vw - 768px) / (1024 - 768))));
