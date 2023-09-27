@@ -12,9 +12,13 @@
 html {
   overflow-y: scroll;
   font-family: 'Delius';
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   padding: 0;
   margin: 0;
   background-color: black;
@@ -108,6 +112,7 @@ hr {
 }
 
 .gallery {
+  flex: 1 1 auto;
   padding: 165px 15px 15px;
   box-sizing: border-box;
   overflow-y: hidden;
@@ -234,6 +239,9 @@ a {
 
 .error__modal {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -249,10 +257,13 @@ a {
   color: #FFF;
   font-size: 24px;
   text-align: center;
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
 }
 
-.error__text {
-  margin: 0;
+.error__modal__active {
+  opacity: 1;
 }
 
 @media screen and (max-width: 880px) {

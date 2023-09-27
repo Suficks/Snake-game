@@ -7,6 +7,7 @@ const thirdColumn = document.querySelector('.third');
 const reset = document.querySelector('.reset');
 const header = document.querySelector('.header');
 const preloader = document.querySelector('.preloader');
+const errorModal = document.querySelector('.error__modal');
 
 let url = 'https://api.unsplash.com/search/photos?query=random&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
@@ -27,8 +28,6 @@ async function getData() {
 
 getData();
 
-// container.onload = () => console.log('img onload')
-
 // Получение картинок
 
 // Отображение картинок
@@ -37,6 +36,12 @@ function showData(data) {
   firstColumn.innerHTML = '';
   secondColumn.innerHTML = '';
   thirdColumn.innerHTML = '';
+
+  if (data.results.length === 0) {
+    preloader.classList.remove('show__preloader');
+    errorModal.innerHTML = 'Некоректный запрос';
+    errorModal.classList.add('error__modal__active')
+  } else errorModal.classList.remove('error__modal__active')
 
   data.results.forEach((element, index) => {
     const pic = element.urls.regular;
@@ -74,10 +79,8 @@ const searchPic = () => {
   url = `https://api.unsplash.com/search/photos?query=${inputValue}&per_page=30&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo`;
   getData()
     .catch(() => {
-      const div = document.createElement('div');
-      div.classList.add('error__modal');
-      div.innerHTML = '<p class="error__text">Слишком частые запросы. Попробуйте позже</p>';
-      document.body.append(div)
+      errorModal.innerHTML = 'Некоректный запрос';
+      errorModal.classList.add('error__modal__active')
     });
 };
 
