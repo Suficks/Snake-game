@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/x-icon" href="/assets/gallery-icon.png">
+  <title>Image Gallery</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__wrap">
+      <a href="https://unsplash.com/" class="unsplash__link" target="_blank">
+        <img src="./assets/unsplash-logo.png" alt="unsplash" class="unsplash">
+      </a>
+      <img src="./assets/gallery-logo.png" alt="logo" class="logo"></img>
+      <div class="search">
+        <input type="text" class="input" placeholder="Search...">
+        <img src="./assets/magnifier-icon.png" alt="magnifier" class="magnifier">
+        <img src="./assets/reset-input.png" alt="reset" class="reset">
+      </div>
+    </div>
+  </header>
+  <hr>
+
+  <section class="gallery">
+    <div class="container">
+      <div class="column first"></div>
+      <div class="column second"></div>
+      <div class="column third"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="info">
+      <p class="footer__item">2023</p>
+      <a class="school__link" href="https://rs.school/js-stage0/" target="_blank">
+        <img src="./assets/rs_school_logo.svg" alt="logo" class="footer__logo">
+      </a>
+      <a class="github footer__item" href="https://github.com/Suficks" target="_blank">Suficks</a>
+    </div>
+  </footer>
+
+  <div class="preloader"></div>
+  <div class="error__modal"></div>
+  <script src="index.js"></script>
+</body>
+
+</html>
