@@ -1,5 +1,6 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
+const lose = document.querySelector('.lose')
 
 const box = 30;
 let score = 0;
@@ -65,7 +66,10 @@ const drawGame = () => {
   } else snake.pop();
 
   if (snakeX < box || snakeX > box * 17
-    || snakeY < 3 * box || snakeY > box * 17) game.clearInterval();
+    || snakeY < 3 * box || snakeY > box * 17) {
+    game.clearInterval();
+    lose.innerHTML = 'Вы проиграли!'
+  }
 
   if (dir === 'left') snakeX -= box;
   if (dir === 'right') snakeX += box;
