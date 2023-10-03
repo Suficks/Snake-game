@@ -11,6 +11,29 @@
 
 <body>
   <canvas id="game" width="570" height="570"></canvas>
+
+  <div class="level__change">
+    <p class="title">Выберите уровень сложности</p>
+    <label class="label">
+      <input type="radio" class="input light" name="level">
+      <div class="fake"></div>
+      <span class="level__name">Легкий</span>
+    </label>
+    <label class="label">
+      <input type="radio" class="input medium" name="level">
+      <div class="fake"></div>
+      <span class="level__name">Средний</span>
+    </label>
+    <label class="label">
+      <input type="radio" class="input heavy" name="level">
+      <div class="fake"></div>
+      <span class="level__name">Тяжелый</span>
+    </label>
+    <button class="button start">Играть!</button>
+  </div>
+
+  <img src="./assets/start.svg" alt="start" class="start__img">
+
   <div class="lose">
     <p class="text">Вы проиграли!</p>
     <div class="results__container">
@@ -23,8 +46,9 @@
         <div class="final__place"></div>
       </div>
     </div>
-    <button class="button">Играть снова</button>
+    <button class="button again">Играть снова</button>
   </div>
+
   <footer class="footer">
     <div class="info">
       <p class="footer__item">2023</p>
