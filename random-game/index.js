@@ -1,6 +1,9 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
-const lose = document.querySelector('.lose')
+const lose = document.querySelector('.lose');
+const finalScore = document.querySelector('.final__score');
+const finalPlace = document.querySelector('.final__place');
+const playAgain = document.querySelector('.button');
 
 const box = 30;
 let score = 0;
@@ -67,8 +70,9 @@ const drawGame = () => {
 
   if (snakeX < box || snakeX > box * 17
     || snakeY < 3 * box || snakeY > box * 17) {
-    game.clearInterval();
-    lose.innerHTML = 'Вы проиграли!'
+    clearInterval(game);
+    lose.classList.add('lose__active');
+    finalScore.innerHTML = score;
   }
 
   if (dir === 'left') snakeX -= box;
@@ -85,3 +89,9 @@ const drawGame = () => {
 }
 
 let game = setInterval(drawGame, 200);
+
+playAgain.addEventListener('click', () => {
+  snake = [];
+  game = setInterval(drawGame, 200);
+  lose.classList.remove('lose__active');
+})

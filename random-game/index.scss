@@ -1,3 +1,27 @@
+/* delius-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Delius';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/delius-v19-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  background: url('./assets/background.jpg') no-repeat;
+  background-size: cover;
+}
+
 canvas {
   display: block;
   margin: auto;
@@ -5,8 +29,9 @@ canvas {
 
 .lose {
   position: absolute;
-  top: 290px;
+  top: 50%;
   left: 50%;
+  flex: 1 1 auto;
   transform: translate(-50%, -50%);
   padding: 20px;
   text-align: center;
@@ -15,13 +40,15 @@ canvas {
   border-radius: 20px;
   border: 3px solid green;
   background-color: #4a752d;
-  font: 22px / 22px 'Arial';
+  font: 24px / 24px 'Delius';
   color: white;
-  // opacity: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .lose__active {
   opacity: 1;
+  pointer-events: all;
 }
 
 .text {
@@ -49,11 +76,11 @@ canvas {
 }
 
 .button {
-  padding: 10px;
+  padding: 15px;
   background-color: #a9d751;
   border: none;
   border-radius: 10px;
-  font: 20px / 20px 'Arial';
+  font: 22px / 22px 'Delius';
   color: white;
   cursor: pointer;
   transition: 0.3s ease;
@@ -61,4 +88,50 @@ canvas {
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.footer {
+  width: 100%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: 'Delius';
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer__item {
+  margin: 0;
+  font-size: 25px;
+  line-height: 27px;
+  letter-spacing: 2px;
+
+  color: #FFF;
+}
+
+.github {
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.school__link {
+  line-height: 0;
+}
+
+.footer__logo {
+  width: 90px;
+  height: 45px;
+  margin: 10px 0;
+  padding: 0 5px;
+  background: hsla(0, 0, 100%, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 3px;
 }
