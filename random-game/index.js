@@ -44,6 +44,7 @@ const gameLose = () => {
   clearInterval(game);
   lose.classList.add('lose__active');
   finalScore.innerHTML = score;
+  score = 0;
 };
 
 const snakeDirection = (e) => {
@@ -55,7 +56,7 @@ const snakeDirection = (e) => {
 
 document.addEventListener('keydown', (e) => {
   snakeDirection(e);
-  startPic.style.opacity = '0'
+  startPic.style.opacity = '0';
 });
 
 const eatTail = (head, arr) => {
@@ -119,14 +120,19 @@ startGameBtn.addEventListener('click', () => {
 playAgain.addEventListener('click', () => {
   lose.classList.remove('lose__active');
   levelChangeModal.classList.remove('level__change__hide');
-  snake[0] = {
-    x: 9 * box,
-    y: 10 * box
-  }
+  snake.length = 1;
+  snake[0].x = 270;
+  snake[0].y = 300;
+  drawGame()
+  levels.forEach(item => {
+    item.checked = false;
+  })
 })
 
 levels.forEach((item) => {
   item.addEventListener('click', () => {
+    dir = '';
+    startPic.style.opacity = '1';
     if (item.classList.contains('light')) game = setInterval(drawGame, 300);
     if (item.classList.contains('medium')) game = setInterval(drawGame, 200);
     if (item.classList.contains('heavy')) game = setInterval(drawGame, 100);
