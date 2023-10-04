@@ -162,6 +162,7 @@ function drawGame() {
 
 levels.forEach((item) => {
   item.addEventListener('click', () => {
+    startGameBtn.removeAttribute('disabled');
     startPic.style.opacity = '1';
     if (item.classList.contains('light')) game = setInterval(drawGame, 300);
     if (item.classList.contains('medium')) game = setInterval(drawGame, 200);
@@ -176,6 +177,7 @@ startGameBtn.addEventListener('click', () => {
 playAgain.addEventListener('click', () => {
   lose.classList.remove('lose__active');
   levelChangeModal.classList.remove('level__change__hide');
+  startGameBtn.setAttribute('disabled', 'true');
   dir = '';
   snake.length = 1;
   snake[0].x = 270;
