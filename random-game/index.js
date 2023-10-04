@@ -5,6 +5,7 @@ const levelChangeModal = document.querySelector('.level__change');
 const startGameBtn = document.querySelector('.start');
 const levels = levelChangeModal.querySelectorAll('input');
 const startPic = document.querySelector('.start__img');
+const musicBtn = document.querySelector('.volume__img');
 
 const lose = document.querySelector('.lose');
 const finalScore = document.querySelector('.final__score');
@@ -17,19 +18,6 @@ let score = 0;
 let snake = [];
 let dir;
 
-const field = new Image();
-field.src = './assets/field.jpg';
-
-const foodImg = new Image();
-const foodPics = ['./assets/icon-food-apple.png', './assets/icon-food-carrot.png', './assets/icon-food-beetroot.png']
-foodImg.src = foodPics[(Math.floor(Math.random() * 3))];
-
-const snakeHadeImg = new Image();
-snakeHadeImg.src = './assets/icon-snake-head.png';
-
-const snakeTaiImg = new Image();
-snakeTaiImg.src = './assets/tail.jpg';
-
 snake[0] = {
   x: 9 * box,
   y: 10 * box
@@ -39,13 +27,6 @@ let food = {
   x: (Math.floor(Math.random() * 17 + 1)) * box,
   y: (Math.floor(Math.random() * 15 + 3)) * box,
 }
-
-const gameLose = () => {
-  clearInterval(game);
-  lose.classList.add('lose__active');
-  finalScore.innerHTML = score;
-  score = 0;
-};
 
 const snakeDirection = (e) => {
   if (e.keyCode === 37 && dir !== 'right') dir = 'left';
@@ -57,7 +38,16 @@ const snakeDirection = (e) => {
 document.addEventListener('keydown', (e) => {
   snakeDirection(e);
   startPic.style.opacity = '0';
+  moveAudio.play()
 });
+
+const gameLose = () => {
+  clearInterval(game);
+  loseAudio.play();
+  lose.classList.add('lose__active');
+  finalScore.innerHTML = score;
+  score = 0;
+};
 
 const eatTail = (head, arr) => {
   for (let i = 0; i < arr.length; i++) {
@@ -67,18 +57,38 @@ const eatTail = (head, arr) => {
   };
 };
 
-const drawGame = () => {
+const foodImg = new Image();
+const foodPics = ['./assets/icon-food-apple.png', './assets/icon-food-carrot.png', './assets/icon-food-cherry.png']
+foodImg.src = foodPics[(Math.floor(Math.random() * 3))];
+
+const snakeHadeImg = new Image();
+snakeHadeImg.src = './assets/icon-snake-head.png';
+
+const snakeTaiImg = new Image();
+snakeTaiImg.src = './assets/tail.jpg';
+
+const moveAudio = new Audio();
+moveAudio.src = './assets/move-sound.mp3'
+
+const loseAudio = new Audio();
+loseAudio.src = './assets/lose-sound.mp3'
+
+const field = new Image();
+field.src = './assets/field.jpg';
+field.onload = drawGame;
+
+function drawGame() {
   ctx.drawImage(field, 0, 0);
   ctx.drawImage(foodImg, food.x, food.y);
 
   for (let i = 0; i < snake.length; i++) {
-    if (i === 0) ctx.drawImage(snakeHadeImg, snake[i].x, snake[i].y)
-    else ctx.drawImage(snakeTaiImg, snake[i].x, snake[i].y)
+    if (i === 0) ctx.drawImage(snakeHadeImg, snake[i].x, snake[i].y);
+    else ctx.drawImage(snakeTaiImg, snake[i].x, snake[i].y);
   }
 
   ctx.fillStyle = 'white';
   ctx.font = '40px Arial';
-  ctx.fillText(score, box * 2, box * 1.6)
+  ctx.fillText(score, box * 2, box * 1.6);
 
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
@@ -113,22 +123,6 @@ const drawGame = () => {
   snake.unshift(newHead);
 }
 
-startGameBtn.addEventListener('click', () => {
-  levelChangeModal.classList.add('level__change__hide');
-})
-
-playAgain.addEventListener('click', () => {
-  lose.classList.remove('lose__active');
-  levelChangeModal.classList.remove('level__change__hide');
-  snake.length = 1;
-  snake[0].x = 270;
-  snake[0].y = 300;
-  drawGame()
-  levels.forEach(item => {
-    item.checked = false;
-  })
-})
-
 levels.forEach((item) => {
   item.addEventListener('click', () => {
     dir = '';
@@ -138,3 +132,31 @@ levels.forEach((item) => {
     if (item.classList.contains('heavy')) game = setInterval(drawGame, 100);
   });
 });
+
+startGameBtn.addEventListener('click', () => {
+  levelChangeModal.classList.add('level__change__hide');
+});
+
+playAgain.addEventListener('click', () => {
+  lose.classList.remove('lose__active');
+  levelChangeModal.classList.remove('level__change__hide');
+  snake.length = 1;
+  snake[0].x = 270;
+  snake[0].y = 300;
+  drawGame();
+  levels.forEach(item => {
+    item.checked = false;
+  });
+});
+
+musicBtn.addEventListener('click', () => {
+  if (moveAudio.volume === 1) {
+    loseAudio.volume = 0;
+    moveAudio.volume = 0;
+    musicBtn.src = './assets/mute.png'
+  } else {
+    loseAudio.volume = 1;
+    moveAudio.volume = 1;
+    musicBtn.src = './assets/volume.png'
+  }
+})

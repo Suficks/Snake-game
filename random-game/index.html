@@ -10,7 +10,10 @@
 </head>
 
 <body>
-  <canvas id="game" width="570" height="570"></canvas>
+  <div class="canvas__container">
+    <canvas id="game" width="570" height="570"></canvas>
+    <img src="./assets/volume.png" alt="volume" class="volume__img">
+  </div>
 
   <div class="level__change">
     <p class="title">Выберите уровень сложности</p>
@@ -38,7 +41,7 @@
     <p class="text">Вы проиграли!</p>
     <div class="results__container">
       <div class="score__conteiner">
-        <img src="./assets/score-pic.jpg" alt="score-pic" class="score__pic">
+        <img src="./assets/score-pic.png" alt="score-pic" class="score__pic">
         <p class="final__score"></p>
       </div>
       <div class="trophy__container">
