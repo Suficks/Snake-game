@@ -9,10 +9,15 @@ const musicBtn = document.querySelector('.volume__img');
 
 const lose = document.querySelector('.lose');
 const finalScore = document.querySelector('.final__score');
-const finalPlace = document.querySelector('.final__place');
+const maxScore = document.querySelector('.max__score');
 const playAgain = document.querySelector('.again');
+const resultsTableOpenBtn = document.querySelector('.table__btn');
+const resultTableContainer = document.querySelector('.table__container');
+const table = document.querySelector('.table');
+const back = document.querySelector('.back');
 
 const box = 30;
+
 let game;
 let score = 0;
 let snake = [];
@@ -20,8 +25,8 @@ let dir;
 let gameIndex = 1;
 
 snake[0] = {
-  x: 9 * box,
-  y: 10 * box
+  x: 270,
+  y: 300,
 }
 
 let food = {
@@ -48,6 +53,7 @@ const gameLose = () => {
   lose.classList.add('lose__active');
   finalScore.innerHTML = score;
   addScoreToLocalStorage(gameIndex, score);
+  addResultTable();
   score = 0;
   gameIndex++;
 };
@@ -95,10 +101,13 @@ const snakeTaiImg = new Image();
 snakeTaiImg.src = './assets/tail.jpg';
 
 const moveAudio = new Audio();
-moveAudio.src = './assets/move-sound.mp3'
+moveAudio.src = './assets/move-sound.mp3';
+
+const foodEatAudio = new Audio();
+foodEatAudio.src = './assets/food-eat-sound.mp3';
 
 const loseAudio = new Audio();
-loseAudio.src = './assets/lose-sound.mp3'
+loseAudio.src = './assets/lose-sound.mp3';
 
 const field = new Image();
 field.src = './assets/field.jpg';
@@ -122,6 +131,7 @@ function drawGame() {
 
   if (snakeX === food.x && snakeY === food.y) {
     score++;
+    foodEatAudio.play()
     foodImg.src = foodPics[(Math.floor(Math.random() * 3))];
     food = {
       x: (Math.floor(Math.random() * 17 + 1)) * box,
@@ -152,7 +162,6 @@ function drawGame() {
 
 levels.forEach((item) => {
   item.addEventListener('click', () => {
-    dir = '';
     startPic.style.opacity = '1';
     if (item.classList.contains('light')) game = setInterval(drawGame, 300);
     if (item.classList.contains('medium')) game = setInterval(drawGame, 200);
@@ -167,23 +176,51 @@ startGameBtn.addEventListener('click', () => {
 playAgain.addEventListener('click', () => {
   lose.classList.remove('lose__active');
   levelChangeModal.classList.remove('level__change__hide');
+  dir = '';
   snake.length = 1;
   snake[0].x = 270;
   snake[0].y = 300;
   drawGame();
-  levels.forEach(item => {
-    item.checked = false;
-  });
+  levels.forEach(item => item.checked = false);
 });
 
 musicBtn.addEventListener('click', () => {
   if (moveAudio.volume === 1) {
     loseAudio.volume = 0;
     moveAudio.volume = 0;
+    foodEatAudio.volume = 0;
     musicBtn.src = './assets/mute.png';
   } else {
     loseAudio.volume = 1;
     moveAudio.volume = 1;
+    foodEatAudio.volume = 1;
     musicBtn.src = './assets/volume.png';
   };
+});
+
+const addResultTable = () => {
+  results.sort((a, b) => b.score - a.score);
+  maxScore.innerHTML = results[0].score;
+  table.innerHTML = '';
+  table.insertAdjacentHTML('beforeend',
+    `<tr>
+      <td>Место</td>
+      <td>Счет</td>
+    </tr>`);
+  results.forEach((item, index) => {
+    const td1 = `<td>${index + 1}</td>`;
+    const td2 = `<td>${item.score}</td>`;
+    const tr = td1 + td2;
+    table.insertAdjacentHTML('beforeend', tr);
+  })
+};
+
+resultsTableOpenBtn.addEventListener('click', () => {
+  resultTableContainer.classList.toggle('table__active');
+  lose.classList.toggle('lose__active');
+});
+
+back.addEventListener('click', () => {
+  resultTableContainer.classList.toggle('table__active');
+  lose.classList.toggle('lose__active');
 });
