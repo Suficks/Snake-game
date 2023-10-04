@@ -17,6 +17,7 @@ let game;
 let score = 0;
 let snake = [];
 let dir;
+let gameIndex = 1;
 
 snake[0] = {
   x: 9 * box,
@@ -46,8 +47,34 @@ const gameLose = () => {
   loseAudio.play();
   lose.classList.add('lose__active');
   finalScore.innerHTML = score;
+  addScoreToLocalStorage(gameIndex, score);
   score = 0;
+  gameIndex++;
 };
+
+const getLocalStorageData = (key) => {
+  return JSON.parse(localStorage.getItem(key));
+};
+
+const setLocalStorageData = (data, key) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
+const results = [];
+
+setLocalStorageData(results, 'results');
+
+function addScoreToLocalStorage(gameIndex, score) {
+  const currentGame = {
+    game: gameIndex,
+    score: score,
+  };
+  if (results.length > 9) {
+    results.shift(currentGame);
+    results.push(currentGame);
+  } else results.push(currentGame);
+  setLocalStorageData(results, 'results')
+}
 
 const eatTail = (head, arr) => {
   for (let i = 0; i < arr.length; i++) {
@@ -153,10 +180,10 @@ musicBtn.addEventListener('click', () => {
   if (moveAudio.volume === 1) {
     loseAudio.volume = 0;
     moveAudio.volume = 0;
-    musicBtn.src = './assets/mute.png'
+    musicBtn.src = './assets/mute.png';
   } else {
     loseAudio.volume = 1;
     moveAudio.volume = 1;
-    musicBtn.src = './assets/volume.png'
-  }
-})
+    musicBtn.src = './assets/volume.png';
+  };
+});
